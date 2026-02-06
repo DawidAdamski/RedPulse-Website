@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.vue';
+import Hero from '../../components/Hero.vue';
+import About from '../../components/About.vue';
+import Services from '../../components/Services.vue';
+import Contact from '../../components/Contact.vue';
+import Footer from '../../components/Footer.vue';
+import { getTranslations } from '../../i18n';
+
+const t = getTranslations('en');
+const currentLocale = 'en';
+---
+
+<Layout 
+  title="RedPulse Innovations - IT Consulting, Automation, AI" 
+  description="RedPulse Innovations - IT consulting, process automation and AI implementations for medium-sized businesses. We specialize in open source solutions and Red Hat technologies. Make it simple and innovative."
+  lang="en"
+>
+  <Header t={t} currentLocale={currentLocale} client:load />
+  <main>
+    <Hero t={t} client:visible />
+    <About t={t} />
+    <Services t={t} />
+    <Contact t={t} />
+  </main>
+  <Footer t={t} />
+</Layout>

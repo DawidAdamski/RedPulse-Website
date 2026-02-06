@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "services": "Usługi",
+    "contact": "Kontakt",
+    "blog": "Blog"
+  },
+  "hero": {
+    "tagline": "Make it simple and innovative",
+    "title": "RedPulse Innovations",
+    "subtitle": "IT ma pomagać i być inwestycją, a nie tylko kosztem",
+    "description": "Konsulting IT, automatyzacja procesów i wdrożenia AI dla średnich firm. Specjalizujemy się w rozwiązaniach open source i technologiach Red Hat.",
+    "cta": "Porozmawiajmy"
+  },
+  "about": {
+    "title": "Kim jesteśmy",
+    "subtitle": "Twój partner w transformacji cyfrowej",
+    "description": "RedPulse Innovations to firma konsultingowa specjalizująca się w automatyzacji, integracji systemów i wdrożeniach AI. Pomagamy firmom adaptować się do zmieniających się realiów biznesowych poprzez innowacyjne rozwiązania technologiczne.",
+    "highlight1": {
+      "title": "Open Source",
+      "description": "Stawiamy na sprawdzone rozwiązania open source i technologie Red Hat"
+    },
+    "highlight2": {
+      "title": "AI & Automatyzacja",
+      "description": "Wykorzystujemy sztuczną inteligencję do przyspieszenia adaptacji biznesu"
+    },
+    "highlight3": {
+      "title": "Prostota",
+      "description": "Tworzymy rozwiązania, które są proste w użyciu i utrzymaniu"
+    }
+  },
+  "services": {
+    "title": "Nasze usługi",
+    "subtitle": "Kompleksowe wsparcie IT dla Twojego biznesu",
+    "analysis": {
+      "title": "Analiza",
+      "description": "Dogłębna analiza procesów i infrastruktury IT. Identyfikujemy obszary do optymalizacji i proponujemy konkretne rozwiązania."
+    },
+    "automation": {
+      "title": "Automatyzacja",
+      "description": "Automatyzacja procesów biznesowych i IT. Oszczędzamy Twój czas i redukujemy ryzyko błędów ludzkich."
+    },
+    "integration": {
+      "title": "Integracja",
+      "description": "Łączymy systemy i aplikacje w spójny ekosystem. API, middleware, przepływy danych - to nasza specjalność."
+    },
+    "consulting": {
+      "title": "Doradztwo",
+      "description": "Strategiczne doradztwo IT. Pomagamy podejmować właściwe decyzje technologiczne dla Twojego biznesu."
+    },
+    "infrastructure": {
+      "title": "Infrastruktura",
+      "description": "Projektowanie i wdrażanie infrastruktury IT. Kubernetes, OpenShift, chmura - budujemy solidne fundamenty."
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Porozmawiajmy o Twoim projekcie",
+    "description": "Masz pytania lub chcesz omówić swój projekt? Napisz do nas - odpowiadamy w ciągu 24 godzin.",
+    "email": "Email",
+    "social": "Social Media",
+    "cta": "Napisz do nas"
+  },
+  "footer": {
+    "tagline": "Make it simple and innovative",
+    "copyright": "RedPulse Innovations. Wszelkie prawa zastrzeżone."
+  }
+}
