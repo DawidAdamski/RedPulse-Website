@@ -27,7 +27,7 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
         <a href="#about" class="nav-link">{{ t.nav.about }}</a>
         <a href="#services" class="nav-link">{{ t.nav.services }}</a>
         <a href="#contact" class="nav-link">{{ t.nav.contact }}</a>
-        <a href="/blog" class="nav-link" target="_blank">{{ t.nav.blog }}</a>
+        <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="nav-link" target="_blank" rel="noopener noreferrer">{{ t.nav.blog }}</a>
       </nav>
       
       <div class="header-actions">
