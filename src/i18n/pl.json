@@ -10,7 +10,7 @@
     "tagline": "Make it simple and innovative",
     "title": "RedPulse Innovations",
     "subtitle": "IT ma pomagać i być inwestycją, a nie tylko kosztem",
-    "description": "Konsulting IT, automatyzacja procesów i wdrożenia AI dla średnich firm. Specjalizujemy się w rozwiązaniach open source i technologiach Red Hat.",
+    "description": "Konsulting IT, automatyzacja procesów i wdrożenia AI dla małych i średnich firm. Specjalizujemy się w rozwiązaniach open source i technologiach Red Hat.",
     "cta": "Porozmawiajmy"
   },
   "about": {
@@ -59,6 +59,7 @@
     "subtitle": "Porozmawiajmy o Twoim projekcie",
     "description": "Masz pytania lub chcesz omówić swój projekt? Napisz do nas - odpowiadamy w ciągu 24 godzin.",
     "email": "Email",
+    "emailAddress": "kontakt@redpulse.tech",
     "social": "Social Media",
     "cta": "Napisz do nas"
   },

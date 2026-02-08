@@ -10,7 +10,7 @@
     "tagline": "Make it simple and innovative",
     "title": "RedPulse Innovations",
     "subtitle": "IT should help and be an investment, not just a cost",
-    "description": "IT consulting, process automation and AI implementations for medium-sized businesses. We specialize in open source solutions and Red Hat technologies.",
+    "description": "IT consulting, process automation and AI implementations for small and medium-sized businesses. We specialize in open source solutions and Red Hat technologies.",
     "cta": "Let's talk"
   },
   "about": {
@@ -59,6 +59,7 @@
     "subtitle": "Let's talk about your project",
     "description": "Have questions or want to discuss your project? Write to us - we respond within 24 hours.",
     "email": "Email",
+    "emailAddress": "contact@redpulse.tech",
     "social": "Social Media",
     "cta": "Contact us"
   },

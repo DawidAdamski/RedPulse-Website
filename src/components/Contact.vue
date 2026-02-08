@@ -6,6 +6,7 @@ defineProps<{
       subtitle: string;
       description: string;
       email: string;
+      emailAddress: string;
       social: string;
       cta: string;
     };
@@ -55,8 +56,7 @@ const socialLinks = [
               </div>
               <div class="method-content">
                 <span class="method-label">{{ t.contact.email }}</span>
-                <a href="mailto:kontakt@redpulse.tech" class="method-value">kontakt@redpulse.tech</a>
-                <a href="mailto:contact@redpulse.tech" class="method-value">contact@redpulse.tech</a>
+                <a :href="'mailto:' + t.contact.emailAddress" class="method-value">{{ t.contact.emailAddress }}</a>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@ const socialLinks = [
             </a>
           </div>
           
-          <a href="mailto:kontakt@redpulse.tech" class="btn btn-primary btn-full">
+          <a :href="'mailto:' + t.contact.emailAddress" class="btn btn-primary btn-full">
             {{ t.contact.cta }}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
