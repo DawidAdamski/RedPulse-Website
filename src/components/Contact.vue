@@ -7,6 +7,8 @@ defineProps<{
       description: string;
       email: string;
       emailAddress: string;
+      consultation: string;
+      consultationCta: string;
       social: string;
       cta: string;
     };
@@ -57,6 +59,21 @@ const socialLinks = [
               <div class="method-content">
                 <span class="method-label">{{ t.contact.email }}</span>
                 <a :href="'mailto:' + t.contact.emailAddress" class="method-value">{{ t.contact.emailAddress }}</a>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <span class="method-label">{{ t.contact.consultation }}</span>
+                <a href="https://calendly.com/dawid-adamski-redpulse/30min" target="_blank" rel="noopener noreferrer" class="method-value">{{ t.contact.consultationCta }}</a>
               </div>
             </div>
           </div>

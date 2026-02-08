@@ -60,6 +60,8 @@
     "description": "Have questions or want to discuss your project? Write to us - we respond within 24 hours.",
     "email": "Email",
     "emailAddress": "contact@redpulse.tech",
+    "consultation": "Consultation",
+    "consultationCta": "Book a consultation",
     "social": "Social Media",
     "cta": "Contact us"
   },
