@@ -17,7 +17,6 @@ defineProps<{
   <section id="about" class="about section">
     <div class="container">
       <div class="about-header">
-        <span class="section-label">About</span>
         <h2 class="about-title">{{ t.about.title }}</h2>
         <p class="about-subtitle">{{ t.about.subtitle }}</p>
       </div>

@@ -43,7 +43,6 @@ const socialLinks = [
     <div class="container">
       <div class="contact-content">
         <div class="contact-info">
-          <span class="section-label">Contact</span>
           <h2 class="contact-title">{{ t.contact.title }}</h2>
           <p class="contact-subtitle">{{ t.contact.subtitle }}</p>
           <p class="contact-description">{{ t.contact.description }}</p>

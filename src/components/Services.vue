@@ -26,7 +26,6 @@ const services = [
   <section id="services" class="services section">
     <div class="container">
       <div class="services-header">
-        <span class="section-label">Services</span>
         <h2 class="services-title">{{ t.services.title }}</h2>
         <p class="services-subtitle">{{ t.services.subtitle }}</p>
       </div>
@@ -147,12 +146,20 @@ const services = [
 
 .service-card:hover {
   border-color: transparent;
-  transform: translateY(-4px);
   box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.3);
 }
 
 .service-card:hover::before {
   opacity: 1;
+}
+
+.service-card .service-number,
+.service-card .service-icon,
+.service-card .service-title,
+.service-card .service-description,
+.service-card .service-arrow {
+  position: relative;
+  z-index: 1;
 }
 
 .service-card:hover .service-number,
@@ -161,8 +168,6 @@ const services = [
 .service-card:hover .service-description,
 .service-card:hover .service-arrow {
   color: var(--white);
-  position: relative;
-  z-index: 1;
 }
 
 .service-number {
