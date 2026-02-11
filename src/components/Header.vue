@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 defineProps<{
   t: {
     nav: {
@@ -11,6 +13,16 @@ defineProps<{
   };
   currentLocale: string;
 }>();
+
+const menuOpen = ref(false);
+
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value;
+};
+
+const closeMenu = () => {
+  menuOpen.value = false;
+};
 
 const otherLocale = (locale: string) => locale === 'pl' ? 'en' : 'pl';
 const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
@@ -41,13 +53,35 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
         <a href="#contact" class="btn btn-primary btn-sm">{{ t.nav.contact }}</a>
       </div>
       
-      <button class="mobile-menu-btn" aria-label="Menu">
+      <button class="mobile-menu-btn" :class="{ active: menuOpen }" aria-label="Menu" @click="toggleMenu">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
+
   </header>
+
+  <Teleport to="body">
+    <div class="mobile-menu" :class="{ open: menuOpen }">
+      <nav class="mobile-nav">
+        <a href="#about" class="mobile-nav-link" @click="closeMenu">{{ t.nav.about }}</a>
+        <a href="#services" class="mobile-nav-link" @click="closeMenu">{{ t.nav.services }}</a>
+        <a href="#contact" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
+        <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="mobile-nav-link" target="_blank" rel="noopener noreferrer" @click="closeMenu">{{ t.nav.blog }}</a>
+      </nav>
+      <div class="mobile-menu-actions">
+        <a
+          :href="localePath(otherLocale(currentLocale))"
+          class="lang-switch"
+          :aria-label="`Switch to ${otherLocale(currentLocale).toUpperCase()}`"
+        >
+          {{ otherLocale(currentLocale).toUpperCase() }}
+        </a>
+        <a href="#contact" class="btn btn-primary" @click="closeMenu">{{ t.nav.contact }}</a>
+      </div>
+    </div>
+  </Teleport>
 </template>
 
 <style scoped>
@@ -145,14 +179,81 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
   transition: all var(--transition-fast);
 }
 
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 @media (max-width: 768px) {
   .nav,
-  .header-actions .btn {
+  .header-actions {
     display: none;
   }
-  
+
   .mobile-menu-btn {
     display: flex;
+  }
+
+}
+</style>
+
+<style>
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-600);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    transition: color var(--transition-fast);
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--black);
+  }
+
+  .mobile-menu-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
 }
 </style>
