@@ -55,10 +55,14 @@ const lastUpdatedFormatted = new Date(buildDate).toLocaleDateString('en-GB', {
               optionally company name and message content.
             </li>
             <li>
-              <strong>Server log technical data</strong> — IP address, browser type,
-              operating system, date and time of the visit. Stored in the mikr.us
-              hosting logs (server located in Finland, EEA) and used solely to
-              keep the site secure and stable.
+              <strong>Server log technical data</strong> — standard nginx access
+              logs (IP address, User-Agent, requested URL, date and time, response
+              code). Logs are not written to a file — they go to the Docker
+              container's stdout and are kept only within the container's
+              lifecycle. They are discarded on the next deployment or container
+              restart. They are not exported, not analyzed with any analytics
+              tools, and not combined with other data. We use them only for
+              ad-hoc security and stability diagnostics.
             </li>
           </ul>
         </section>

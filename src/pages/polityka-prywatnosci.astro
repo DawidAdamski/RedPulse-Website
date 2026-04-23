@@ -56,11 +56,15 @@ const lastUpdatedFormatted = new Date(buildDate).toLocaleDateString('pl-PL', {
               opcjonalnie nazwa firmy i treść wiadomości.
             </li>
             <li>
-              <strong>Dane techniczne z logów serwera</strong> — adres IP, typ
-              przeglądarki, system operacyjny, data i godzina odwiedzin.
-              Zapisywane są w logach hostingu mikr.us (serwer w Finlandii,
-              EOG) i wykorzystywane wyłącznie do zapewnienia bezpieczeństwa
-              i stabilności strony.
+              <strong>Dane techniczne z logów serwera</strong> — standardowe
+              logi nginx (adres IP, User-Agent, żądany URL, data i godzina,
+              kod odpowiedzi). Logi nie są zapisywane do pliku — trafiają
+              na standardowe wyjście kontenera Docker i są przechowywane
+              wyłącznie w obrębie cyklu życia kontenera. Znikają przy
+              kolejnym wdrożeniu / restarcie kontenera. Nie są eksportowane,
+              analizowane narzędziami analitycznymi ani łączone z innymi
+              danymi. Używamy ich wyłącznie do doraźnej diagnostyki
+              bezpieczeństwa i stabilności strony.
             </li>
           </ul>
         </section>
