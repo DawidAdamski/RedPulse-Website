@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -9,6 +10,74 @@ interface Props {
 
 const { title, description, lang = 'pl' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://redpulse.tech');
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://redpulse.tech/#organization',
+  name: 'RedPulse Innovations Dawid Adamski',
+  alternateName: 'RedPulse Innovations',
+  legalName: 'RedPulse Innovations Dawid Adamski',
+  url: 'https://redpulse.tech',
+  logo: 'https://redpulse.tech/favicon.svg',
+  description: lang === 'pl'
+    ? 'Konsulting IT, automatyzacja procesów i wdrożenia AI dla małych i średnich firm.'
+    : 'IT consulting, process automation and AI implementations for small and medium businesses.',
+  taxID: '5562805527',
+  vatID: 'PL5562805527',
+  identifier: [
+    { '@type': 'PropertyValue', propertyID: 'NIP', value: '5562805527' },
+    { '@type': 'PropertyValue', propertyID: 'REGON', value: '526676500' }
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'al. Ratuszowa 14 lok. 2',
+    postalCode: '88-100',
+    addressLocality: 'Inowrocław',
+    addressRegion: 'kujawsko-pomorskie',
+    addressCountry: 'PL'
+  },
+  founder: {
+    '@type': 'Person',
+    name: 'Dawid Adamski',
+    url: 'https://www.linkedin.com/in/dawid-adamski/'
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Poland'
+  },
+  knowsAbout: [
+    'IT Consulting',
+    'Process Automation',
+    'Artificial Intelligence',
+    'Open Source',
+    'Red Hat OpenShift',
+    'Kubernetes',
+    'System Integration'
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'kontakt@redpulse.tech',
+    availableLanguage: ['Polish', 'English']
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/red-pulse-innovations/',
+    'https://www.linkedin.com/in/dawid-adamski/',
+    'https://github.com/DawidAdamski'
+  ]
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://redpulse.tech/#website',
+  url: 'https://redpulse.tech',
+  name: 'RedPulse Innovations',
+  description: description,
+  inLanguage: lang === 'pl' ? 'pl-PL' : 'en-US',
+  publisher: { '@id': 'https://redpulse.tech/#organization' }
+};
 ---
 
 <!DOCTYPE html>
@@ -45,10 +114,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://redpulse
     
     <!-- Theme -->
     <meta name="theme-color" content="#dc2626" />
-    
+
     <title>{title}</title>
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   </head>
   <body>
     <slot />
+    <CookieConsent lang={lang === 'en' ? 'en' : 'pl'} />
   </body>
 </html>

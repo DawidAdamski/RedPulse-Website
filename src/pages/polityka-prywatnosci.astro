@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
+import { getTranslations } from '../i18n';
+
+const t = getTranslations('pl');
+const currentLocale = 'pl';
+const buildDate = new Date().toISOString();
+const lastUpdatedFormatted = new Date(buildDate).toLocaleDateString('pl-PL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout
+  title="Polityka prywatności | RedPulse Innovations"
+  description="Polityka prywatności RedPulse Innovations — zasady przetwarzania danych osobowych zgodnie z RODO."
+  lang="pl"
+>
+  <Header t={t} currentLocale={currentLocale} client:load />
+  <main class="legal-page">
+    <div class="container">
+      <header class="legal-header">
+        <h1>Polityka prywatności</h1>
+        <p class="legal-meta">Ostatnia aktualizacja: {lastUpdatedFormatted}</p>
+      </header>
+
+      <article class="legal-content">
+        <section>
+          <h2>1. Administrator danych</h2>
+          <p>
+            Administratorem Twoich danych osobowych jest
+            <strong>RedPulse Innovations Dawid Adamski</strong>
+            z siedzibą przy al. Ratuszowa 14 lok. 2, 88-100 Inowrocław,
+            woj. kujawsko-pomorskie,
+            NIP: <strong>5562805527</strong>, REGON: <strong>526676500</strong>
+            (dalej: „Administrator" lub „RedPulse Innovations").
+          </p>
+          <p>
+            W sprawach związanych z przetwarzaniem danych osobowych możesz się z nami
+            skontaktować pod adresem e-mail:
+            <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Zakres zbieranych danych</h2>
+          <p>Zbieramy wyłącznie dane, które są niezbędne do świadczenia naszych usług:</p>
+          <ul>
+            <li>
+              <strong>Dane kontaktowe</strong> — kiedy piszesz do nas e-mail na
+              <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>
+              lub umawiasz konsultację przez Calendly: imię, nazwisko, adres e-mail,
+              opcjonalnie nazwa firmy i treść wiadomości.
+            </li>
+            <li>
+              <strong>Dane techniczne z logów serwera</strong> — adres IP, typ
+              przeglądarki, system operacyjny, data i godzina odwiedzin. Dane
+              zapisywane są w logach hostingu mikr.us i wykorzystywane wyłącznie
+              do zapewnienia bezpieczeństwa i stabilności strony.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Cele i podstawy prawne przetwarzania</h2>
+          <ul>
+            <li>
+              <strong>Odpowiedź na zapytanie / obsługa konsultacji</strong> —
+              art. 6 ust. 1 lit. b RODO (wykonanie umowy lub działań przed jej zawarciem).
+            </li>
+            <li>
+              <strong>Marketing bezpośredni własnych usług</strong> — art. 6 ust. 1 lit. f RODO
+              (prawnie uzasadniony interes Administratora).
+            </li>
+            <li>
+              <strong>Realizacja obowiązków prawnych</strong> (m.in. rachunkowość,
+              podatki) — art. 6 ust. 1 lit. c RODO.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Odbiorcy danych</h2>
+          <p>Twoje dane mogą być przekazywane zaufanym podmiotom przetwarzającym:</p>
+          <ul>
+            <li>
+              <strong>Calendly, Inc.</strong> — obsługa umawiania spotkań
+              (serwer w USA, przekazanie oparte na Standardowych Klauzulach Umownych).
+            </li>
+            <li>
+              <strong>mikr.us</strong> (AR Systems sp. z o.o.) — hosting strony
+              i skrzynki pocztowej (serwery w Polsce).
+            </li>
+            <li>
+              <strong>LinkedIn Ireland Unlimited Company</strong> — jeśli skontaktujesz
+              się z nami przez LinkedIn.
+            </li>
+          </ul>
+          <p>
+            Z każdym podmiotem przetwarzającym zawarta jest umowa powierzenia
+            przetwarzania danych (DPA) zgodna z art. 28 RODO.
+          </p>
+        </section>
+
+        <section>
+          <h2>5. Okres przechowywania</h2>
+          <ul>
+            <li>Dane z zapytań nieprowadzących do umowy — do 12 miesięcy.</li>
+            <li>Dane klientów — przez czas trwania umowy i 6 lat po jej zakończeniu (obowiązki podatkowe).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Twoje prawa</h2>
+          <p>W związku z przetwarzaniem Twoich danych przysługują Ci prawa do:</p>
+          <ul>
+            <li>dostępu do swoich danych i otrzymania ich kopii,</li>
+            <li>sprostowania danych,</li>
+            <li>usunięcia danych („prawo do bycia zapomnianym"),</li>
+            <li>ograniczenia przetwarzania,</li>
+            <li>przenoszenia danych,</li>
+            <li>sprzeciwu wobec przetwarzania,</li>
+            <li>wycofania zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed wycofaniem),</li>
+            <li>wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (uodo.gov.pl).</li>
+          </ul>
+          <p>
+            Aby skorzystać z tych praw, napisz do nas:
+            <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>7. Pliki cookie</h2>
+          <p>
+            Strona używa wyłącznie <strong>niezbędnych plików cookie</strong>, które
+            są konieczne do jej prawidłowego działania (np. zapamiętanie Twojego
+            wyboru w banerze cookie). Nie wymagają one zgody i nie służą
+            do profilowania.
+          </p>
+          <p>
+            <strong>Obecnie nie korzystamy</strong> z narzędzi analitycznych ani
+            marketingowych plików cookie. Jeśli w przyszłości je wprowadzimy,
+            zaktualizujemy tę politykę i poprosimy Cię o zgodę przez baner cookie
+            — będziesz mógł ją w każdej chwili wycofać w ustawieniach dostępnych
+            w stopce strony.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Przekazywanie danych poza EOG</h2>
+          <p>
+            Niektórzy nasi dostawcy usług (np. Calendly) mają siedzibę poza Europejskim
+            Obszarem Gospodarczym. W takich przypadkach transfer danych odbywa się na
+            podstawie Standardowych Klauzul Umownych zatwierdzonych przez Komisję
+            Europejską.
+          </p>
+        </section>
+
+        <section>
+          <h2>9. Zautomatyzowane podejmowanie decyzji</h2>
+          <p>
+            Nie podejmujemy zautomatyzowanych decyzji ani nie profilujemy Cię w sposób
+            istotnie wpływający na Twoją sytuację.
+          </p>
+        </section>
+
+        <section>
+          <h2>10. Zmiany polityki</h2>
+          <p>
+            Niniejsza polityka może być aktualizowana. Aktualna wersja z datą ostatniej
+            zmiany jest zawsze dostępna pod adresem
+            <a href="/polityka-prywatnosci">redpulse.tech/polityka-prywatnosci</a>.
+          </p>
+        </section>
+      </article>
+    </div>
+  </main>
+  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 8rem 0 4rem;
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .legal-header {
+    max-width: 760px;
+    margin: 0 auto 3rem;
+  }
+
+  .legal-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-meta {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--gray-500);
+  }
+
+  .legal-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.75;
+    color: var(--gray-800);
+  }
+
+  .legal-content section {
+    margin-bottom: 2.5rem;
+  }
+
+  .legal-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+  }
+
+  .legal-content ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+  }
+
+  .legal-content a {
+    color: var(--red-500);
+    text-decoration: underline;
+  }
+
+  .legal-content a:hover {
+    color: var(--red-600, #b91c1c);
+  }
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://redpulse.tech/sitemap-index.xml

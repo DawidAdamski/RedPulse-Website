@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.vue';
+import Footer from '../../components/Footer.vue';
+import { getTranslations } from '../../i18n';
+
+const t = getTranslations('en');
+const currentLocale = 'en';
+const buildDate = new Date().toISOString();
+const lastUpdatedFormatted = new Date(buildDate).toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout
+  title="Privacy policy | RedPulse Innovations"
+  description="RedPulse Innovations privacy policy — how we process personal data in line with GDPR."
+  lang="en"
+>
+  <Header t={t} currentLocale={currentLocale} client:load />
+  <main class="legal-page">
+    <div class="container">
+      <header class="legal-header">
+        <h1>Privacy policy</h1>
+        <p class="legal-meta">Last updated: {lastUpdatedFormatted}</p>
+      </header>
+
+      <article class="legal-content">
+        <section>
+          <h2>1. Data controller</h2>
+          <p>
+            The controller of your personal data is
+            <strong>RedPulse Innovations Dawid Adamski</strong>, based at
+            al. Ratuszowa 14 lok. 2, 88-100 Inowrocław, Kuyavian-Pomeranian Voivodeship, Poland,
+            Tax ID (NIP): <strong>5562805527</strong>,
+            Business registry (REGON): <strong>526676500</strong>
+            (hereinafter: "Controller" or "RedPulse Innovations").
+          </p>
+          <p>
+            For any matters related to personal data processing you can reach us at
+            <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Scope of collected data</h2>
+          <p>We only collect data necessary to deliver our services:</p>
+          <ul>
+            <li>
+              <strong>Contact data</strong> — when you email
+              <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a> or
+              book a consultation through Calendly: first name, last name, email,
+              optionally company name and message content.
+            </li>
+            <li>
+              <strong>Server log technical data</strong> — IP address, browser type,
+              operating system, date and time of the visit. Stored in the mikr.us
+              hosting logs and used solely to keep the site secure and stable.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. Purposes and legal basis for processing</h2>
+          <ul>
+            <li>
+              <strong>Answering inquiries / running consultations</strong> —
+              Article 6(1)(b) GDPR (performance of a contract or pre-contractual steps).
+            </li>
+            <li>
+              <strong>Direct marketing of our own services</strong> —
+              Article 6(1)(f) GDPR (legitimate interest of the Controller).
+            </li>
+            <li>
+              <strong>Compliance with legal obligations</strong> (accounting, tax) —
+              Article 6(1)(c) GDPR.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Recipients of data</h2>
+          <p>Your data may be shared with trusted processors:</p>
+          <ul>
+            <li>
+              <strong>Calendly, Inc.</strong> — scheduling service
+              (server in the USA, transfer based on Standard Contractual Clauses).
+            </li>
+            <li>
+              <strong>mikr.us</strong> (AR Systems sp. z o.o.) — hosting of the
+              website and email inbox (servers located in Poland).
+            </li>
+            <li>
+              <strong>LinkedIn Ireland Unlimited Company</strong> — if you contact
+              us via LinkedIn.
+            </li>
+          </ul>
+          <p>
+            With each processor we have a Data Processing Agreement (DPA) in place
+            as required by Article 28 GDPR.
+          </p>
+        </section>
+
+        <section>
+          <h2>5. Retention period</h2>
+          <ul>
+            <li>Inquiry data that did not lead to an engagement — up to 12 months.</li>
+            <li>Client data — for the duration of the contract and 6 years afterwards (tax obligations).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Your rights</h2>
+          <p>Regarding our processing of your data you have the right to:</p>
+          <ul>
+            <li>access your data and obtain a copy,</li>
+            <li>rectify inaccurate data,</li>
+            <li>erase your data ("right to be forgotten"),</li>
+            <li>restrict processing,</li>
+            <li>data portability,</li>
+            <li>object to processing,</li>
+            <li>withdraw consent at any time (without affecting the lawfulness of processing before withdrawal),</li>
+            <li>lodge a complaint with the Polish Data Protection Authority (uodo.gov.pl).</li>
+          </ul>
+          <p>
+            To exercise these rights, email us at
+            <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2>7. Cookies</h2>
+          <p>
+            This site uses only <strong>strictly necessary cookies</strong> required
+            for the site to work (e.g., remembering your cookie choice). They do
+            not require consent and are not used for profiling.
+          </p>
+          <p>
+            <strong>We currently do not use</strong> any analytics or marketing
+            cookies. If we introduce them in the future, we will update this
+            policy and ask for your consent through the cookie banner — you will
+            be able to withdraw it at any time from the cookie settings available
+            in the footer.
+          </p>
+        </section>
+
+        <section>
+          <h2>8. Data transfers outside the EEA</h2>
+          <p>
+            Some of our service providers (e.g., Calendly) are located outside the
+            European Economic Area. In such cases the transfer is based on Standard
+            Contractual Clauses approved by the European Commission.
+          </p>
+        </section>
+
+        <section>
+          <h2>9. Automated decision-making</h2>
+          <p>
+            We do not make automated decisions or profile you in ways that significantly
+            affect your legal situation.
+          </p>
+        </section>
+
+        <section>
+          <h2>10. Changes to this policy</h2>
+          <p>
+            This policy may be updated. The current version with the last update date
+            is always available at
+            <a href="/en/privacy-policy">redpulse.tech/en/privacy-policy</a>.
+          </p>
+        </section>
+      </article>
+    </div>
+  </main>
+  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 8rem 0 4rem;
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .legal-header {
+    max-width: 760px;
+    margin: 0 auto 3rem;
+  }
+
+  .legal-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-meta {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--gray-500);
+  }
+
+  .legal-content {
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.75;
+    color: var(--gray-800);
+  }
+
+  .legal-content section {
+    margin-bottom: 2.5rem;
+  }
+
+  .legal-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--black);
+  }
+
+  .legal-content ul {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+  }
+
+  .legal-content a {
+    color: var(--red-500);
+    text-decoration: underline;
+  }
+
+  .legal-content a:hover {
+    color: var(--red-600, #b91c1c);
+  }
+</style>

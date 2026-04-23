@@ -7,6 +7,7 @@ defineProps<{
       home: string;
       about: string;
       services: string;
+      faq: string;
       contact: string;
       blog: string;
     };
@@ -38,6 +39,7 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
       <nav class="nav">
         <a href="#about" class="nav-link">{{ t.nav.about }}</a>
         <a href="#services" class="nav-link">{{ t.nav.services }}</a>
+        <a href="#faq" class="nav-link">{{ t.nav.faq }}</a>
         <a href="#contact" class="nav-link">{{ t.nav.contact }}</a>
         <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="nav-link" target="_blank" rel="noopener noreferrer">{{ t.nav.blog }}</a>
       </nav>
@@ -67,6 +69,7 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
       <nav class="mobile-nav">
         <a href="#about" class="mobile-nav-link" @click="closeMenu">{{ t.nav.about }}</a>
         <a href="#services" class="mobile-nav-link" @click="closeMenu">{{ t.nav.services }}</a>
+        <a href="#faq" class="mobile-nav-link" @click="closeMenu">{{ t.nav.faq }}</a>
         <a href="#contact" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
         <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="mobile-nav-link" target="_blank" rel="noopener noreferrer" @click="closeMenu">{{ t.nav.blog }}</a>
       </nav>

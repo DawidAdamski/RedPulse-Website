@@ -1,0 +1,141 @@
+---
+interface Props {
+  lang?: 'pl' | 'en';
+}
+
+const { lang = 'pl' } = Astro.props;
+---
+
+<div data-cc-lang={lang}></div>
+
+<script>
+  import 'vanilla-cookieconsent/dist/cookieconsent.css';
+  import * as CookieConsent from 'vanilla-cookieconsent';
+
+  const host = document.querySelector('[data-cc-lang]') as HTMLElement | null;
+  const lang = (host?.dataset.ccLang as 'pl' | 'en') || 'pl';
+
+  CookieConsent.run({
+    guiOptions: {
+      consentModal: {
+        layout: 'box inline',
+        position: 'bottom right',
+        equalWeightButtons: true,
+        flipButtons: false
+      },
+      preferencesModal: {
+        layout: 'box',
+        position: 'right',
+        equalWeightButtons: true,
+        flipButtons: false
+      }
+    },
+    categories: {
+      necessary: {
+        enabled: true,
+        readOnly: true
+      }
+    },
+    language: {
+      default: lang,
+      translations: {
+        pl: {
+          consentModal: {
+            title: 'Informacja o plikach cookie',
+            description:
+              'Używamy wyłącznie niezbędnych plików cookie, potrzebnych do prawidłowego działania strony. Nie korzystamy z analityki ani profilowania. Szczegóły znajdziesz w <a href="/polityka-prywatnosci">polityce prywatności</a>.',
+            acceptAllBtn: 'Rozumiem',
+            showPreferencesBtn: 'Szczegóły'
+          },
+          preferencesModal: {
+            title: 'Pliki cookie na tej stronie',
+            acceptAllBtn: 'Rozumiem',
+            savePreferencesBtn: 'Zapisz',
+            closeIconLabel: 'Zamknij',
+            sections: [
+              {
+                title: 'Jakich cookies używamy?',
+                description:
+                  'Korzystamy wyłącznie z niezbędnych plików cookie. Nie używamy narzędzi analitycznych ani marketingowych.'
+              },
+              {
+                title: 'Niezbędne',
+                description:
+                  'Cookies konieczne do działania strony i zapamiętania Twojego wyboru w tym banerze. Nie można ich wyłączyć i nie wymagają Twojej zgody.',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: 'Więcej informacji',
+                description:
+                  'Szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>. W razie pytań napisz na <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>.'
+              }
+            ]
+          }
+        },
+        en: {
+          consentModal: {
+            title: 'Cookie information',
+            description:
+              'We only use strictly necessary cookies required for the site to work. We do not use analytics or profiling. Details in our <a href="/en/privacy-policy">privacy policy</a>.',
+            acceptAllBtn: 'Got it',
+            showPreferencesBtn: 'Details'
+          },
+          preferencesModal: {
+            title: 'Cookies on this site',
+            acceptAllBtn: 'Got it',
+            savePreferencesBtn: 'Save',
+            closeIconLabel: 'Close',
+            sections: [
+              {
+                title: 'What cookies do we use?',
+                description:
+                  'We only use strictly necessary cookies. We do not use analytics or marketing tools.'
+              },
+              {
+                title: 'Necessary',
+                description:
+                  'Cookies required for the site to work and to remember your choice in this banner. They cannot be disabled and do not require your consent.',
+                linkedCategory: 'necessary'
+              },
+              {
+                title: 'More information',
+                description:
+                  'Details in our <a href="/en/privacy-policy">privacy policy</a>. Questions? Write to <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>.'
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+
+  // Expose a way to re-open preferences (e.g. from a footer link)
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target?.closest('[data-cc-open-preferences]')) {
+      e.preventDefault();
+      CookieConsent.showPreferences();
+    }
+  });
+</script>
+
+<style is:global>
+  :root {
+    --cc-bg: #111111;
+    --cc-primary-color: #ffffff;
+    --cc-secondary-color: #d4d4d4;
+    --cc-btn-primary-bg: #dc2626;
+    --cc-btn-primary-color: #ffffff;
+    --cc-btn-primary-hover-bg: #b91c1c;
+    --cc-btn-secondary-bg: #262626;
+    --cc-btn-secondary-color: #ffffff;
+    --cc-btn-secondary-hover-bg: #404040;
+    --cc-separator-border-color: #262626;
+    --cc-toggle-bg-on: #dc2626;
+    --cc-toggle-bg-off: #525252;
+    --cc-toggle-knob-bg: #ffffff;
+    --cc-cookie-category-block-bg: #1a1a1a;
+    --cc-cookie-category-block-border: #262626;
+    --cc-overlay-bg: rgba(0, 0, 0, 0.7);
+  }
+</style>

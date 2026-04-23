@@ -4,16 +4,31 @@ import Header from '../../components/Header.vue';
 import Hero from '../../components/Hero.vue';
 import About from '../../components/About.vue';
 import Services from '../../components/Services.vue';
+import FAQ from '../../components/FAQ.vue';
 import Contact from '../../components/Contact.vue';
 import Footer from '../../components/Footer.vue';
 import { getTranslations } from '../../i18n';
 
 const t = getTranslations('en');
 const currentLocale = 'en';
+const buildDate = new Date().toISOString();
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
 ---
 
-<Layout 
-  title="RedPulse Innovations - IT Consulting, Automation, AI" 
+<Layout
+  title="RedPulse Innovations - IT Consulting, Automation, AI"
   description="RedPulse Innovations - IT consulting, process automation and AI implementations for small and medium-sized businesses. We specialize in open source solutions and Red Hat technologies. Make it simple and innovative."
   lang="en"
 >
@@ -22,7 +37,9 @@ const currentLocale = 'en';
     <Hero t={t} client:visible />
     <About t={t} />
     <Services t={t} />
+    <FAQ t={t} client:visible />
     <Contact t={t} />
   </main>
-  <Footer t={t} />
+  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </Layout>

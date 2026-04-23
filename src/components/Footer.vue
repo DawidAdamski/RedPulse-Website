@@ -1,20 +1,34 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   t: {
     footer: {
       tagline: string;
       copyright: string;
+      privacyPolicy: string;
+      privacyPolicyUrl: string;
+      cookieSettings: string;
+      lastUpdated: string;
     };
     nav: {
       about: string;
       services: string;
+      faq: string;
       contact: string;
       blog: string;
     };
   };
+  lastUpdated?: string;
+  locale?: string;
 }>();
 
 const currentYear = new Date().getFullYear();
+
+const formattedLastUpdated = props.lastUpdated
+  ? new Date(props.lastUpdated).toLocaleDateString(
+      props.locale === 'en' ? 'en-GB' : 'pl-PL',
+      { year: 'numeric', month: 'long', day: 'numeric' }
+    )
+  : '';
 </script>
 
 <template>
@@ -26,13 +40,22 @@ const currentYear = new Date().getFullYear();
             <span class="logo-red">Red</span><span class="logo-pulse">Pulse</span>
           </a>
           <p class="footer-tagline">{{ t.footer.tagline }}</p>
+          <address class="footer-company">
+            <span>RedPulse Innovations Dawid Adamski</span>
+            <span>al. Ratuszowa 14 lok. 2</span>
+            <span>88-100 Inowrocław</span>
+            <span>NIP: 5562805527 · REGON: 526676500</span>
+            <a href="mailto:kontakt@redpulse.tech">kontakt@redpulse.tech</a>
+          </address>
         </div>
         
         <nav class="footer-nav">
           <a href="#about">{{ t.nav.about }}</a>
           <a href="#services">{{ t.nav.services }}</a>
+          <a href="#faq">{{ t.nav.faq }}</a>
           <a href="#contact">{{ t.nav.contact }}</a>
-          <a href="/blog" target="_blank">{{ t.nav.blog }}</a>
+          <a :href="t.footer.privacyPolicyUrl">{{ t.footer.privacyPolicy }}</a>
+          <a href="#" data-cc-open-preferences>{{ t.footer.cookieSettings }}</a>
         </nav>
         
         <div class="footer-social">
@@ -63,9 +86,12 @@ const currentYear = new Date().getFullYear();
       
       <div class="footer-bottom">
         <p class="copyright">© {{ currentYear }} {{ t.footer.copyright }}</p>
+        <p v-if="formattedLastUpdated" class="last-updated">
+          {{ t.footer.lastUpdated }}: <time :datetime="props.lastUpdated">{{ formattedLastUpdated }}</time>
+        </p>
         <p class="made-with">
-          Made with 
-          <span class="heart">♥</span> 
+          Made with
+          <span class="heart">♥</span>
           in Poland
         </p>
       </div>
@@ -118,6 +144,26 @@ const currentYear = new Date().getFullYear();
   letter-spacing: 0.1em;
 }
 
+.footer-company {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  line-height: 1.4;
+}
+
+.footer-company a {
+  color: var(--gray-400);
+  transition: color var(--transition-fast);
+}
+
+.footer-company a:hover {
+  color: var(--white);
+}
+
 .footer-nav {
   display: flex;
   gap: 2rem;
@@ -168,6 +214,12 @@ const currentYear = new Date().getFullYear();
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--gray-500);
+}
+
+.last-updated {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--gray-600);
 }
 
 .made-with {

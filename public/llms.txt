@@ -1,0 +1,52 @@
+# RedPulse Innovations
+
+> Konsulting IT, automatyzacja procesów i wdrożenia AI dla małych i średnich firm. Specjalizacja w rozwiązaniach open source i technologiach Red Hat. Motto: „Make it simple and innovative".
+
+## O firmie
+
+RedPulse Innovations Dawid Adamski — firma konsultingowa z siedzibą w Polsce, specjalizująca się w automatyzacji, integracji systemów i wdrożeniach sztucznej inteligencji. Pomaga firmom adaptować się do zmian biznesowych poprzez innowacyjne rozwiązania technologiczne. Założycielem jest Dawid Adamski.
+
+- Nazwa prawna: RedPulse Innovations Dawid Adamski
+- Adres: al. Ratuszowa 14 lok. 2, 88-100 Inowrocław, woj. kujawsko-pomorskie, Polska
+- NIP: 5562805527
+- REGON: 526676500
+
+## Usługi
+
+- **Analiza** — dogłębna analiza procesów i infrastruktury IT, identyfikacja obszarów do optymalizacji
+- **Automatyzacja** — automatyzacja procesów biznesowych i IT, redukcja błędów ludzkich
+- **Integracja** — łączenie systemów i aplikacji, API, middleware, przepływy danych
+- **Doradztwo IT** — strategiczne wsparcie w podejmowaniu decyzji technologicznych
+- **Infrastruktura** — projektowanie i wdrażanie (Kubernetes, OpenShift, chmura)
+- **Wdrożenia AI** — integracja sztucznej inteligencji w procesach biznesowych
+
+## Specjalizacje technologiczne
+
+- Red Hat (OpenShift, RHEL, Ansible)
+- Kubernetes, Docker, konteneryzacja
+- Rozwiązania open source
+- Sztuczna inteligencja i automatyzacja procesów (workflow automation)
+- Integracje API i middleware
+
+## Grupa docelowa
+
+Małe i średnie firmy (MŚP) poszukujące pragmatycznych, otwartych technologicznie rozwiązań IT, które traktują IT jako inwestycję, a nie koszt.
+
+## Kontakt
+
+- Email: kontakt@redpulse.tech
+- Konsultacja online: https://calendly.com/dawid-adamski-redpulse/30min
+- LinkedIn (firma): https://www.linkedin.com/company/red-pulse-innovations/
+- LinkedIn (założyciel): https://www.linkedin.com/in/dawid-adamski/
+- GitHub: https://github.com/DawidAdamski
+
+## Strony
+
+- [Strona główna (PL)](https://redpulse.tech/): opis firmy, usług i formy kontaktu
+- [Homepage (EN)](https://redpulse.tech/en/): company overview in English
+- [Polityka prywatności](https://redpulse.tech/polityka-prywatnosci): zasady przetwarzania danych
+- [Privacy policy](https://redpulse.tech/en/privacy-policy): data processing terms
+
+## Języki
+
+Strona dostępna w języku polskim (domyślnie) i angielskim.
