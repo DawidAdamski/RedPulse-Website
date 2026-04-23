@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-defineProps<{
+const props = defineProps<{
   t: {
     nav: {
       home: string;
@@ -13,7 +13,12 @@ defineProps<{
     };
   };
   currentLocale: string;
+  basePath?: string;
 }>();
+
+const base = props.basePath ?? '';
+const anchor = (hash: string) => `${base}${hash}`;
+const logoHref = base || '#';
 
 const menuOpen = ref(false);
 
@@ -32,27 +37,27 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
 <template>
   <header class="header">
     <div class="container header-container">
-      <a href="#" class="logo">
+      <a :href="logoHref" class="logo">
         <span class="logo-red">Red</span><span class="logo-pulse">Pulse</span>
       </a>
-      
+
       <nav class="nav">
-        <a href="#about" class="nav-link">{{ t.nav.about }}</a>
-        <a href="#services" class="nav-link">{{ t.nav.services }}</a>
-        <a href="#faq" class="nav-link">{{ t.nav.faq }}</a>
-        <a href="#contact" class="nav-link">{{ t.nav.contact }}</a>
+        <a :href="anchor('#about')" class="nav-link">{{ t.nav.about }}</a>
+        <a :href="anchor('#services')" class="nav-link">{{ t.nav.services }}</a>
+        <a :href="anchor('#faq')" class="nav-link">{{ t.nav.faq }}</a>
+        <a :href="anchor('#contact')" class="nav-link">{{ t.nav.contact }}</a>
         <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="nav-link" target="_blank" rel="noopener noreferrer">{{ t.nav.blog }}</a>
       </nav>
-      
+
       <div class="header-actions">
-        <a 
-          :href="localePath(otherLocale(currentLocale))" 
+        <a
+          :href="localePath(otherLocale(currentLocale))"
           class="lang-switch"
           :aria-label="`Switch to ${otherLocale(currentLocale).toUpperCase()}`"
         >
           {{ otherLocale(currentLocale).toUpperCase() }}
         </a>
-        <a href="#contact" class="btn btn-primary btn-sm">{{ t.nav.contact }}</a>
+        <a :href="anchor('#contact')" class="btn btn-primary btn-sm">{{ t.nav.contact }}</a>
       </div>
       
       <button class="mobile-menu-btn" :class="{ active: menuOpen }" aria-label="Menu" @click="toggleMenu">
@@ -67,10 +72,10 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
   <Teleport to="body">
     <div class="mobile-menu" :class="{ open: menuOpen }">
       <nav class="mobile-nav">
-        <a href="#about" class="mobile-nav-link" @click="closeMenu">{{ t.nav.about }}</a>
-        <a href="#services" class="mobile-nav-link" @click="closeMenu">{{ t.nav.services }}</a>
-        <a href="#faq" class="mobile-nav-link" @click="closeMenu">{{ t.nav.faq }}</a>
-        <a href="#contact" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
+        <a :href="anchor('#about')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.about }}</a>
+        <a :href="anchor('#services')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.services }}</a>
+        <a :href="anchor('#faq')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.faq }}</a>
+        <a :href="anchor('#contact')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
         <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="mobile-nav-link" target="_blank" rel="noopener noreferrer" @click="closeMenu">{{ t.nav.blog }}</a>
       </nav>
       <div class="mobile-menu-actions">
@@ -81,7 +86,7 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
         >
           {{ otherLocale(currentLocale).toUpperCase() }}
         </a>
-        <a href="#contact" class="btn btn-primary" @click="closeMenu">{{ t.nav.contact }}</a>
+        <a :href="anchor('#contact')" class="btn btn-primary" @click="closeMenu">{{ t.nav.contact }}</a>
       </div>
     </div>
   </Teleport>

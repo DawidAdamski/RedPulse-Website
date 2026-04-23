@@ -19,6 +19,7 @@ const props = defineProps<{
   };
   lastUpdated?: string;
   locale?: string;
+  basePath?: string;
 }>();
 
 const currentYear = new Date().getFullYear();
@@ -29,6 +30,10 @@ const formattedLastUpdated = props.lastUpdated
       { year: 'numeric', month: 'long', day: 'numeric' }
     )
   : '';
+
+const base = props.basePath ?? '';
+const anchor = (hash: string) => `${base}${hash}`;
+const logoHref = base || '#';
 </script>
 
 <template>
@@ -36,7 +41,7 @@ const formattedLastUpdated = props.lastUpdated
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <a href="#" class="footer-logo">
+          <a :href="logoHref" class="footer-logo">
             <span class="logo-red">Red</span><span class="logo-pulse">Pulse</span>
           </a>
           <p class="footer-tagline">{{ t.footer.tagline }}</p>
@@ -50,10 +55,10 @@ const formattedLastUpdated = props.lastUpdated
         </div>
         
         <nav class="footer-nav">
-          <a href="#about">{{ t.nav.about }}</a>
-          <a href="#services">{{ t.nav.services }}</a>
-          <a href="#faq">{{ t.nav.faq }}</a>
-          <a href="#contact">{{ t.nav.contact }}</a>
+          <a :href="anchor('#about')">{{ t.nav.about }}</a>
+          <a :href="anchor('#services')">{{ t.nav.services }}</a>
+          <a :href="anchor('#faq')">{{ t.nav.faq }}</a>
+          <a :href="anchor('#contact')">{{ t.nav.contact }}</a>
           <a :href="t.footer.privacyPolicyUrl">{{ t.footer.privacyPolicy }}</a>
           <a href="#" data-cc-open-preferences>{{ t.footer.cookieSettings }}</a>
         </nav>

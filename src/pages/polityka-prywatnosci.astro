@@ -19,7 +19,7 @@ const lastUpdatedFormatted = new Date(buildDate).toLocaleDateString('pl-PL', {
   description="Polityka prywatności RedPulse Innovations — zasady przetwarzania danych osobowych zgodnie z RODO."
   lang="pl"
 >
-  <Header t={t} currentLocale={currentLocale} client:load />
+  <Header t={t} currentLocale={currentLocale} basePath="/" client:load />
   <main class="legal-page">
     <div class="container">
       <header class="legal-header">
@@ -191,7 +191,7 @@ const lastUpdatedFormatted = new Date(buildDate).toLocaleDateString('pl-PL', {
       </article>
     </div>
   </main>
-  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />
+  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} basePath="/" client:load />
 </Layout>
 
 <style>
