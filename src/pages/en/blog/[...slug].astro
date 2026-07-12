@@ -1,0 +1,99 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.vue';
+import Footer from '../../../components/Footer.vue';
+import { getTranslations } from '../../../i18n';
+import { getCollection, render } from 'astro:content';
+import '../../../styles/blog.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blogEn', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  );
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const t = getTranslations('en');
+const currentLocale = 'en';
+const buildDate = new Date().toISOString();
+
+const site = Astro.site ?? new URL('https://redpulse.tech');
+const canonicalPath = `/en/blog/${post.id}`;
+const canonicalURL = new URL(canonicalPath, site).href;
+
+const publishedISO = post.data.pubDate.toISOString();
+const modifiedISO = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: publishedISO,
+  dateModified: modifiedISO,
+  inLanguage: 'en-US',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
+  author: { '@type': 'Organization', name: 'RedPulse Innovations', url: 'https://redpulse.tech' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'RedPulse Innovations',
+    logo: { '@type': 'ImageObject', url: 'https://redpulse.tech/favicon.svg' },
+  },
+  ...(post.data.heroImage
+    ? { image: new URL(post.data.heroImage, site).href }
+    : {}),
+};
+---
+
+<Layout
+  title={`${post.data.title} - RedPulse Innovations`}
+  description={post.data.description}
+  lang="en"
+  ogType="article"
+  canonical={canonicalPath}
+  alternates={{ pl: '/blog', en: '/en/blog' }}
+  publishedTime={publishedISO}
+  modifiedTime={modifiedISO}
+  feed="/en/blog/rss.xml"
+>
+  <Header t={t} currentLocale={currentLocale} basePath="/en/" client:load />
+  <main id="main-content" class="blog-page">
+    <article class="blog-post container">
+      <a class="back-to-blog" href="/en/blog">&larr; {t.blog.backToBlog}</a>
+      <h1>{post.data.title}</h1>
+      <div class="post-meta">
+        <span>
+          {t.blog.published}:
+          <time datetime={publishedISO}>{formatDate(post.data.pubDate)}</time>
+        </span>
+        {post.data.updatedDate && (
+          <span>
+            {t.blog.updated}:
+            <time datetime={modifiedISO}>{formatDate(post.data.updatedDate)}</time>
+          </span>
+        )}
+        {post.data.tags.length > 0 && (
+          <ul class="post-tags">
+            {post.data.tags.map((tag) => (
+              <li class="blog-tag">{tag}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+      {post.data.heroImage && (
+        <img class="post-hero" src={post.data.heroImage} alt={post.data.title} />
+      )}
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </main>
+  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} basePath="/en/" client:load />
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+</Layout>

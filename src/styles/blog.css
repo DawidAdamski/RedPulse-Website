@@ -1,0 +1,267 @@
+/* RedPulse Innovations - Blog & prose styles */
+/* Reuses design tokens from global.css: --red-500, --black, --gray-*, --font-display, --font-mono */
+
+.blog-page {
+  padding-top: 120px;
+  padding-bottom: var(--section-padding);
+  background: var(--white);
+  color: var(--black);
+  min-height: 70vh;
+}
+
+/* ---------- Listing header ---------- */
+.blog-header {
+  max-width: var(--container-max);
+  margin: 0 auto 3.5rem;
+}
+
+.blog-header h1 {
+  margin-bottom: 1rem;
+}
+
+.blog-header .blog-subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: var(--gray-600);
+  max-width: 640px;
+}
+
+/* ---------- Listing grid ---------- */
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .blog-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-empty {
+  font-family: var(--font-mono);
+  color: var(--gray-500);
+}
+
+/* ---------- Card ---------- */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--black);
+  transition: transform var(--transition-base), border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--red-500);
+  color: var(--black);
+  box-shadow: 0 12px 30px rgba(10, 10, 10, 0.08);
+}
+
+.blog-card time {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.blog-card h2 {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  line-height: 1.25;
+  color: var(--black);
+}
+
+.blog-card p {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red-600);
+  border: 1px solid var(--gray-200);
+  padding: 0.2rem 0.55rem;
+}
+
+.blog-card .read-more {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red-500);
+}
+
+.blog-card:hover .read-more {
+  color: var(--red-600);
+}
+
+/* ---------- Single post ---------- */
+.blog-post {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.back-to-blog {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+.back-to-blog:hover {
+  color: var(--red-500);
+}
+
+.blog-post h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1.25rem;
+}
+
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.post-meta time {
+  color: var(--gray-600);
+}
+
+.post-meta .post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-hero {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Prose (rendered Markdown) ---------- */
+.prose {
+  color: var(--gray-700);
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+
+.prose > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-display);
+  color: var(--black);
+  line-height: 1.25;
+  margin-top: 2.5rem;
+}
+
+.prose h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.prose h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+.prose p {
+  color: var(--gray-700);
+  font-size: 1.0625rem;
+}
+
+.prose a {
+  color: var(--red-500);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--red-600);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose li {
+  color: var(--gray-700);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--red-500);
+  padding-left: 1.25rem;
+  color: var(--gray-600);
+  font-style: italic;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--gray-100);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+.prose pre {
+  font-family: var(--font-mono);
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--gray-200);
+  margin: 2.5rem 0;
+}

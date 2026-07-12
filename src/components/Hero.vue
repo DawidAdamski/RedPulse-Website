@@ -126,13 +126,16 @@ defineProps<{
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 4rem;
   align-items: center;
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   max-width: 600px;
+  min-width: 0;
 }
 
 .hero-badge {
@@ -157,12 +160,20 @@ defineProps<{
 }
 
 .hero-title {
+  /* Own clamp (smaller max than global h1) so the longest word
+     "Innovations" in Syne 800 stays within the ~560px content column
+     and never slides under the tilted code window on the right. */
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
   opacity: 0;
 }
 
 .title-line {
   display: block;
+  /* Keep each word ("RedPulse", "Innovations") on a single line on
+     desktop/tablet so the tail letter never wraps. Relaxed on phones below. */
+  white-space: nowrap;
 }
 
 .title-accent {
@@ -297,7 +308,7 @@ defineProps<{
 
 @media (max-width: 1024px) {
   .hero-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     text-align: center;
   }
   
@@ -315,10 +326,23 @@ defineProps<{
 }
 
 @media (max-width: 640px) {
+  .hero-title {
+    /* Smaller on phones so the longest word ("Innovations") fits the
+       viewport without horizontal overflow. */
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .title-line {
+    /* On very narrow phones allow the word to break as a last resort
+       rather than overflow the screen. */
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
-  
+
   .btn {
     width: 100%;
   }

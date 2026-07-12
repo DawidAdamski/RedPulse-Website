@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const props = defineProps<{
   t: {
@@ -20,6 +20,8 @@ const base = props.basePath ?? '';
 const anchor = (hash: string) => `${base}${hash}`;
 const logoHref = base || '#';
 
+const blogPath = computed(() => props.currentLocale === 'en' ? '/en/blog' : '/blog');
+
 const menuOpen = ref(false);
 
 const toggleMenu = () => {
@@ -32,6 +34,8 @@ const closeMenu = () => {
 
 const otherLocale = (locale: string) => locale === 'pl' ? 'en' : 'pl';
 const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
+
+const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation' : 'Główna nawigacja');
 </script>
 
 <template>
@@ -41,12 +45,12 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
         <span class="logo-red">Red</span><span class="logo-pulse">Pulse</span>
       </a>
 
-      <nav class="nav">
+      <nav class="nav" :aria-label="navLabel">
         <a :href="anchor('#about')" class="nav-link">{{ t.nav.about }}</a>
         <a :href="anchor('#services')" class="nav-link">{{ t.nav.services }}</a>
         <a :href="anchor('#faq')" class="nav-link">{{ t.nav.faq }}</a>
         <a :href="anchor('#contact')" class="nav-link">{{ t.nav.contact }}</a>
-        <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="nav-link" target="_blank" rel="noopener noreferrer">{{ t.nav.blog }}</a>
+        <a :href="blogPath" class="nav-link">{{ t.nav.blog }}</a>
       </nav>
 
       <div class="header-actions">
@@ -60,23 +64,36 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
         <a :href="anchor('#contact')" class="btn btn-primary btn-sm">{{ t.nav.contact }}</a>
       </div>
       
-      <button class="mobile-menu-btn" :class="{ active: menuOpen }" aria-label="Menu" @click="toggleMenu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button
+        class="mobile-menu-btn"
+        :class="{ active: menuOpen }"
+        aria-label="Menu"
+        :aria-expanded="menuOpen ? 'true' : 'false'"
+        aria-controls="mobile-menu"
+        @click="toggleMenu"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
 
   </header>
 
   <Teleport to="body">
-    <div class="mobile-menu" :class="{ open: menuOpen }">
-      <nav class="mobile-nav">
+    <div
+      id="mobile-menu"
+      class="mobile-menu"
+      :class="{ open: menuOpen }"
+      :inert="!menuOpen"
+      :aria-hidden="!menuOpen"
+    >
+      <nav class="mobile-nav" :aria-label="navLabel">
         <a :href="anchor('#about')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.about }}</a>
         <a :href="anchor('#services')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.services }}</a>
         <a :href="anchor('#faq')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.faq }}</a>
         <a :href="anchor('#contact')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
-        <a href="https://dawidadamski.notion.site/Blog-2a8309e48e61801d8cbdfb29ef229693?pvs=74" class="mobile-nav-link" target="_blank" rel="noopener noreferrer" @click="closeMenu">{{ t.nav.blog }}</a>
+        <a :href="blogPath" class="mobile-nav-link" @click="closeMenu">{{ t.nav.blog }}</a>
       </nav>
       <div class="mobile-menu-actions">
         <a
@@ -173,11 +190,15 @@ const localePath = (locale: string) => locale === 'pl' ? '/' : '/en/';
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 6px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .mobile-menu-btn span {

@@ -44,9 +44,16 @@ Małe i średnie firmy (MŚP) poszukujące pragmatycznych, otwartych technologic
 
 - [Strona główna (PL)](https://redpulse.tech/): opis firmy, usług i formy kontaktu
 - [Homepage (EN)](https://redpulse.tech/en/): company overview in English
+- [Blog (PL)](https://redpulse.tech/blog): artykuły o automatyzacji, wdrożeniach AI i open source
+- [Blog (EN)](https://redpulse.tech/en/blog): articles on automation, AI implementations and open source
 - [Polityka prywatności](https://redpulse.tech/polityka-prywatnosci): zasady przetwarzania danych
 - [Privacy policy](https://redpulse.tech/en/privacy-policy): data processing terms
 
+## Kanały RSS
+
+- Blog PL: https://redpulse.tech/blog/rss.xml
+- Blog EN: https://redpulse.tech/en/blog/rss.xml
+
 ## Języki
 
-Strona dostępna w języku polskim (domyślnie) i angielskim.
+Strona i blog dostępne w języku polskim (domyślnie) i angielskim.

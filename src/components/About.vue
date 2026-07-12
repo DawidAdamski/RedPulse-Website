@@ -42,7 +42,7 @@ defineProps<{
         <div class="about-highlights">
           <div class="highlight-card">
             <div class="highlight-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
             </div>
@@ -52,7 +52,7 @@ defineProps<{
           
           <div class="highlight-card">
             <div class="highlight-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
                 <path d="M12 2a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
                 <path d="M16 10v2a4 4 0 0 1-8 0v-2"/>
                 <path d="M12 18v4M8 22h8"/>
@@ -64,7 +64,7 @@ defineProps<{
           
           <div class="highlight-card">
             <div class="highlight-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
                 <circle cx="12" cy="12" r="10"/>
                 <path d="M8 12l2 2 4-4"/>
               </svg>

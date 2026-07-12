@@ -93,6 +93,16 @@
       }
     ]
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "A practical take on automation, AI and open source for business.",
+    "readMore": "Read more",
+    "backToBlog": "Back to blog",
+    "published": "Published",
+    "updated": "Updated",
+    "noPosts": "First posts coming soon.",
+    "readingTime": "min read"
+  },
   "contact": {
     "title": "Contact",
     "subtitle": "Let's talk about your project",

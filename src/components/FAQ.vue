@@ -34,6 +34,7 @@ function toggle(index: number) {
           :class="{ 'is-open': openIndex === index }"
         >
           <button
+            :id="`faq-question-${index}`"
             class="faq-question"
             :aria-expanded="openIndex === index"
             :aria-controls="`faq-answer-${index}`"
@@ -57,6 +58,7 @@ function toggle(index: number) {
             :id="`faq-answer-${index}`"
             class="faq-answer"
             role="region"
+            :aria-labelledby="`faq-question-${index}`"
             v-show="openIndex === index"
           >
             <p>{{ item.answer }}</p>

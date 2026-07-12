@@ -93,6 +93,16 @@
       }
     ]
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Praktyczne spojrzenie na automatyzację, AI i open source dla firm.",
+    "readMore": "Czytaj więcej",
+    "backToBlog": "Wróć do bloga",
+    "published": "Opublikowano",
+    "updated": "Zaktualizowano",
+    "noPosts": "Wkrótce pojawią się pierwsze wpisy.",
+    "readingTime": "min czytania"
+  },
   "contact": {
     "title": "Kontakt",
     "subtitle": "Porozmawiajmy o Twoim projekcie",

@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.vue';
+import Footer from '../../components/Footer.vue';
+import { getTranslations } from '../../i18n';
+import { getCollection } from 'astro:content';
+import '../../styles/blog.css';
+
+const t = getTranslations('pl');
+const currentLocale = 'pl';
+const buildDate = new Date().toISOString();
+
+const posts = (
+  await getCollection('blogPl', ({ data }) => (import.meta.env.PROD ? !data.draft : true))
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout
+  title="Blog - RedPulse Innovations"
+  description={t.blog.subtitle}
+  lang="pl"
+  alternates={{ pl: '/blog', en: '/en/blog' }}
+  feed="/blog/rss.xml"
+>
+  <Header t={t} currentLocale={currentLocale} basePath="/" client:load />
+  <main id="main-content" class="blog-page">
+    <div class="container">
+      <header class="blog-header">
+        <h1>{t.blog.title}</h1>
+        <p class="blog-subtitle">{t.blog.subtitle}</p>
+      </header>
+
+      {posts.length === 0 ? (
+        <p class="blog-empty">{t.blog.noPosts}</p>
+      ) : (
+        <div class="blog-list">
+          {posts.map((post) => (
+            <a class="blog-card" href={`/blog/${post.id}`}>
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <ul class="blog-tags">
+                  {post.data.tags.map((tag) => (
+                    <li class="blog-tag">{tag}</li>
+                  ))}
+                </ul>
+              )}
+              <span class="read-more">{t.blog.readMore} &rarr;</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </main>
+  <Footer t={t} lastUpdated={buildDate} locale={currentLocale} basePath="/" client:load />
+</Layout>

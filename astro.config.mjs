@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://redpulse.tech',
-  integrations: [vue(), sitemap()],
+  integrations: [vue(), sitemap({ filter: (page) => !page.includes('/admin') })],
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en'],

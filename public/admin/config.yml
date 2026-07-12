@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+#
+# Local editing works out-of-the-box on localhost via the browser File System
+# Access API (Chrome/Edge) - no OAuth or proxy server needed. Just open
+# http://localhost:4321/admin/ and choose "work with local repository".
+#
+# Hosted editing at https://redpulse.tech/admin/ requires a GitHub OAuth relay
+# (e.g. the sveltia-cms-auth Cloudflare Worker) to be added later. No change to
+# this config is needed for that - the `github` backend below is already set.
+
+backend:
+  name: github
+  repo: DawidAdamski/RedPulse-Website
+  branch: main
+
+media_folder: /public/media
+public_folder: /media
+
+collections:
+  - name: blog_pl
+    label: Blog (PL)
+    label_singular: Post (PL)
+    folder: /src/content/blog/pl
+    create: true
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: title, label: Title, widget: string, required: true }
+      - { name: description, label: Description, widget: text, required: true }
+      - name: pubDate
+        label: Publish date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+      - name: updatedDate
+        label: Updated date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        required: false
+      - { name: heroImage, label: Hero image, widget: image, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: blog_en
+    label: Blog (EN)
+    label_singular: Post (EN)
+    folder: /src/content/blog/en
+    create: true
+    extension: md
+    format: frontmatter
+    fields:
+      - { name: title, label: Title, widget: string, required: true }
+      - { name: description, label: Description, widget: text, required: true }
+      - name: pubDate
+        label: Publish date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+      - name: updatedDate
+        label: Updated date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        required: false
+      - { name: heroImage, label: Hero image, widget: image, required: false }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown }

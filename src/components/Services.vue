@@ -41,31 +41,31 @@ const services = [
           
           <div class="service-icon">
             <!-- Analysis Icon -->
-            <svg v-if="service.icon === 'search'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg v-if="service.icon === 'search'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
               <circle cx="11" cy="11" r="8"/>
               <path d="M21 21l-4.35-4.35"/>
               <path d="M11 8v6M8 11h6"/>
             </svg>
             
             <!-- Automation Icon -->
-            <svg v-if="service.icon === 'zap'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg v-if="service.icon === 'zap'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
             </svg>
             
             <!-- Integration Icon -->
-            <svg v-if="service.icon === 'link'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg v-if="service.icon === 'link'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
             </svg>
             
             <!-- Consulting Icon -->
-            <svg v-if="service.icon === 'lightbulb'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg v-if="service.icon === 'lightbulb'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
               <path d="M9 18h6M10 22h4"/>
               <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
             </svg>
             
             <!-- Infrastructure Icon -->
-            <svg v-if="service.icon === 'server'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg v-if="service.icon === 'server'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
               <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
               <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
               <line x1="6" y1="6" x2="6.01" y2="6"/>
@@ -77,7 +77,7 @@ const services = [
           <p class="service-description">{{ t.services[service.key as keyof typeof t.services].description }}</p>
           
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
               <path d="M7 17L17 7M17 7H7M17 7V17"/>
             </svg>
           </div>
