@@ -139,6 +139,39 @@ Tidy up old images occasionally:
 docker image prune -f
 ```
 
+### Automatic deploy with Watchtower (recommended — no manual restart)
+
+Instead of pulling and restarting by hand every time, run **Watchtower** once on the
+server. It watches your container, and whenever CI pushes a new `:latest` image to
+Docker Hub it **auto-pulls and restarts it** — so publishing a blog post (or any push
+to `main`) goes live on its own, and you can publish from anywhere, including a phone.
+
+One-time setup on mikr.us:
+
+```bash
+docker run -d \
+  --name watchtower \
+  --restart unless-stopped \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  containrrr/watchtower \
+  --cleanup --interval 300 redpulse
+```
+
+- The trailing **`redpulse`** scopes Watchtower to *only* that container, so it won't
+  touch anything else running on your mikr.us.
+- `--interval 300` checks Docker Hub every 5 minutes (raise it if you prefer).
+- `--cleanup` deletes the old image after each update (saves disk on a small VPS).
+- **Private Docker Hub repo?** Watchtower then needs registry credentials: run
+  `docker login` on the host and add `-v ~/.docker/config.json:/config.json` to the
+  command above (or pass `-e REPO_USER=... -e REPO_PASS=...`).
+
+Once Watchtower is running, **section 4's manual pull/restart is no longer needed** —
+CI build → Watchtower picks it up within the interval → site updates. With the CMS
+editorial workflow enabled, only clicking **Publish** merges to `main`, so exactly one
+build + one auto-deploy happens per published article.
+
+To check it's working: `docker logs watchtower` shows each check and update.
+
 ---
 
 ## 5. TLS / domain

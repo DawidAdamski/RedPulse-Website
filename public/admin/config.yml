@@ -4,14 +4,21 @@
 # Access API (Chrome/Edge) - no OAuth or proxy server needed. Just open
 # http://localhost:4321/admin/ and choose "work with local repository".
 #
-# Hosted editing at https://redpulse.tech/admin/ requires a GitHub OAuth relay
-# (e.g. the sveltia-cms-auth Cloudflare Worker) to be added later. No change to
-# this config is needed for that - the `github` backend below is already set.
+# Hosted editing at https://redpulse.tech/admin/ works via "Sign In Using Access
+# Token" (a GitHub fine-grained PAT) - no OAuth relay required. The "Sign In with
+# GitHub" button would need a sveltia-cms-auth relay, which is not set up.
 
 backend:
   name: github
   repo: DawidAdamski/RedPulse-Website
   branch: main
+
+# Editorial workflow: each saved draft lives on its own branch / pull request and
+# does NOT touch `main` (so it triggers no CI build or deploy). Clicking "Publish"
+# merges one commit into `main`, which builds once and (via Watchtower) deploys
+# once. Keeps history clean and avoids rebuild-on-every-save.
+# Note: the GitHub token used for sign-in must include "Pull requests: write".
+publish_mode: editorial_workflow
 
 media_folder: /public/media
 public_folder: /media
