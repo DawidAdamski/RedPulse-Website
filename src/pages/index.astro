@@ -8,15 +8,18 @@ import FAQ from '../components/FAQ.vue';
 import Contact from '../components/Contact.vue';
 import Footer from '../components/Footer.vue';
 import { getTranslations } from '../i18n';
+import { getEntry } from 'astro:content';
 
 const t = getTranslations('pl');
 const currentLocale = 'pl';
 const buildDate = new Date().toISOString();
 
+const sections = (await getEntry('sections', currentLocale)).data;
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: t.faq.items.map((item) => ({
+  mainEntity: sections.faq.items.map((item) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {
@@ -35,9 +38,9 @@ const faqSchema = {
   <Header t={t} currentLocale={currentLocale} client:load />
   <main id="main-content">
     <Hero t={t} client:visible />
-    <About t={t} />
-    <Services t={t} />
-    <FAQ t={t} client:visible />
+    <About about={sections.about} />
+    <Services services={sections.services} />
+    <FAQ faq={sections.faq} client:visible />
     <Contact t={t} />
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />

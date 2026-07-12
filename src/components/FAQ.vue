@@ -2,12 +2,10 @@
 import { ref } from 'vue';
 
 defineProps<{
-  t: {
-    faq: {
-      title: string;
-      subtitle: string;
-      items: Array<{ question: string; answer: string }>;
-    };
+  faq: {
+    title: string;
+    subtitle: string;
+    items: Array<{ question: string; answer: string }>;
   };
 }>();
 
@@ -22,13 +20,13 @@ function toggle(index: number) {
   <section id="faq" class="faq section">
     <div class="container">
       <header class="faq-header">
-        <h2 class="faq-title">{{ t.faq.title }}</h2>
-        <p class="faq-subtitle">{{ t.faq.subtitle }}</p>
+        <h2 class="faq-title">{{ faq.title }}</h2>
+        <p class="faq-subtitle">{{ faq.subtitle }}</p>
       </header>
 
       <div class="faq-list">
         <div
-          v-for="(item, index) in t.faq.items"
+          v-for="(item, index) in faq.items"
           :key="index"
           class="faq-item"
           :class="{ 'is-open': openIndex === index }"

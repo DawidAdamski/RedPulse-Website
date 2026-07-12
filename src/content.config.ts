@@ -28,4 +28,23 @@ const blogEn = defineCollection({
   schema: blogSchema,
 });
 
-export const collections = { blogPl, blogEn };
+const sections = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/sections' }),
+  schema: z.object({
+    about: z.object({
+      title: z.string(), subtitle: z.string(), description: z.string(),
+      stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+      highlights: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
+    }),
+    services: z.object({
+      title: z.string(), subtitle: z.string(),
+      items: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
+    }),
+    faq: z.object({
+      title: z.string(), subtitle: z.string(),
+      items: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+    }),
+  }),
+});
+
+export const collections = { blogPl, blogEn, sections };

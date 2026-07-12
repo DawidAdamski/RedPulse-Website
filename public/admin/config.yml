@@ -52,6 +52,116 @@ collections:
       - { name: draft, label: Draft, widget: boolean, default: false }
       - { name: body, label: Body, widget: markdown }
 
+  - name: sections
+    label: Sekcje strony
+    files:
+      - name: sections_pl
+        label: Sekcje (PL)
+        file: /src/content/sections/pl.json
+        fields:
+          - name: about
+            label: O nas
+            widget: object
+            fields:
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: subtitle, label: Podtytuł, widget: string, required: false }
+              - { name: description, label: Opis, widget: text, required: true }
+              - name: stats
+                label: Statystyki
+                widget: list
+                required: false
+                fields:
+                  - { name: value, label: Wartość, widget: string, required: true }
+                  - { name: label, label: Etykieta, widget: string, required: true }
+              - name: highlights
+                label: Wyróżnienia
+                widget: list
+                required: false
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+                  - { name: title, label: Tytuł, widget: string, required: true }
+                  - { name: description, label: Opis, widget: text, required: true }
+          - name: services
+            label: Usługi
+            widget: object
+            fields:
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: subtitle, label: Podtytuł, widget: string, required: false }
+              - name: items
+                label: Usługi
+                widget: list
+                required: false
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+                  - { name: title, label: Tytuł, widget: string, required: true }
+                  - { name: description, label: Opis, widget: text, required: true }
+          - name: faq
+            label: FAQ
+            widget: object
+            fields:
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: subtitle, label: Podtytuł, widget: string, required: false }
+              - name: items
+                label: Pytania
+                widget: list
+                required: false
+                fields:
+                  - { name: question, label: Pytanie, widget: string, required: true }
+                  - { name: answer, label: Odpowiedź, widget: text, required: true }
+      - name: sections_en
+        label: Sekcje (EN)
+        file: /src/content/sections/en.json
+        fields:
+          - name: about
+            label: O nas
+            widget: object
+            fields:
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: subtitle, label: Podtytuł, widget: string, required: false }
+              - { name: description, label: Opis, widget: text, required: true }
+              - name: stats
+                label: Statystyki
+                widget: list
+                required: false
+                fields:
+                  - { name: value, label: Wartość, widget: string, required: true }
+                  - { name: label, label: Etykieta, widget: string, required: true }
+              - name: highlights
+                label: Wyróżnienia
+                widget: list
+                required: false
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+                  - { name: title, label: Tytuł, widget: string, required: true }
+                  - { name: description, label: Opis, widget: text, required: true }
+          - name: services
+            label: Usługi
+            widget: object
+            fields:
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: subtitle, label: Podtytuł, widget: string, required: false }
+              - name: items
+                label: Usługi
+                widget: list
+                required: false
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+                  - { name: title, label: Tytuł, widget: string, required: true }
+                  - { name: description, label: Opis, widget: text, required: true }
+          - name: faq
+            label: FAQ
+            widget: object
+            fields:
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: subtitle, label: Podtytuł, widget: string, required: false }
+              - name: items
+                label: Pytania
+                widget: list
+                required: false
+                fields:
+                  - { name: question, label: Pytanie, widget: string, required: true }
+                  - { name: answer, label: Odpowiedź, widget: text, required: true }
+
   - name: blog_en
     label: Blog (EN)
     label_singular: Post (EN)

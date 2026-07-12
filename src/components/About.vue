@@ -1,14 +1,13 @@
 <script setup lang="ts">
+import SectionIcon from './SectionIcon.vue';
+
 defineProps<{
-  t: {
-    about: {
-      title: string;
-      subtitle: string;
-      description: string;
-      highlight1: { title: string; description: string };
-      highlight2: { title: string; description: string };
-      highlight3: { title: string; description: string };
-    };
+  about: {
+    title: string;
+    subtitle: string;
+    description: string;
+    stats: { value: string; label: string }[];
+    highlights: { icon: string; title: string; description: string }[];
   };
 }>();
 </script>
@@ -17,60 +16,31 @@ defineProps<{
   <section id="about" class="about section">
     <div class="container">
       <div class="about-header">
-        <h2 class="about-title">{{ t.about.title }}</h2>
-        <p class="about-subtitle">{{ t.about.subtitle }}</p>
+        <h2 class="about-title">{{ about.title }}</h2>
+        <p class="about-subtitle">{{ about.subtitle }}</p>
       </div>
-      
+
       <div class="about-content">
         <div class="about-text">
           <p class="about-description">
-            {{ t.about.description }}
+            {{ about.description }}
           </p>
-          
+
           <div class="about-stats">
-            <div class="stat">
-              <span class="stat-value">100%</span>
-              <span class="stat-label">Open Source Focus</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">24h</span>
-              <span class="stat-label">Response Time</span>
+            <div v-for="s in about.stats" :key="s.label" class="stat">
+              <span class="stat-value">{{ s.value }}</span>
+              <span class="stat-label">{{ s.label }}</span>
             </div>
           </div>
         </div>
-        
+
         <div class="about-highlights">
-          <div class="highlight-card">
+          <div v-for="h in about.highlights" :key="h.title" class="highlight-card">
             <div class="highlight-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
+              <SectionIcon :name="h.icon" :size="32" />
             </div>
-            <h3 class="highlight-title">{{ t.about.highlight1.title }}</h3>
-            <p class="highlight-description">{{ t.about.highlight1.description }}</p>
-          </div>
-          
-          <div class="highlight-card">
-            <div class="highlight-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-                <path d="M12 2a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
-                <path d="M16 10v2a4 4 0 0 1-8 0v-2"/>
-                <path d="M12 18v4M8 22h8"/>
-              </svg>
-            </div>
-            <h3 class="highlight-title">{{ t.about.highlight2.title }}</h3>
-            <p class="highlight-description">{{ t.about.highlight2.description }}</p>
-          </div>
-          
-          <div class="highlight-card">
-            <div class="highlight-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8 12l2 2 4-4"/>
-              </svg>
-            </div>
-            <h3 class="highlight-title">{{ t.about.highlight3.title }}</h3>
-            <p class="highlight-description">{{ t.about.highlight3.description }}</p>
+            <h3 class="highlight-title">{{ h.title }}</h3>
+            <p class="highlight-description">{{ h.description }}</p>
           </div>
         </div>
       </div>
@@ -232,7 +202,7 @@ defineProps<{
   .about-content {
     grid-template-columns: 1fr;
   }
-  
+
   .about-highlights {
     grid-template-columns: 1fr;
   }
