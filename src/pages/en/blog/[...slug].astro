@@ -2,8 +2,10 @@
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.vue';
 import Footer from '../../../components/Footer.vue';
+import ArticleDepth from '../../../components/ArticleDepth.vue';
 import { getTranslations } from '../../../i18n';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import '../../../styles/blog.css';
 
 export async function getStaticPaths() {
@@ -14,7 +16,11 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+
+const processor = await createMarkdownProcessor();
+const surfaceHtml = (await processor.render(post.data.surface)).code;
+const diveHtml = post.data.dive ? (await processor.render(post.data.dive)).code : null;
+const depthHtml = post.data.depth ? (await processor.render(post.data.depth)).code : null;
 
 const t = getTranslations('en');
 const currentLocale = 'en';
@@ -89,9 +95,13 @@ const blogPostingSchema = {
       {post.data.heroImage && (
         <img class="post-hero" src={post.data.heroImage} alt={post.data.title} />
       )}
-      <div class="prose">
-        <Content />
-      </div>
+      <ArticleDepth
+        surfaceHtml={surfaceHtml}
+        diveHtml={diveHtml}
+        depthHtml={depthHtml}
+        labels={t.blog.depth}
+        client:visible
+      />
     </article>
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} basePath="/en/" client:load />

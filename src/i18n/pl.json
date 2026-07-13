@@ -22,7 +22,15 @@
     "published": "Opublikowano",
     "updated": "Zaktualizowano",
     "noPosts": "Wkrótce pojawią się pierwsze wpisy.",
-    "readingTime": "min czytania"
+    "readingTime": "min czytania",
+    "depth": {
+      "surface": { "name": "Powierzchnia", "persona": "Dla decydenta" },
+      "dive":    { "name": "Nurkowanie",   "persona": "Dla team leada" },
+      "depth":   { "name": "Głębia",       "persona": "Dla inżyniera" },
+      "goDeeper": "Zanurkuj głębiej",
+      "readingTime": "min czytania",
+      "levelLabel": "Poziom"
+    }
   },
   "contact": {
     "title": "Kontakt",

@@ -16,9 +16,12 @@ bottom — it fits the most common things you'll do onto one screen.
    `src/content/blog/en/`.
 3. The **file name becomes the web address** (URL). `moj-wpis.md` becomes
    `https://redpulse.tech/blog/moj-wpis`.
-4. Each file has two parts: a **frontmatter** block (the info block at the top,
-   between two `---` lines) and the **body** (your actual article, written in
-   Markdown).
+4. Each file is a **frontmatter** block (the info block at the top, between two
+   `---` lines). Alongside the usual settings (title, date, tags…), the info block
+   holds your actual writing in up to **three Markdown fields** —
+   `surface` (required), `dive` (optional) and `depth` (optional) — which render
+   on the page as progressive "depth levels" (see
+   [Depth levels](#depth-levels-3-warstwy)).
 5. Pictures go in the `public/media/` folder and are written in posts as
    `/media/your-file.jpg`.
 6. When you're happy, you commit the file to git and push to `main`; the post
@@ -82,6 +85,9 @@ These are all the fields the site understands (defined in
 | `heroImage`   | No        | Path to a big image shown at the top of the post, e.g. `/media/my-photo.jpg`. Leave it out for no hero image. |
 | `tags`        | No        | A list of short topic labels shown as little chips, e.g. `automatyzacja`, `AI`. If you omit it, the post simply has no tags. |
 | `draft`       | No        | `true` or `false`. `true` **hides the post from the live website** (great while you're still writing). `false` (or leaving it out) publishes it. Note: drafts **still appear** when you preview locally, so you can see your work in progress. |
+| `surface`     | **Yes**   | Your article's first depth level, written in **Markdown**. This is the "what & why" for a decision-maker — plain language, roughly a 3-minute read. A post with only `surface` renders as a normal single article. See [Depth levels](#depth-levels-3-warstwy). |
+| `dive`        | No        | An optional second depth level, in Markdown — "how it works", aimed at a team lead. Omit it if the post doesn't need one. |
+| `depth`       | No        | An optional third depth level, in Markdown — the deepest layer, aimed at an engineer (configs & code). Omit it if the post doesn't need one. |
 
 ### Copy-paste frontmatter template
 
@@ -99,10 +105,23 @@ tags:                                      # optional — delete these lines if 
   - automatyzacja
   - AI
 draft: true                                # true = hidden while you write; false = live
----
+surface: |                                 # required — the "what & why" level (Markdown)
+  Your article starts here — plain language for a decision-maker.
 
-Your article starts here...
+  Write as many Markdown paragraphs, lists and images as you like; just keep
+  every line indented by two spaces so it stays inside the `surface:` block.
+dive: |                                    # optional — "how it works" (delete if unused)
+  A deeper explanation for a team lead. Same Markdown rules, still indented two spaces.
+depth: |                                    # optional — configs & code (delete if unused)
+  The technical layer for an engineer — code blocks, configuration, details.
+---
 ```
+
+The `|` after `surface:`, `dive:` and `depth:` means "everything indented below is
+one block of text". Indent **every** line of that block by two spaces; the first
+blank, unindented `---` (or the next unindented field) ends it. If you only fill in
+`surface` and delete the `dive:`/`depth:` blocks, the post is a normal single
+article.
 
 ### Things that trip people up in frontmatter
 
@@ -114,18 +133,82 @@ Your article starts here...
 - Indentation matters for lists like `tags`. Each tag is on its own line, starting
   with two spaces, then a dash, then a space: `  - AI`. (An inline form
   `tags: ["AI", "automatyzacja"]` also works — the existing sample post uses it.)
+- The content fields `surface`, `dive` and `depth` use the `|` block form. Keep
+  **every** line of the text indented by the same two spaces. A line that drops back
+  to the left margin ends the block, so a stray un-indented line will cut your
+  article short.
 
 ---
 
-## Writing the body (Markdown cheat-sheet)
+## Depth levels (3 warstwy)
 
-Below the closing `---`, you write your article in **Markdown**. Markdown is a
-simple way to add formatting using ordinary punctuation. You type plain text plus a
-few symbols; the site turns it into nicely styled HTML. Here's everything the blog
-supports, with what it looks like once published.
+A RedPulse post can speak to three different readers at once, in three progressive
+**depth levels**. You write each level as its own Markdown field in the frontmatter:
+
+| Field     | Level (on the page) | Written for…    | What goes in it                                        |
+| --------- | ------------------- | --------------- | ------------------------------------------------------ |
+| `surface` | **Powierzchnia**    | a decision-maker | The "what & why". Plain language, no jargon, ~3-minute read. **Required.** |
+| `dive`    | **Nurkowanie**      | a team lead      | The "how it works" — the approach, trade-offs, moving parts. Optional. |
+| `depth`   | **Głębia**          | an engineer      | The deepest layer — configuration, commands, code. Optional. |
+
+### Only `surface` is required
+
+Fill in as many levels as the topic needs:
+- **`surface` alone** → the post renders as a normal, single article. No depth UI
+  appears. This is completely fine — most posts can live at one level.
+- **`surface` + `dive`**, or **all three**, → the reader sees a small **depth meter**
+  and can step down Powierzchnia → Nurkowanie → Głębia.
+
+Skipping a level is fine: `surface` + `depth` (no `dive`) works too. Just don't
+leave `surface` empty — it's the entry point everyone sees first.
+
+### How progressive reveal & deep-linking work
+
+- The reader always lands on **Powierzchnia** (`surface`).
+- If deeper levels exist, a depth meter lets them **click** to reveal Nurkowanie,
+  then Głębia. Each deeper level expands in place.
+- Every level is **deep-linkable**: `…/blog/my-post#dive` opens the post scrolled to
+  the Nurkowanie level, and `#depth` to Głębia. Handy for sharing the exact layer a
+  particular reader cares about.
+
+### Why this is good for SEO
+
+All three levels are present in the page's HTML from the start — the reveal is just
+visual. That means search engines **crawl and index every level**, so each can
+target its own audience and keywords: `surface` can rank for the plain-language
+question a client would type, while `depth` can rank for the specific tool, config
+key or error message an engineer would search. One post, three sets of keywords.
+
+### A quick guideline for each level
+
+- **`surface` — Powierzchnia:** Answer "what is this and why should I care?" in a few
+  short paragraphs. Assume no technical background. Lead with the outcome/benefit.
+- **`dive` — Nurkowanie:** Explain *how* it works at a conceptual level — the steps,
+  the choices you made and why. A team lead should finish able to explain it to
+  someone else.
+- **`depth` — Głębia:** Show the real thing — commands, config files, code blocks,
+  gotchas. This is where technical readers go to actually reproduce your work.
+
+---
+
+## Writing each level (Markdown cheat-sheet)
+
+Each of the three depth fields — `surface`, `dive` and `depth` — is written in
+**Markdown**. Everything in this cheat-sheet works **inside any level**: headings,
+lists, links, quotes, tables, images and code blocks are all fair game in
+`surface`, `dive` or `depth` alike. (In practice, code and configuration usually
+belong in `depth`, but nothing stops you using a small snippet higher up.) Markdown
+is a simple way to add formatting using ordinary punctuation: you type plain text
+plus a few symbols and the site turns it into nicely styled HTML. Here's everything
+the blog supports, with what it looks like once published.
+
+> Remember the two-space indent: because each level lives inside a `|` block in the
+> frontmatter, every Markdown line below must be indented two spaces. The examples
+> in this cheat-sheet show the Markdown itself — add the two-space indent when you
+> paste it under `surface:`, `dive:` or `depth:`.
 
 > Heads-up about headings: the big `#` (H1) heading is reserved for the post
-> **title**, which comes from `title:` in the frontmatter. So **don't** start body
+> **title**, which comes from `title:` in the frontmatter. So **don't** start your
 > headings with a single `#`. Start your section headings at `##`.
 
 ### Headings
@@ -221,8 +304,9 @@ the body of the table.
 ---
 ```
 
-Three dashes **on their own line inside the body** draw a thin horizontal divider
-line. (Don't confuse this with the frontmatter dashes at the very top of the file.)
+Three dashes **on their own (indented) line inside a level** draw a thin horizontal
+divider. Because you're inside a `|` block, keep the two-space indent so YAML treats
+them as text — un-indented `---` at the left margin would instead end the block.
 
 ---
 
@@ -254,9 +338,9 @@ heroImage: /media/zespol.jpg
 It renders full-width at the top of the post, right under the title and date. Leave
 the line out entirely if you don't want one.
 
-### Inline images (pictures inside the article body)
+### Inline images (pictures inside a level)
 
-Anywhere in the body, use this pattern:
+Anywhere inside any level (`surface`, `dive` or `depth`), use this pattern:
 
 ```markdown
 ![Zespół RedPulse przy pracy](/media/zespol.jpg)
@@ -277,7 +361,8 @@ worry about them overflowing.
 
 If you use the built-in editor (Sveltia CMS, see below), you don't have to think
 about any of the paths. When you click the image field or the "insert image" button
-in the body editor and pick a file from your computer, the CMS:
+inside any of the depth-level editors (Powierzchnia / Nurkowanie / Głębia) and pick
+a file from your computer, the CMS:
 1. copies the file into `public/media/` for you, and
 2. inserts the correct `/media/...` path automatically.
 
@@ -318,7 +403,10 @@ File System Access API (Chrome or Edge only).
 2. Open http://localhost:4321/admin/
 3. Click **"Work with Local Repository"** and grant access to the project folder
    when the browser prompts.
-4. Create or edit posts in the **Blog (PL)** and **Blog (EN)** collections. Saving
+4. Create or edit posts in the **Blog (PL)** and **Blog (EN)** collections. Each
+   post shows the meta fields plus three Markdown editors —
+   **Powierzchnia** (`surface`, required), **Nurkowanie** (`dive`) and
+   **Głębia** (`depth`) — one per depth level; fill in the ones you need. Saving
    writes the Markdown file directly into your working tree.
 5. Review the changes and commit them with git:
    ```sh
@@ -345,6 +433,9 @@ Frontmatter fields:
 | `heroImage`   | string (path)   | no       | e.g. `/media/hero.jpg`                 |
 | `tags`        | list of strings | no       | e.g. `[astro, seo]`                    |
 | `draft`       | boolean         | no       | `true` hides the post; defaults `false`|
+| `surface`     | markdown (`\|`)  | yes      | First depth level — "what & why"       |
+| `dive`        | markdown (`\|`)  | no       | Second depth level — "how it works"    |
+| `depth`       | markdown (`\|`)  | no       | Third depth level — configs & code     |
 
 Example (`src/content/blog/pl/moj-pierwszy-post.md`):
 
@@ -359,11 +450,11 @@ tags:
   - astro
   - blog
 draft: false
+surface: |
+  Treść posta w Markdown. Obrazy wstawiaj jako `/media/...`:
+
+  ![Opis](/media/pierwszy-post.jpg)
 ---
-
-Treść posta w Markdown. Obrazy wstawiaj jako `/media/...`:
-
-![Opis](/media/pierwszy-post.jpg)
 ```
 
 Set `draft: true` to keep a post out of the published site while you work on it.
@@ -396,45 +487,86 @@ Writing and publishing are two separate steps. Nothing goes live by accident.
 ## A complete worked example
 
 Here's an entire, realistic post you can copy into a new file (for example
-`src/content/blog/pl/automatyzacja-fakturowania.md`) and adapt. It uses a hero
-image, a section heading, a bullet list, a link, and one inline image.
+`src/content/blog/pl/serwery-z-ansible.md`) and adapt. It uses all three depth
+levels: `surface` for the client-facing "what & why", `dive` for the team lead, and
+`depth` with real commands for an engineer. Notice how each level is a `|` block and
+every line inside it is indented two spaces.
 
 ```markdown
 ---
-title: Jak zautomatyzowaliśmy fakturowanie w małej firmie
-description: Praktyczny przykład, jak prosta automatyzacja oszczędziła zespołowi kilka godzin miesięcznie.
+title: Jak konfigurujemy serwery jednym poleceniem dzięki Ansible
+description: Dlaczego automatyczna konfiguracja serwerów oszczędza czas i eliminuje błędy — od strony biznesu i od strony technicznej.
 pubDate: 2026-07-12
-heroImage: /media/automatyzacja-hero.jpg
+heroImage: /media/ansible-hero.jpg
 tags:
   - automatyzacja
-  - case study
+  - ansible
+  - devops
 draft: false
+surface: |
+  Ręczne stawianie serwerów jest wolne i podatne na błędy. Używamy **Ansible**,
+  żeby opisać cały serwer w plikach tekstowych i odtworzyć go jednym poleceniem.
+
+  Dla klienta oznacza to trzy rzeczy:
+
+  - nowe środowisko gotowe w minuty, nie w godziny,
+  - każdy serwer skonfigurowany dokładnie tak samo,
+  - pełną powtarzalność — awarię usuwamy, odtwarzając konfigurację od zera.
+dive: |
+  ## Jak to działa
+
+  Konfigurację zapisujemy w **playbookach** — czytelnych plikach YAML, które
+  opisują pożądany stan serwera (pakiety, użytkownicy, usługi). Ansible łączy się
+  z maszyną przez SSH i doprowadza ją do tego stanu.
+
+  Kluczowa cecha to **idempotentność**: ten sam playbook można uruchomić wiele
+  razy, a zmiany nastąpią tylko tam, gdzie stan faktycznie się różni. Dzięki temu
+  konfiguracja jest jednocześnie dokumentacją.
+
+  Więcej o naszym podejściu przeczytasz na [stronie głównej](https://redpulse.tech).
+depth: |
+  ## Minimalny przykład
+
+  Inwentarz (`inventory.ini`) z jednym hostem:
+
+  ```ini
+  [web]
+  app01 ansible_host=10.0.0.5 ansible_user=deploy
+  ```
+
+  Playbook (`site.yml`) instalujący i uruchamiający nginx:
+
+  ```yaml
+  - hosts: web
+    become: true
+    tasks:
+      - name: Zainstaluj nginx
+        ansible.builtin.apt:
+          name: nginx
+          state: present
+          update_cache: true
+      - name: Uruchom i włącz nginx
+        ansible.builtin.service:
+          name: nginx
+          state: started
+          enabled: true
+  ```
+
+  Uruchomienie:
+
+  ```sh
+  ansible-playbook -i inventory.ini site.yml
+  ```
+
+  Drugie uruchomienie nie zmieni już nic — to właśnie idempotentność w praktyce.
 ---
-
-Powtarzalne fakturowanie to klasyczny kandydat do automatyzacji. W tym wpisie
-pokazujemy, jak **w jeden dzień** usprawniliśmy ten proces u naszego klienta.
-
-## Problem
-
-Zespół co miesiąc ręcznie kopiował dane między arkuszem a systemem księgowym.
-Zajmowało to sporo czasu i łatwo było o pomyłkę. Najczęstsze bolączki to:
-
-- ręczne przepisywanie tych samych danych,
-- literówki w kwotach i numerach faktur,
-- brak jednego źródła prawdy.
-
-## Rozwiązanie
-
-Zbudowaliśmy prosty przepływ, który pobiera dane raz i rozsyła je automatycznie.
-Więcej o naszym podejściu przeczytasz na [stronie głównej](https://redpulse.tech).
-
-![Schemat automatycznego przepływu faktur](/media/automatyzacja-schemat.png)
-
-Efekt? Kilka godzin odzyskanych każdego miesiąca i zero literówek. Prostota wygrywa.
 ```
 
-That's a complete, publishable post. Change the file name, the frontmatter, and the
-words, add your own images to `public/media/`, and you're done.
+That's a complete, publishable post with three depth levels. On the page, a reader
+starts at Powierzchnia and can click down to Nurkowanie and Głębia (or jump
+straight in via `#dive` / `#depth`). Change the file name, the frontmatter, and the
+words, add your own images to `public/media/`, and you're done. If a post doesn't
+need the deeper layers, just keep `surface` and delete the `dive:`/`depth:` blocks.
 
 ---
 
@@ -444,6 +576,9 @@ words, add your own images to `public/media/`, and you're done.
 | ------------------------------ | --------------------------------------------------- |
 | New Polish post                | Create `src/content/blog/pl/my-slug.md`             |
 | New English post               | Create `src/content/blog/en/my-slug.md`             |
+| The required "what & why" level| `surface: \|` then indented Markdown (in frontmatter)|
+| Add a "how it works" level     | `dive: \|` then indented Markdown (in frontmatter)   |
+| Add a configs & code level     | `depth: \|` then indented Markdown (in frontmatter)  |
 | A section heading              | `## Heading`                                         |
 | A sub-heading                  | `### Sub-heading`                                    |
 | Bold                           | `**bold**`                                           |

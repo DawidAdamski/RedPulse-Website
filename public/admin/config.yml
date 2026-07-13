@@ -53,7 +53,9 @@ collections:
       - { name: heroImage, label: Obraz główny, widget: image, required: false }
       - { name: tags, label: Tagi, widget: list, required: false }
       - { name: draft, label: Szkic, widget: boolean, default: false }
-      - { name: body, label: Treść, widget: markdown }
+      - { name: surface, label: "Powierzchnia (co i po co)", widget: markdown, required: true }
+      - { name: dive, label: "Nurkowanie (jak to działa)", widget: markdown, required: false }
+      - { name: depth, label: "Głębia (kod i konfiguracja)", widget: markdown, required: false }
 
   - name: about_pl
     label: "PL · O nas"
@@ -143,7 +145,9 @@ collections:
       - { name: heroImage, label: Hero image, widget: image, required: false }
       - { name: tags, label: Tags, widget: list, required: false }
       - { name: draft, label: Draft, widget: boolean, default: false }
-      - { name: body, label: Body, widget: markdown }
+      - { name: surface, label: "Surface (what & why)", widget: markdown, required: true }
+      - { name: dive, label: "Dive (how it works)", widget: markdown, required: false }
+      - { name: depth, label: "Depth (code & config)", widget: markdown, required: false }
 
   - name: about_en
     label: "EN · About"

@@ -22,7 +22,15 @@
     "published": "Published",
     "updated": "Updated",
     "noPosts": "First posts coming soon.",
-    "readingTime": "min read"
+    "readingTime": "min read",
+    "depth": {
+      "surface": { "name": "Surface", "persona": "For decision-makers" },
+      "dive":    { "name": "Dive",    "persona": "For team leads" },
+      "depth":   { "name": "Depth",   "persona": "For engineers" },
+      "goDeeper": "Dive deeper",
+      "readingTime": "min read",
+      "levelLabel": "Level"
+    }
   },
   "contact": {
     "title": "Contact",

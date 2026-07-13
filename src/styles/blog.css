@@ -265,3 +265,190 @@
   border-top: 1px solid var(--gray-200);
   margin: 2.5rem 0;
 }
+
+/* ============================================================= */
+/* Article depth (interactive "depth levels" reader)             */
+/* Used by src/components/ArticleDepth.vue. Reuses .prose styles. */
+/* ============================================================= */
+
+.article-depth {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ---------- Depth meter (row of level steps) ---------- */
+.depth-meter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.depth-step {
+  flex: 1 1 180px;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-left: 3px solid var(--gray-200);
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: border-color var(--transition-base), color var(--transition-base),
+    background var(--transition-base), opacity var(--transition-base);
+}
+
+.depth-step:hover {
+  border-color: var(--red-500);
+  border-left-color: var(--red-500);
+  color: var(--black);
+}
+
+.depth-step:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+
+.depth-step.is-revealed {
+  color: var(--black);
+  border-left-color: var(--gray-400);
+}
+
+.depth-step.is-active {
+  border-color: var(--red-500);
+  border-left-color: var(--red-500);
+  color: var(--black);
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.depth-step.is-locked {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.depth-step-index {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray-500);
+}
+
+.depth-step.is-active .depth-step-index {
+  color: var(--red-500);
+}
+
+.depth-step-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.depth-step-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Individual depth level ---------- */
+.depth-level {
+  position: relative;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--gray-200);
+}
+
+/* Subtle "going deeper" gradient: each level a touch deeper/redder */
+.depth-level--1 {
+  border-left-color: var(--gray-200);
+}
+
+.depth-level--2 {
+  border-left-color: rgba(220, 38, 38, 0.35);
+}
+
+.depth-level--3 {
+  border-left-color: var(--red-500);
+}
+
+.depth-level-header {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-500);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+/* ---------- Go deeper button ---------- */
+.go-deeper-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0 1rem;
+}
+
+.go-deeper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  width: 100%;
+  max-width: 420px;
+  padding: 0.9rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  background: var(--white);
+  border: 1px solid var(--black);
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.go-deeper:hover {
+  background: var(--red-500);
+  border-color: var(--red-500);
+  color: var(--white);
+}
+
+.go-deeper:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+
+.go-deeper-chevron {
+  transition: transform var(--transition-base);
+}
+
+.go-deeper:hover .go-deeper-chevron {
+  transform: translateY(2px);
+}
+
+/* ---------- Mobile (≤640px) ---------- */
+@media (max-width: 640px) {
+  .depth-meter {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .depth-step {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .go-deeper {
+    max-width: none;
+  }
+}

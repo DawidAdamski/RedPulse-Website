@@ -16,6 +16,10 @@ const blogSchema = z.object({
   heroImage: z.string().optional(),
   tags: z.array(z.string()).default([]),
   draft: z.boolean().default(false),
+  // Depth levels: layered content, from decision-maker to engineer.
+  surface: z.string(),            // required — the "what & why" layer
+  dive: z.string().optional(),    // "how it works" layer
+  depth: z.string().optional(),   // "configs & code" layer
 });
 
 const blogPl = defineCollection({
