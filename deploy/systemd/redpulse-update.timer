@@ -1,0 +1,13 @@
+# Polls every 5 minutes for a new image (via redpulse-update.service).
+# Install to: /etc/systemd/system/redpulse-update.timer
+# Enable with: systemctl enable --now redpulse-update.timer
+[Unit]
+Description=Poll Docker Hub for a new redpulse.tech image
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=5min
+Unit=redpulse-update.service
+
+[Install]
+WantedBy=timers.target

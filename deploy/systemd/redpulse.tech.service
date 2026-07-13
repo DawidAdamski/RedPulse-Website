@@ -1,0 +1,25 @@
+# Production unit that runs the redpulse.tech container on the mikr.us VPS.
+# Install to: /etc/systemd/system/redpulse.tech.service
+#
+# The container runs in the FOREGROUND (no -d) so systemd tracks the process.
+# On every (re)start it removes any old container, pulls the latest image from
+# Docker Hub, and runs it. "Deploying" therefore = `systemctl restart redpulse.tech`
+# (automated by redpulse-update.timer in this folder).
+[Unit]
+Description=Kontener redpulse.tech
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+# usuwamy stary kontener, jesli istnieje, zeby nie bylo konfliktow nazw
+ExecStartPre=-/usr/bin/docker stop redpulse
+ExecStartPre=-/usr/bin/docker rm redpulse
+# pobieramy najnowsza wersje z docker hub
+ExecStartPre=/usr/bin/docker pull anihilat/redpulse.tech:latest
+# odpalamy - uwaga: nie uzywamy -d, bo systemd musi sledzic proces
+ExecStart=/usr/bin/docker run --name redpulse -p 40288:80 anihilat/redpulse.tech:latest
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+# One-shot service that checks Docker Hub for a newer image and restarts the
+# container unit if there is one. Driven by redpulse-update.timer.
+# Install to: /etc/systemd/system/redpulse-update.service
+[Unit]
+Description=Update redpulse.tech if a new image was published
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/redpulse-update.sh

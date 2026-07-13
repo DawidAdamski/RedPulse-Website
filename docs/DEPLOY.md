@@ -22,17 +22,17 @@ The site is a **static Astro build** (`bun run build` → `dist/`) served by **n
        │    <DOCKER_USERNAME>/redpulse.tech:<commit-sha>
        ▼
   Docker Hub  (image registry)
-       │  ⟵ MANUAL: owner pulls + restarts container
+       │  ⟵ systemd timer polls (~5 min) + restarts on new image
        ▼
-  mikr.us VPS  (Docker)
-       │  container `redpulse` runs nginx, listens on :80
+  mikr.us VPS  (systemd + Docker)
+       │  container `redpulse` runs nginx, listens on :80 (host :40288)
        ▼
   TLS terminated in front (see §5)  →  https://redpulse.tech
 ```
 
 - **GitHub → Actions**: push to `main` starts the `Build and Push Docker Image` workflow.
 - **Actions → Docker Hub**: the workflow builds the multi-stage `Dockerfile` (Bun build stage → `nginx:alpine` serve stage) and pushes two tags. It does **not** deploy.
-- **Docker Hub → mikr.us**: the owner manually pulls and recreates the container. **New commits and blog posts only go live after this restart.**
+- **Docker Hub → mikr.us**: a systemd unit runs the container and a systemd timer auto-updates it (§3–4). New commits/posts go live within ~5 min of CI finishing — or immediately with `sudo systemctl restart redpulse.tech`.
 
 ---
 
@@ -67,110 +67,47 @@ Values you must supply (placeholders used throughout this doc):
 
 ---
 
-## 3. First deploy on the server
+## 3. Server setup on mikr.us (systemd)
 
-SSH in, then:
+On the mikr.us VPS the container is run by a **systemd unit** — the actual unit files live in [`deploy/systemd/`](../deploy/systemd/) in this repo (no secrets, safe to version). The image is `anihilat/redpulse.tech:latest`; nginx listens on container port **80** (`EXPOSE 80` / `listen 80;`), mapped to host port **40288**.
 
-```bash
-# Only needed if the Docker Hub repository is PRIVATE:
-docker login -u <DOCKER_USERNAME>
-
-# Pull the latest image built by CI:
-docker pull <DOCKER_USERNAME>/redpulse.tech:latest
-
-# Run it:
-docker run -d \
-  --name redpulse \
-  -p <HOSTPORT>:80 \
-  --restart unless-stopped \
-  <DOCKER_USERNAME>/redpulse.tech:latest
-```
-
-- **`-p <HOSTPORT>:80`** — the container's nginx listens on port **80** (`EXPOSE 80` in the `Dockerfile`, `listen 80;` in `nginx.conf`). Map it to whatever host port your mikr.us setup expects in front of it.
-- **`--restart unless-stopped`** — the container comes back automatically after a reboot or crash, unless you explicitly stop it.
-
-### Alternative: docker-compose
-
-`docker-compose.yml`:
-
-```yaml
-services:
-  redpulse:
-    image: <DOCKER_USERNAME>/redpulse.tech:latest
-    container_name: redpulse
-    ports:
-      - "<HOSTPORT>:80"
-    restart: unless-stopped
-```
-
-Bring it up:
+The container unit (`redpulse.tech.service`) removes any old container, pulls the latest image, and runs it in the foreground so systemd can track it with `Restart=always`. Install it once:
 
 ```bash
-docker compose up -d
+sudo cp deploy/systemd/redpulse.tech.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now redpulse.tech.service
 ```
+
+Because the unit pulls-and-runs on every start, **deploying = restarting the unit** (section 4). `docker login` is only needed if the Docker Hub repo is private (it's public).
 
 ---
 
-## 4. Deploying an update (the routine you'll use most)
+## 4. Deploying an update
 
-CI has already built and pushed the new image on push to `main`. **To make it live, pull and recreate the container:**
-
-```bash
-docker pull <DOCKER_USERNAME>/redpulse.tech:latest
-docker stop redpulse && docker rm redpulse
-docker run -d \
-  --name redpulse \
-  -p <HOSTPORT>:80 \
-  --restart unless-stopped \
-  <DOCKER_USERNAME>/redpulse.tech:latest
-```
-
-Or with compose (from the directory holding `docker-compose.yml`):
+CI builds and pushes the new image on every push to `main`. To make it live you just restart the systemd unit — its `ExecStartPre` pulls the latest image:
 
 ```bash
-docker compose pull && docker compose up -d
+sudo systemctl restart redpulse.tech
 ```
 
-This manual pull + restart is **the step that makes new commits and blog posts go live**. Skipping it means the site keeps serving the previously pulled image no matter how many times CI runs.
+### Automatic deploy (systemd timer — recommended)
 
-Tidy up old images occasionally:
+So you never restart by hand, install the auto-update timer from [`deploy/systemd/`](../deploy/systemd/). It runs a small script every 5 minutes that `docker pull`s the latest image **while the current container keeps serving**, and restarts the unit **only when a newer image was actually downloaded** — so the swap costs ~1s, not the whole download:
 
 ```bash
-docker image prune -f
+sudo cp deploy/systemd/redpulse-update.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/redpulse-update.sh
+sudo cp deploy/systemd/redpulse-update.service deploy/systemd/redpulse-update.timer /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now redpulse-update.timer
 ```
 
-### Automatic deploy with Watchtower (recommended — no manual restart)
+With the CMS **editorial workflow**, only clicking **Publish** merges to `main`, so this results in exactly one build + one auto-deploy per published article. Watch it with `journalctl -t redpulse-update -f`.
 
-Instead of pulling and restarting by hand every time, run **Watchtower** once on the
-server. It watches your container, and whenever CI pushes a new `:latest` image to
-Docker Hub it **auto-pulls and restarts it** — so publishing a blog post (or any push
-to `main`) goes live on its own, and you can publish from anywhere, including a phone.
+**Why not Watchtower?** Watchtower recreates the container itself, which fights systemd's `Restart=always` ownership of this foreground container (they race on the `redpulse` name). The timer respects systemd and pre-pulls to minimise downtime. See [`deploy/systemd/README.md`](../deploy/systemd/README.md).
 
-One-time setup on mikr.us:
-
-```bash
-docker run -d \
-  --name watchtower \
-  --restart unless-stopped \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  containrrr/watchtower \
-  --cleanup --interval 300 redpulse
-```
-
-- The trailing **`redpulse`** scopes Watchtower to *only* that container, so it won't
-  touch anything else running on your mikr.us.
-- `--interval 300` checks Docker Hub every 5 minutes (raise it if you prefer).
-- `--cleanup` deletes the old image after each update (saves disk on a small VPS).
-- **Private Docker Hub repo?** Watchtower then needs registry credentials: run
-  `docker login` on the host and add `-v ~/.docker/config.json:/config.json` to the
-  command above (or pass `-e REPO_USER=... -e REPO_PASS=...`).
-
-Once Watchtower is running, **section 4's manual pull/restart is no longer needed** —
-CI build → Watchtower picks it up within the interval → site updates. With the CMS
-editorial workflow enabled, only clicking **Publish** merges to `main`, so exactly one
-build + one auto-deploy happens per published article.
-
-To check it's working: `docker logs watchtower` shows each check and update.
+Tidy up old images occasionally: `docker image prune -f`.
 
 ---
 
@@ -190,19 +127,18 @@ The exact TLS mechanism is **not defined in this repo**. Confirm how TLS is term
 
 ## 6. Rollback
 
-Every CI run also tags the image with the commit SHA (`<DOCKER_USERNAME>/redpulse.tech:<commit-sha>`). To roll back to a known-good build, run that tag instead of `:latest`:
+**Simplest (recommended):** `git revert <bad-commit>` and push to `main`. CI rebuilds and the timer redeploys within ~5 min — `:latest` stays the single source of truth.
+
+**Immediate (run an older image directly):** every CI run also tags the image with its commit SHA. Pause the auto-updater so it can't re-pull `:latest`, then run the known-good SHA:
 
 ```bash
-docker pull <DOCKER_USERNAME>/redpulse.tech:<commit-sha>
-docker stop redpulse && docker rm redpulse
-docker run -d \
-  --name redpulse \
-  -p <HOSTPORT>:80 \
-  --restart unless-stopped \
-  <DOCKER_USERNAME>/redpulse.tech:<commit-sha>
+sudo systemctl stop redpulse-update.timer   # pause auto-updates
+sudo systemctl stop redpulse.tech           # stop the current container
+docker rm -f redpulse 2>/dev/null || true
+docker run -d --name redpulse -p 40288:80 anihilat/redpulse.tech:<commit-sha>
 ```
 
-Find a SHA in the repo's git history (`git log`) or on the Docker Hub repository's Tags page. With compose, set `image:` to the `:<commit-sha>` tag and run `docker compose up -d`.
+Find a SHA via `git log` or the Docker Hub Tags page. To resume normal `:latest` tracking: `docker rm -f redpulse`, then `sudo systemctl start redpulse.tech redpulse-update.timer`.
 
 ---
 
@@ -213,7 +149,7 @@ Find a SHA in the repo's git history (`git log`) or on the Docker Hub repository
 docker ps
 
 # Serving locally on the host port:
-curl -I http://localhost:<HOSTPORT>
+curl -I http://localhost:40288
 
 # Public site (through TLS front):
 curl -I https://redpulse.tech
@@ -226,12 +162,12 @@ Then open <https://redpulse.tech> in a browser and confirm the change (new page,
 ## 8. Troubleshooting
 
 **Site not updating after a deploy**
-- You didn't pull. `docker run` reuses the locally cached `:latest`. Always `docker pull` (or `docker compose pull`) first, then recreate.
-- Confirm the intended image is running: `docker ps` and `docker inspect redpulse --format '{{.Image}}'`.
+- The timer only restarts on a *new* image. Check it ran: `journalctl -t redpulse-update -e`. Force a deploy: `sudo systemctl restart redpulse.tech`.
+- Confirm the intended image is running: `docker inspect redpulse --format '{{.Image}}'` vs `docker images anihilat/redpulse.tech`.
 - Browser/CDN cache: hard refresh; if a proxy/Cloudflare sits in front, purge its cache.
 
 **Container won't start**
-- Port already in use: `Bind for 0.0.0.0:<HOSTPORT> failed: port is already allocated`. Find the holder (`docker ps`, or `sudo lsof -i :<HOSTPORT>`), stop it, or pick a different `<HOSTPORT>`.
+- Port already in use: `Bind for 0.0.0.0:40288 failed: port is already allocated`. Find the holder (`docker ps`, or `sudo lsof -i :40288`), stop it.
 - Check logs: `docker logs redpulse`.
 - Name already taken (`Conflict. The container name "/redpulse" is already in use`): `docker rm -f redpulse`, then re-run.
 
