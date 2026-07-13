@@ -1,12 +1,15 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 #
 # Local editing works out-of-the-box on localhost via the browser File System
-# Access API (Chrome/Edge) - no OAuth or proxy server needed. Just open
-# http://localhost:4321/admin/ and choose "work with local repository".
+# Access API (Chrome/Edge) - open http://localhost:4321/admin/index.html and
+# choose "Work with Local Repository".
 #
 # Hosted editing at https://redpulse.tech/admin/ works via "Sign In Using Access
-# Token" (a GitHub fine-grained PAT) - no OAuth relay required. The "Sign In with
-# GitHub" button would need a sveltia-cms-auth relay, which is not set up.
+# Token" (a GitHub fine-grained PAT with Contents + Pull requests: write). The
+# "Sign In with GitHub" button would need a sveltia-cms-auth relay (not set up).
+#
+# Collections are grouped by language (PL first, then EN) via labels, so the
+# sidebar reads: PL - Blog / PL - O nas / PL - Uslugi / PL - FAQ, then the EN set.
 
 backend:
   name: github
@@ -17,154 +20,106 @@ backend:
 # does NOT touch `main` (so it triggers no CI build or deploy). Clicking "Publish"
 # merges one commit into `main`, which builds once and (via Watchtower) deploys
 # once. Keeps history clean and avoids rebuild-on-every-save.
-# Note: the GitHub token used for sign-in must include "Pull requests: write".
 publish_mode: editorial_workflow
 
 media_folder: /public/media
 public_folder: /media
 
 collections:
+  # ---------------------------------------------------------------- Polish (PL)
   - name: blog_pl
-    label: Blog (PL)
-    label_singular: Post (PL)
+    label: "PL · Blog"
+    label_singular: "Wpis (PL)"
     folder: /src/content/blog/pl
     create: true
     extension: md
     format: frontmatter
     fields:
-      - { name: title, label: Title, widget: string, required: true }
-      - { name: description, label: Description, widget: text, required: true }
+      - { name: title, label: Tytuł, widget: string, required: true }
+      - { name: description, label: Opis, widget: text, required: true }
       - name: pubDate
-        label: Publish date
+        label: Data publikacji
         widget: datetime
         format: 'YYYY-MM-DD'
         date_format: 'YYYY-MM-DD'
         time_format: false
       - name: updatedDate
-        label: Updated date
+        label: Data aktualizacji
         widget: datetime
         format: 'YYYY-MM-DD'
         date_format: 'YYYY-MM-DD'
         time_format: false
         required: false
-      - { name: heroImage, label: Hero image, widget: image, required: false }
-      - { name: tags, label: Tags, widget: list, required: false }
-      - { name: draft, label: Draft, widget: boolean, default: false }
-      - { name: body, label: Body, widget: markdown }
+      - { name: heroImage, label: Obraz główny, widget: image, required: false }
+      - { name: tags, label: Tagi, widget: list, required: false }
+      - { name: draft, label: Szkic, widget: boolean, default: false }
+      - { name: body, label: Treść, widget: markdown }
 
-  - name: sections
-    label: Sekcje strony
+  - name: about_pl
+    label: "PL · O nas"
     files:
-      - name: sections_pl
-        label: Sekcje (PL)
-        file: /src/content/sections/pl.json
+      - name: content
+        label: O nas
+        file: /src/content/about/pl.json
         fields:
-          - name: about
-            label: O nas
-            widget: object
+          - { name: title, label: Tytuł, widget: string, required: true }
+          - { name: subtitle, label: Podtytuł, widget: string, required: false }
+          - { name: description, label: Opis, widget: text, required: true }
+          - name: stats
+            label: Statystyki
+            widget: list
+            required: false
             fields:
+              - { name: value, label: Wartość, widget: string, required: true }
+              - { name: label, label: Etykieta, widget: string, required: true }
+          - name: highlights
+            label: Wyróżnienia
+            widget: list
+            required: false
+            fields:
+              - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
               - { name: title, label: Tytuł, widget: string, required: true }
-              - { name: subtitle, label: Podtytuł, widget: string, required: false }
               - { name: description, label: Opis, widget: text, required: true }
-              - name: stats
-                label: Statystyki
-                widget: list
-                required: false
-                fields:
-                  - { name: value, label: Wartość, widget: string, required: true }
-                  - { name: label, label: Etykieta, widget: string, required: true }
-              - name: highlights
-                label: Wyróżnienia
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
-                  - { name: title, label: Tytuł, widget: string, required: true }
-                  - { name: description, label: Opis, widget: text, required: true }
-          - name: services
-            label: Usługi
-            widget: object
-            fields:
-              - { name: title, label: Tytuł, widget: string, required: true }
-              - { name: subtitle, label: Podtytuł, widget: string, required: false }
-              - name: items
-                label: Usługi
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
-                  - { name: title, label: Tytuł, widget: string, required: true }
-                  - { name: description, label: Opis, widget: text, required: true }
-          - name: faq
-            label: FAQ
-            widget: object
-            fields:
-              - { name: title, label: Tytuł, widget: string, required: true }
-              - { name: subtitle, label: Podtytuł, widget: string, required: false }
-              - name: items
-                label: Pytania
-                widget: list
-                required: false
-                fields:
-                  - { name: question, label: Pytanie, widget: string, required: true }
-                  - { name: answer, label: Odpowiedź, widget: text, required: true }
-      - name: sections_en
-        label: Sekcje (EN)
-        file: /src/content/sections/en.json
-        fields:
-          - name: about
-            label: O nas
-            widget: object
-            fields:
-              - { name: title, label: Tytuł, widget: string, required: true }
-              - { name: subtitle, label: Podtytuł, widget: string, required: false }
-              - { name: description, label: Opis, widget: text, required: true }
-              - name: stats
-                label: Statystyki
-                widget: list
-                required: false
-                fields:
-                  - { name: value, label: Wartość, widget: string, required: true }
-                  - { name: label, label: Etykieta, widget: string, required: true }
-              - name: highlights
-                label: Wyróżnienia
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
-                  - { name: title, label: Tytuł, widget: string, required: true }
-                  - { name: description, label: Opis, widget: text, required: true }
-          - name: services
-            label: Usługi
-            widget: object
-            fields:
-              - { name: title, label: Tytuł, widget: string, required: true }
-              - { name: subtitle, label: Podtytuł, widget: string, required: false }
-              - name: items
-                label: Usługi
-                widget: list
-                required: false
-                fields:
-                  - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
-                  - { name: title, label: Tytuł, widget: string, required: true }
-                  - { name: description, label: Opis, widget: text, required: true }
-          - name: faq
-            label: FAQ
-            widget: object
-            fields:
-              - { name: title, label: Tytuł, widget: string, required: true }
-              - { name: subtitle, label: Podtytuł, widget: string, required: false }
-              - name: items
-                label: Pytania
-                widget: list
-                required: false
-                fields:
-                  - { name: question, label: Pytanie, widget: string, required: true }
-                  - { name: answer, label: Odpowiedź, widget: text, required: true }
 
+  - name: services_pl
+    label: "PL · Usługi"
+    files:
+      - name: content
+        label: Usługi
+        file: /src/content/services/pl.json
+        fields:
+          - { name: title, label: Tytuł, widget: string, required: true }
+          - { name: subtitle, label: Podtytuł, widget: string, required: false }
+          - name: items
+            label: Usługi
+            widget: list
+            required: false
+            fields:
+              - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: description, label: Opis, widget: text, required: true }
+
+  - name: faq_pl
+    label: "PL · FAQ"
+    files:
+      - name: content
+        label: FAQ
+        file: /src/content/faq/pl.json
+        fields:
+          - { name: title, label: Tytuł, widget: string, required: true }
+          - { name: subtitle, label: Podtytuł, widget: string, required: false }
+          - name: items
+            label: Pytania
+            widget: list
+            required: false
+            fields:
+              - { name: question, label: Pytanie, widget: string, required: true }
+              - { name: answer, label: Odpowiedź, widget: text, required: true }
+
+  # --------------------------------------------------------------- English (EN)
   - name: blog_en
-    label: Blog (EN)
-    label_singular: Post (EN)
+    label: "EN · Blog"
+    label_singular: "Post (EN)"
     folder: /src/content/blog/en
     create: true
     extension: md
@@ -189,3 +144,64 @@ collections:
       - { name: tags, label: Tags, widget: list, required: false }
       - { name: draft, label: Draft, widget: boolean, default: false }
       - { name: body, label: Body, widget: markdown }
+
+  - name: about_en
+    label: "EN · About"
+    files:
+      - name: content
+        label: About
+        file: /src/content/about/en.json
+        fields:
+          - { name: title, label: Title, widget: string, required: true }
+          - { name: subtitle, label: Subtitle, widget: string, required: false }
+          - { name: description, label: Description, widget: text, required: true }
+          - name: stats
+            label: Stats
+            widget: list
+            required: false
+            fields:
+              - { name: value, label: Value, widget: string, required: true }
+              - { name: label, label: Label, widget: string, required: true }
+          - name: highlights
+            label: Highlights
+            widget: list
+            required: false
+            fields:
+              - { name: icon, label: Icon, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+              - { name: title, label: Title, widget: string, required: true }
+              - { name: description, label: Description, widget: text, required: true }
+
+  - name: services_en
+    label: "EN · Services"
+    files:
+      - name: content
+        label: Services
+        file: /src/content/services/en.json
+        fields:
+          - { name: title, label: Title, widget: string, required: true }
+          - { name: subtitle, label: Subtitle, widget: string, required: false }
+          - name: items
+            label: Services
+            widget: list
+            required: false
+            fields:
+              - { name: icon, label: Icon, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+              - { name: title, label: Title, widget: string, required: true }
+              - { name: description, label: Description, widget: text, required: true }
+
+  - name: faq_en
+    label: "EN · FAQ"
+    files:
+      - name: content
+        label: FAQ
+        file: /src/content/faq/en.json
+        fields:
+          - { name: title, label: Title, widget: string, required: true }
+          - { name: subtitle, label: Subtitle, widget: string, required: false }
+          - name: items
+            label: Questions
+            widget: list
+            required: false
+            fields:
+              - { name: question, label: Question, widget: string, required: true }
+              - { name: answer, label: Answer, widget: text, required: true }

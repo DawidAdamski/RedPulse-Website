@@ -1,0 +1,31 @@
+{
+  "title": "Nasze usługi",
+  "subtitle": "Kompleksowe wsparcie IT dla Twojego biznesu",
+  "items": [
+    {
+      "icon": "search",
+      "title": "Analiza",
+      "description": "Dogłębna analiza procesów i infrastruktury IT. Identyfikujemy obszary do optymalizacji i proponujemy konkretne rozwiązania."
+    },
+    {
+      "icon": "zap",
+      "title": "Automatyzacja",
+      "description": "Automatyzacja procesów biznesowych i IT. Oszczędzamy Twój czas i redukujemy ryzyko błędów ludzkich."
+    },
+    {
+      "icon": "link",
+      "title": "Integracja",
+      "description": "Łączymy systemy i aplikacje w spójny ekosystem. API, middleware, przepływy danych - to nasza specjalność."
+    },
+    {
+      "icon": "lightbulb",
+      "title": "Doradztwo",
+      "description": "Strategiczne doradztwo IT. Pomagamy podejmować właściwe decyzje technologiczne dla Twojego biznesu."
+    },
+    {
+      "icon": "server",
+      "title": "Infrastruktura",
+      "description": "Projektowanie i wdrażanie infrastruktury IT. Kubernetes, OpenShift, chmura - budujemy solidne fundamenty."
+    }
+  ]
+}

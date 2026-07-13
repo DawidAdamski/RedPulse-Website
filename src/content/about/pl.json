@@ -1,0 +1,26 @@
+{
+  "title": "Kim jesteśmy",
+  "subtitle": "Twój partner w transformacji cyfrowej",
+  "description": "RedPulse Innovations to firma konsultingowa specjalizująca się w automatyzacji, integracji systemów i wdrożeniach AI. Pomagamy firmom adaptować się do zmieniających się realiów biznesowych poprzez innowacyjne rozwiązania technologiczne.",
+  "stats": [
+    { "value": "100%", "label": "Open Source Focus" },
+    { "value": "24h", "label": "Response Time" }
+  ],
+  "highlights": [
+    {
+      "icon": "layers",
+      "title": "Open Source",
+      "description": "Stawiamy na sprawdzone rozwiązania open source i technologie Red Hat"
+    },
+    {
+      "icon": "cpu",
+      "title": "AI & Automatyzacja",
+      "description": "Wykorzystujemy sztuczną inteligencję do przyspieszenia adaptacji biznesu"
+    },
+    {
+      "icon": "check",
+      "title": "Prostota",
+      "description": "Tworzymy rozwiązania, które są proste w użyciu i utrzymaniu"
+    }
+  ]
+}

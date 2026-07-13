@@ -14,12 +14,14 @@ const t = getTranslations('pl');
 const currentLocale = 'pl';
 const buildDate = new Date().toISOString();
 
-const sections = (await getEntry('sections', currentLocale)).data;
+const about = (await getEntry('about', currentLocale)).data;
+const services = (await getEntry('services', currentLocale)).data;
+const faq = (await getEntry('faq', currentLocale)).data;
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: sections.faq.items.map((item) => ({
+  mainEntity: faq.items.map((item) => ({
     '@type': 'Question',
     name: item.question,
     acceptedAnswer: {
@@ -38,9 +40,9 @@ const faqSchema = {
   <Header t={t} currentLocale={currentLocale} client:load />
   <main id="main-content">
     <Hero t={t} client:visible />
-    <About about={sections.about} />
-    <Services services={sections.services} />
-    <FAQ faq={sections.faq} client:visible />
+    <About about={about} />
+    <Services services={services} />
+    <FAQ faq={faq} client:visible />
     <Contact t={t} />
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />

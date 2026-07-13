@@ -1,0 +1,26 @@
+{
+  "title": "Who we are",
+  "subtitle": "Your partner in digital transformation",
+  "description": "RedPulse Innovations is a consulting company specializing in automation, system integration and AI implementations. We help businesses adapt to changing market realities through innovative technological solutions.",
+  "stats": [
+    { "value": "100%", "label": "Open Source Focus" },
+    { "value": "24h", "label": "Response Time" }
+  ],
+  "highlights": [
+    {
+      "icon": "layers",
+      "title": "Open Source",
+      "description": "We rely on proven open source solutions and Red Hat technologies"
+    },
+    {
+      "icon": "cpu",
+      "title": "AI & Automation",
+      "description": "We use artificial intelligence to accelerate business adaptation"
+    },
+    {
+      "icon": "check",
+      "title": "Simplicity",
+      "description": "We create solutions that are simple to use and maintain"
+    }
+  ]
+}

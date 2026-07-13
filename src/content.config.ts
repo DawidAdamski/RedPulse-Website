@@ -28,23 +28,35 @@ const blogEn = defineCollection({
   schema: blogSchema,
 });
 
-const sections = defineCollection({
-  loader: glob({ pattern: '*.json', base: './src/content/sections' }),
+// Site sections — one file per language (pl.json / en.json) in each folder, so
+// each section is its own CMS entry (About, Services, FAQ), grouped by language.
+const about = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/about' }),
   schema: z.object({
-    about: z.object({
-      title: z.string(), subtitle: z.string(), description: z.string(),
-      stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
-      highlights: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
-    }),
-    services: z.object({
-      title: z.string(), subtitle: z.string(),
-      items: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
-    }),
-    faq: z.object({
-      title: z.string(), subtitle: z.string(),
-      items: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
-    }),
+    title: z.string(),
+    subtitle: z.string(),
+    description: z.string(),
+    stats: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+    highlights: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
   }),
 });
 
-export const collections = { blogPl, blogEn, sections };
+const services = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    items: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
+  }),
+});
+
+const faq = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/faq' }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    items: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+  }),
+});
+
+export const collections = { blogPl, blogEn, about, services, faq };

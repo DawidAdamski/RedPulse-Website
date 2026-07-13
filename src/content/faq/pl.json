@@ -1,0 +1,38 @@
+{
+  "title": "Najczęściej zadawane pytania",
+  "subtitle": "Odpowiedzi na pytania, które najczęściej słyszymy od klientów",
+  "items": [
+    {
+      "question": "Dla jakich firm pracujecie?",
+      "answer": "Współpracujemy głównie z małymi i średnimi firmami z Polski, które chcą wykorzystać IT i automatyzację jako dźwignię rozwoju — nie tylko jako koszt. Naszymi klientami są zarówno firmy produkcyjne, usługowe, jak i zespoły techniczne w większych organizacjach."
+    },
+    {
+      "question": "Ile kosztuje wdrożenie automatyzacji lub AI?",
+      "answer": "Każdy projekt wyceniamy indywidualnie po bezpłatnej konsultacji, bo zakres mocno różni się między klientami. Proste automatyzacje pojedynczych procesów zaczynają się od kilku tysięcy złotych, kompleksowe wdrożenia AI i integracje systemów to projekty liczone w dziesiątkach tysięcy. Po rozmowie dostajesz konkretną wycenę i harmonogram."
+    },
+    {
+      "question": "Jak wygląda proces współpracy?",
+      "answer": "Zaczynamy od bezpłatnej 30-minutowej konsultacji, podczas której rozumiemy Twój problem i cele biznesowe. Następnie przygotowujemy propozycję rozwiązania i wycenę. Po akceptacji realizujemy projekt w krótkich iteracjach, dostarczając działające fragmenty co 1–2 tygodnie, żebyś miał pełną kontrolę nad kierunkiem."
+    },
+    {
+      "question": "Czemu open source i Red Hat?",
+      "answer": "Open source daje Ci niezależność od dostawcy, pełną kontrolę nad danymi i brak nagłych podwyżek licencji. Red Hat dokłada do tego komercyjne wsparcie klasy enterprise (OpenShift, RHEL, Ansible), którego wymagają banki, ubezpieczyciele i sektor publiczny. To połączenie elastyczności open source z bezpieczeństwem stabilnego dostawcy."
+    },
+    {
+      "question": "Jakie technologie AI stosujecie?",
+      "answer": "Dobieramy narzędzia do problemu, nie odwrotnie. Pracujemy z modelami komercyjnymi (OpenAI, Anthropic Claude) oraz modelami open source (Llama, Mistral) uruchamianymi lokalnie, gdy wymaga tego RODO lub poufność danych. Wdrażamy asystentów AI, klasyfikację dokumentów, analizę danych i automatyzacje workflow z elementami AI."
+    },
+    {
+      "question": "Czy pracujecie zdalnie czy na miejscu?",
+      "answer": "Pracujemy w modelu hybrydowym — większość prac (analiza, development, wdrożenia) robimy zdalnie, co przyspiesza projekt i obniża koszty. Warsztaty startowe, kluczowe przeglądy i szkolenia zespołu możemy przeprowadzić u Ciebie w biurze na terenie Polski."
+    },
+    {
+      "question": "Czy dane mojej firmy są bezpieczne?",
+      "answer": "Tak. Pracujemy zgodnie z RODO, podpisujemy umowy powierzenia przetwarzania danych (DPA) i NDA. Dla wrażliwych projektów stosujemy lokalne modele AI, które nie wysyłają danych poza Twoją infrastrukturę. Kod, dokumentacja i materiały projektowe trzymamy w Twoich repozytoriach albo w dedykowanych, szyfrowanych przestrzeniach."
+    },
+    {
+      "question": "Jak szybko możemy zacząć?",
+      "answer": "Pierwszą konsultację możesz umówić od razu przez kalendarz online. Od podpisania umowy do startu prac upływa zazwyczaj 1–2 tygodnie — w pilnych przypadkach jesteśmy w stanie zacząć szybciej."
+    }
+  ]
+}

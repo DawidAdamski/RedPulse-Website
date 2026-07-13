@@ -1,0 +1,31 @@
+{
+  "title": "Our services",
+  "subtitle": "Comprehensive IT support for your business",
+  "items": [
+    {
+      "icon": "search",
+      "title": "Analysis",
+      "description": "In-depth analysis of IT processes and infrastructure. We identify areas for optimization and propose concrete solutions."
+    },
+    {
+      "icon": "zap",
+      "title": "Automation",
+      "description": "Automation of business and IT processes. We save your time and reduce the risk of human error."
+    },
+    {
+      "icon": "link",
+      "title": "Integration",
+      "description": "We connect systems and applications into a coherent ecosystem. APIs, middleware, data flows - that's our specialty."
+    },
+    {
+      "icon": "lightbulb",
+      "title": "Consulting",
+      "description": "Strategic IT consulting. We help you make the right technology decisions for your business."
+    },
+    {
+      "icon": "server",
+      "title": "Infrastructure",
+      "description": "IT infrastructure design and implementation. Kubernetes, OpenShift, cloud - we build solid foundations."
+    }
+  ]
+}
