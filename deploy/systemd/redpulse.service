@@ -1,9 +1,9 @@
 # Production unit that runs the redpulse.tech container on the mikr.us VPS.
-# Install to: /etc/systemd/system/redpulse.tech.service
+# Install to: /etc/systemd/system/redpulse.service
 #
 # The container runs in the FOREGROUND (no -d) so systemd tracks the process.
 # On every (re)start it removes any old container, pulls the latest image from
-# Docker Hub, and runs it. "Deploying" therefore = `systemctl restart redpulse.tech`
+# Docker Hub, and runs it. "Deploying" therefore = `systemctl restart redpulse`
 # (automated by redpulse-update.timer in this folder).
 [Unit]
 Description=Kontener redpulse.tech

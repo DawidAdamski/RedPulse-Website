@@ -11,7 +11,7 @@
 set -euo pipefail
 
 IMAGE="anihilat/redpulse.tech:latest"
-UNIT="redpulse.tech.service"   # must match the installed container unit's name
+UNIT="redpulse.service"   # must match the installed container unit's name
 
 out="$(docker pull "$IMAGE" 2>&1)" || { logger -t redpulse-update "pull failed"; exit 0; }
 
