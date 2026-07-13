@@ -67,14 +67,16 @@ defineProps<{
               <span class="dot yellow"></span>
               <span class="dot green"></span>
             </div>
-            <pre class="code-content"><code><span class="keyword">const</span> <span class="variable">innovation</span> = {
-  <span class="property">automation</span>: <span class="boolean">true</span>,
-  <span class="property">ai</span>: <span class="string">"enabled"</span>,
-  <span class="property">simplicity</span>: <span class="string">"always"</span>
-};
+            <pre class="code-content"><code><span class="comment"># make it simple and innovative</span>
+- <span class="property">name</span>: <span class="string">Automate everything</span>
+  <span class="property">hosts</span>: <span class="string">all</span>
+  <span class="property">become</span>: <span class="boolean">true</span>
 
-<span class="comment">// Make it happen</span>
-<span class="function">transform</span>(innovation);</code></pre>
+  <span class="property">tasks</span>:
+    - <span class="property">name</span>: <span class="string">Deploy RedPulse</span>
+      <span class="function">ansible.builtin.service</span>:
+        <span class="property">name</span>: <span class="string">redpulse</span>
+        <span class="property">state</span>: <span class="string">started</span></code></pre>
           </div>
         </div>
       </div>
