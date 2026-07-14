@@ -17,6 +17,7 @@ const buildDate = new Date().toISOString();
 const about = (await getEntry('about', currentLocale)).data;
 const services = (await getEntry('services', currentLocale)).data;
 const faq = (await getEntry('faq', currentLocale)).data;
+const contact = (await getEntry('contact', currentLocale)).data;
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -33,8 +34,8 @@ const faqSchema = {
 ---
 
 <Layout
-  title="RedPulse Innovations - Konsulting IT, Automatyzacja, AI"
-  description="RedPulse Innovations - konsulting IT, automatyzacja procesów i wdrożenia AI dla małych i średnich firm. Specjalizujemy się w rozwiązaniach open source i technologiach Red Hat. Make it simple and innovative."
+  title="RedPulse Innovations - stała opieka IT dla małych firm"
+  description="Stała opieka IT, projekty infrastrukturalne, automatyzacje i szkolenia z AI dla właścicieli małych firm. Jedna osoba, która ogarnia Twój serwer, dane i sprzęt — i bierze za nie odpowiedzialność. Reakcja w 24h, opieka od 800 zł/mc."
   lang="pl"
 >
   <Header t={t} currentLocale={currentLocale} client:load />
@@ -43,7 +44,7 @@ const faqSchema = {
     <About about={about} />
     <Services services={services} />
     <FAQ faq={faq} client:visible />
-    <Contact t={t} />
+    <Contact contact={contact} />
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

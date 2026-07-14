@@ -1,17 +1,17 @@
 <script setup lang="ts">
 defineProps<{
-  t: {
-    contact: {
-      title: string;
-      subtitle: string;
-      description: string;
-      email: string;
-      emailAddress: string;
-      consultation: string;
-      consultationCta: string;
-      social: string;
-      cta: string;
-    };
+  contact: {
+    title: string;
+    subtitle: string;
+    description: string;
+    emailLabel: string;
+    email: string;
+    phoneLabel: string;
+    phone?: string;
+    consultationLabel: string;
+    consultationCta: string;
+    socialLabel: string;
+    cta: string;
   };
 }>();
 
@@ -43,10 +43,10 @@ const socialLinks = [
     <div class="container">
       <div class="contact-content">
         <div class="contact-info">
-          <h2 class="contact-title">{{ t.contact.title }}</h2>
-          <p class="contact-subtitle">{{ t.contact.subtitle }}</p>
-          <p class="contact-description">{{ t.contact.description }}</p>
-          
+          <h2 class="contact-title">{{ contact.title }}</h2>
+          <p class="contact-subtitle">{{ contact.subtitle }}</p>
+          <p class="contact-description">{{ contact.description }}</p>
+
           <div class="contact-methods">
             <div class="contact-method">
               <div class="method-icon">
@@ -56,8 +56,20 @@ const socialLinks = [
                 </svg>
               </div>
               <div class="method-content">
-                <span class="method-label">{{ t.contact.email }}</span>
-                <a :href="'mailto:' + t.contact.emailAddress" class="method-value">{{ t.contact.emailAddress }}</a>
+                <span class="method-label">{{ contact.emailLabel }}</span>
+                <a :href="'mailto:' + contact.email" class="method-value">{{ contact.email }}</a>
+              </div>
+            </div>
+
+            <div v-if="contact.phone" class="contact-method">
+              <div class="method-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="method-content">
+                <span class="method-label">{{ contact.phoneLabel }}</span>
+                <a :href="'tel:' + contact.phone.replace(/\s+/g, '')" class="method-value">{{ contact.phone }}</a>
               </div>
             </div>
 
@@ -71,16 +83,16 @@ const socialLinks = [
                 </svg>
               </div>
               <div class="method-content">
-                <span class="method-label">{{ t.contact.consultation }}</span>
-                <a href="https://calendly.com/dawid-adamski-redpulse/30min" target="_blank" rel="noopener noreferrer" class="method-value">{{ t.contact.consultationCta }}</a>
+                <span class="method-label">{{ contact.consultationLabel }}</span>
+                <a href="https://calendly.com/dawid-adamski-redpulse/30min" target="_blank" rel="noopener noreferrer" class="method-value">{{ contact.consultationCta }}</a>
               </div>
             </div>
           </div>
         </div>
-        
+
         <div class="contact-card">
           <div class="card-header">
-            <h3 class="card-title">{{ t.contact.social }}</h3>
+            <h3 class="card-title">{{ contact.socialLabel }}</h3>
           </div>
           
           <div class="social-links">
@@ -112,8 +124,8 @@ const socialLinks = [
             </a>
           </div>
           
-          <a :href="'mailto:' + t.contact.emailAddress" class="btn btn-primary btn-full">
-            {{ t.contact.cta }}
+          <a :href="'mailto:' + contact.email" class="btn btn-primary btn-full">
+            {{ contact.cta }}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>

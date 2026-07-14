@@ -1,38 +1,38 @@
 {
   "title": "Frequently asked questions",
-  "subtitle": "Answers to questions we hear most often from clients",
+  "subtitle": "Honest and plain — just like in a conversation",
   "items": [
     {
-      "question": "What kind of companies do you work with?",
-      "answer": "We mainly work with Polish small and medium-sized businesses that want to use IT and automation as growth leverage, not just a cost line. Our clients range from manufacturing and service companies to technical teams inside larger organizations."
+      "question": "Who do you work with?",
+      "answer": "With owners of small companies — trade, services, manufacturing — that run their own system (e.g. an ERP like Comarch), a warehouse, sales on marketplaces, and all their IT on a single computer under the desk. If you want it to simply work and someone to take responsibility for it — that's me."
     },
     {
-      "question": "How much does automation or AI implementation cost?",
-      "answer": "We price every project individually after a free consultation, because the scope varies a lot between clients. Simple single-process automations start at a few thousand PLN; complex AI implementations and system integrations run into tens of thousands. After our call you get a concrete quote and a timeline."
+      "question": "How much does it cost?",
+      "answer": "Managed IT care starts at 800 PLN per month. Projects and rollouts are priced by outcome — after a short conversation you know up front what you get and for how much, and you pay in instalments. I never start work without a clear quote, so you're never surprised by an invoice."
     },
     {
-      "question": "What does the engagement process look like?",
-      "answer": "We start with a free 30-minute consultation to understand your problem and business goals. Next, we prepare a solution proposal and quote. Once approved, we deliver the project in short iterations, shipping working increments every 1–2 weeks so you stay fully in control."
+      "question": "I'm not technical — is that a problem?",
+      "answer": "Quite the opposite, that's what I'm here for. I talk to you plainly, without jargon — I explain what's happening and why something is (or isn't) worth doing. You make the business decisions, I take responsibility for the work."
     },
     {
-      "question": "Why open source and Red Hat?",
-      "answer": "Open source gives you vendor independence, full control over your data, and no sudden licensing hikes. Red Hat adds enterprise-grade commercial support (OpenShift, RHEL, Ansible) required by banks, insurance firms and the public sector. It's open source flexibility combined with the reliability of a stable vendor."
+      "question": "Who owns the data and hardware?",
+      "answer": "You do. I work as a consultant — the server, database and hardware are and remain your property. I look after them, keep the backups in check and know how everything works, but at any moment you are the owner of your own infrastructure."
     },
     {
-      "question": "What AI technologies do you use?",
-      "answer": "We pick tools to fit the problem, not the other way around. We work with commercial models (OpenAI, Anthropic Claude) and open source models (Llama, Mistral) hosted locally when GDPR or confidentiality requires it. We implement AI assistants, document classification, data analysis and AI-enhanced workflow automations."
+      "question": "How fast do you respond?",
+      "answer": "Under managed care I guarantee I'll pick up the matter within 24 hours. I usually reply to a first message the same day."
     },
     {
       "question": "Do you work remotely or on-site?",
-      "answer": "We work in a hybrid model — most work (analysis, development, rollout) happens remotely, which speeds up projects and lowers cost. Kickoff workshops, key reviews and team training can be done on-site at your office anywhere in Poland."
+      "answer": "Mostly remotely — it's faster and cheaper. But when the server under the desk needs a physical look, or a training has to happen on-site, I come over. I work across Poland."
     },
     {
-      "question": "Is my company's data safe?",
-      "answer": "Yes. We operate in line with GDPR, sign Data Processing Agreements (DPA) and NDAs. For sensitive projects we use locally hosted AI models that don't send data outside your infrastructure. Code, documentation and project assets live in your repositories or dedicated, encrypted spaces."
+      "question": "What if my problem isn't your thing?",
+      "answer": "I'll say so straight. If I'm not the right person, I'll admit it honestly and — if I can — point you to someone who can help. I'd rather lose the job than your time and trust."
     },
     {
-      "question": "How quickly can we start?",
-      "answer": "You can book the first consultation straight away through our online calendar. From contract signing to project kickoff usually takes 1–2 weeks — in urgent cases we can start sooner."
+      "question": "How do we start?",
+      "answer": "Write or call and describe the problem in plain words. I'll get back to you within 24 hours and tell you honestly whether I can help, what it costs, and if it's not me — who."
     }
   ]
 }

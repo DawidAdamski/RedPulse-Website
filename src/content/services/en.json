@@ -1,31 +1,30 @@
 {
-  "title": "Our services",
-  "subtitle": "Comprehensive IT support for your business",
+  "title": "How I can help",
+  "subtitle": "You know up front what I do and what it costs. No surprises on the invoice.",
   "items": [
     {
-      "icon": "search",
-      "title": "Analysis",
-      "description": "In-depth analysis of IT processes and infrastructure. We identify areas for optimization and propose concrete solutions."
-    },
-    {
-      "icon": "zap",
-      "title": "Automation",
-      "description": "Automation of business and IT processes. We save your time and reduce the risk of human error."
-    },
-    {
-      "icon": "link",
-      "title": "Integration",
-      "description": "We connect systems and applications into a coherent ecosystem. APIs, middleware, data flows - that's our specialty."
-    },
-    {
-      "icon": "lightbulb",
-      "title": "Consulting",
-      "description": "Strategic IT consulting. We help you make the right technology decisions for your business."
+      "icon": "shield",
+      "title": "Managed IT care",
+      "price": "from 800 PLN/mo",
+      "description": "A subscription that keeps your IT under control. I guarantee I'll pick up the matter within 24h. I advise, keep documentation current and maintain a yearly hardware-replacement plan, and I cover for your IT person while they're on holiday. I work as a consultant — the server, data and hardware stay your property."
     },
     {
       "icon": "server",
-      "title": "Infrastructure",
-      "description": "IT infrastructure design and implementation. Kubernetes, OpenShift, cloud - we build solid foundations."
+      "title": "Infrastructure projects",
+      "price": "priced by outcome",
+      "description": "A concrete project with a clear result: architecture that doesn't fall over at the first failure, backups following the 3-2-1 rule, migration to new hardware. You pay for the outcome, in instalments — and you know up front what you get."
+    },
+    {
+      "icon": "zap",
+      "title": "Automation & AI",
+      "price": "custom quote",
+      "description": "I hand repetitive office work over to the computer, so no one loses hours on it. I bring in AI tools where they genuinely save time — without pushing trendy solutions for their own sake."
+    },
+    {
+      "icon": "chart",
+      "title": "AI training",
+      "price": "custom quote",
+      "description": "Hands-on training in AI tools for teams — for developers and non-technical people alike. No theory or slides for the sake of slides: straight to things you'll use the next day."
     }
   ]
 }

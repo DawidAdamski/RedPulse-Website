@@ -91,22 +91,30 @@ defineProps<{
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
-  align-items: start;
+  /* Stacked: intro + stats full-width on top, then the proof cards in a full-
+     width 3-col row below. (Side-by-side squeezed the longer case-study cards
+     into one-word-per-line columns.) */
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.about-text {
+  text-align: center;
 }
 
 .about-description {
   font-size: 1.125rem;
   line-height: 1.9;
   color: var(--gray-700);
-  margin-bottom: 2.5rem;
+  margin: 0 auto 2.5rem;
+  max-width: 820px;
 }
 
 .about-stats {
   display: flex;
   gap: 3rem;
+  justify-content: center;
 }
 
 .stat {
@@ -211,6 +219,7 @@ defineProps<{
 @media (max-width: 640px) {
   .about-stats {
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
   }
 }

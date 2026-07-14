@@ -5,7 +5,7 @@ defineProps<{
   services: {
     title: string;
     subtitle: string;
-    items: { icon: string; title: string; description: string }[];
+    items: { icon: string; title: string; price?: string; description: string }[];
   };
 }>();
 </script>
@@ -32,6 +32,7 @@ defineProps<{
           </div>
 
           <h3 class="service-title">{{ item.title }}</h3>
+          <p v-if="item.price" class="service-price">{{ item.price }}</p>
           <p class="service-description">{{ item.description }}</p>
 
           <div class="service-arrow">
@@ -79,8 +80,11 @@ defineProps<{
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Four services → a balanced 2×2 grid (a 3-col grid left one card orphaned). */
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .service-card {
@@ -114,6 +118,7 @@ defineProps<{
 .service-card .service-number,
 .service-card .service-icon,
 .service-card .service-title,
+.service-card .service-price,
 .service-card .service-description,
 .service-card .service-arrow {
   position: relative;
@@ -123,6 +128,7 @@ defineProps<{
 .service-card:hover .service-number,
 .service-card:hover .service-icon,
 .service-card:hover .service-title,
+.service-card:hover .service-price,
 .service-card:hover .service-description,
 .service-card:hover .service-arrow {
   color: var(--white);
@@ -159,8 +165,17 @@ defineProps<{
 .service-title {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--black);
+  transition: color var(--transition-base);
+}
+
+.service-price {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--red-500);
+  margin-bottom: 1rem;
   transition: color var(--transition-base);
 }
 

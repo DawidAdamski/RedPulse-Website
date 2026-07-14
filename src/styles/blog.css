@@ -169,6 +169,66 @@
   margin-bottom: 2.5rem;
 }
 
+/* ---------- Listen / text-to-speech bar ---------- */
+.listen-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.listen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 40px;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.listen-btn:hover,
+.listen-btn.is-active {
+  background: var(--red-500);
+  border-color: var(--red-500);
+  color: var(--white);
+}
+
+.listen-btn:focus-visible,
+.listen-stop:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+
+.listen-stop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--gray-600);
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.listen-stop:hover {
+  color: var(--red-500);
+  border-color: var(--red-500);
+}
+
 /* ---------- Prose (rendered Markdown) ---------- */
 .prose {
   color: var(--gray-700);
@@ -286,61 +346,66 @@
   margin-bottom: 0.5rem;
 }
 
+/* Per-level identification colors are interpolated in ArticleDepth.vue and set
+   inline as --level-color / --level-tint on each step and section, so any level
+   count (2–5) runs calm-teal → deep-brand-red. The rules below just consume them. */
 .depth-step {
   flex: 1 1 180px;
   min-height: 44px;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  align-items: flex-start;
+  gap: 0.4rem;
   padding: 0.85rem 1rem;
   text-align: left;
   background: var(--white);
   border: 1px solid var(--gray-200);
-  border-left: 3px solid var(--gray-200);
+  border-left: 3px solid var(--level-color, var(--gray-300));
   color: var(--gray-600);
   cursor: pointer;
   transition: border-color var(--transition-base), color var(--transition-base),
-    background var(--transition-base), opacity var(--transition-base);
+    background var(--transition-base), opacity var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .depth-step:hover {
-  border-color: var(--red-500);
-  border-left-color: var(--red-500);
+  border-color: var(--level-color);
   color: var(--black);
 }
 
 .depth-step:focus-visible {
-  outline: 2px solid var(--red-500);
+  outline: 2px solid var(--level-color, var(--red-500));
   outline-offset: 2px;
 }
 
 .depth-step.is-revealed {
   color: var(--black);
-  border-left-color: var(--gray-400);
 }
 
 .depth-step.is-active {
-  border-color: var(--red-500);
-  border-left-color: var(--red-500);
+  border-color: var(--level-color);
   color: var(--black);
-  background: rgba(220, 38, 38, 0.05);
+  background: var(--level-tint);
+  box-shadow: inset 0 0 0 1px var(--level-color);
 }
 
 .depth-step.is-locked {
-  opacity: 0.55;
+  opacity: 0.6;
   border-style: dashed;
 }
 
+/* The "ribbon": a small colored tag identifying the level. */
 .depth-step-index {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--gray-500);
-}
-
-.depth-step.is-active .depth-step-index {
-  color: var(--red-500);
+  letter-spacing: 0.1em;
+  color: var(--white);
+  background: var(--level-color, var(--gray-400));
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  line-height: 1.4;
 }
 
 .depth-step-name {
@@ -361,20 +426,8 @@
 .depth-level {
   position: relative;
   padding-left: 1.25rem;
-  border-left: 2px solid var(--gray-200);
-}
-
-/* Subtle "going deeper" gradient: each level a touch deeper/redder */
-.depth-level--1 {
-  border-left-color: var(--gray-200);
-}
-
-.depth-level--2 {
-  border-left-color: rgba(220, 38, 38, 0.35);
-}
-
-.depth-level--3 {
-  border-left-color: var(--red-500);
+  /* Left rule carries the level's identification color (set on .depth-level--N). */
+  border-left: 2px solid var(--level-color, var(--gray-200));
 }
 
 .depth-level-header {
@@ -382,7 +435,7 @@
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--gray-500);
+  color: var(--level-color, var(--gray-500));
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--gray-200);

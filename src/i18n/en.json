@@ -10,9 +10,9 @@
   "hero": {
     "tagline": "Make it simple and innovative",
     "title": "RedPulse Innovations",
-    "subtitle": "IT should help and be an investment, not just a cost",
-    "description": "IT consulting, process automation and AI implementations for small and medium-sized businesses. We specialize in open source solutions and Red Hat technologies.",
-    "cta": "Let's talk"
+    "subtitle": "Your IT should just work. I take care of that.",
+    "description": "I'm an IT architect with a corporate background. I take care of the server, data and hardware of small businesses — so you can run your company instead of the computer under the desk. I also fix the things even the software vendor's own support couldn't crack.",
+    "cta": "Write to me"
   },
   "blog": {
     "title": "Blog",
@@ -24,24 +24,15 @@
     "noPosts": "First posts coming soon.",
     "readingTime": "min read",
     "depth": {
-      "surface": { "name": "Surface", "persona": "For decision-makers" },
-      "dive":    { "name": "Dive",    "persona": "For team leads" },
-      "depth":   { "name": "Depth",   "persona": "For engineers" },
       "goDeeper": "Dive deeper",
       "readingTime": "min read",
       "levelLabel": "Level"
+    },
+    "listen": {
+      "play": "Listen",
+      "pause": "Pause",
+      "resume": "Resume"
     }
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "Let's talk about your project",
-    "description": "Have questions or want to discuss your project? Write to us - we respond within 24 hours.",
-    "email": "Email",
-    "emailAddress": "contact@redpulse.tech",
-    "consultation": "Consultation",
-    "consultationCta": "Book a consultation",
-    "social": "Social Media",
-    "cta": "Contact us"
   },
   "footer": {
     "tagline": "Make it simple and innovative",

@@ -1,31 +1,30 @@
 {
-  "title": "Nasze usługi",
-  "subtitle": "Kompleksowe wsparcie IT dla Twojego biznesu",
+  "title": "Jak mogę pomóc",
+  "subtitle": "Wiesz z góry, co robię i za ile. Bez niespodzianek na fakturze.",
   "items": [
     {
-      "icon": "search",
-      "title": "Analiza",
-      "description": "Dogłębna analiza procesów i infrastruktury IT. Identyfikujemy obszary do optymalizacji i proponujemy konkretne rozwiązania."
-    },
-    {
-      "icon": "zap",
-      "title": "Automatyzacja",
-      "description": "Automatyzacja procesów biznesowych i IT. Oszczędzamy Twój czas i redukujemy ryzyko błędów ludzkich."
-    },
-    {
-      "icon": "link",
-      "title": "Integracja",
-      "description": "Łączymy systemy i aplikacje w spójny ekosystem. API, middleware, przepływy danych - to nasza specjalność."
-    },
-    {
-      "icon": "lightbulb",
-      "title": "Doradztwo",
-      "description": "Strategiczne doradztwo IT. Pomagamy podejmować właściwe decyzje technologiczne dla Twojego biznesu."
+      "icon": "shield",
+      "title": "Stała opieka IT",
+      "price": "od 800 zł/mc",
+      "description": "Abonament, w którym Twoje IT jest pod kontrolą. Gwarantuję, że zajmę się tematem w 24h. Doradzam, prowadzę aktualną dokumentację i roczny plan wymian sprzętu, przejmuję dyżur, gdy Twój człowiek od IT jest na urlopie. Działam jako konsultant — serwer, dane i sprzęt zostają Twoją własnością."
     },
     {
       "icon": "server",
-      "title": "Infrastruktura",
-      "description": "Projektowanie i wdrażanie infrastruktury IT. Kubernetes, OpenShift, chmura - budujemy solidne fundamenty."
+      "title": "Projekty infrastrukturalne",
+      "price": "wycena za rezultat",
+      "description": "Konkretny projekt z jasnym efektem: architektura, która nie pada przy pierwszej awarii, kopie zapasowe według zasady 3-2-1, migracja na nowy sprzęt. Płacisz za rezultat, w transzach — i z góry wiesz, co dostajesz."
+    },
+    {
+      "icon": "zap",
+      "title": "Automatyzacje i AI",
+      "price": "wycena indywidualna",
+      "description": "Powtarzalną pracę biurową oddaję komputerowi, żeby nikt nie tracił na nią godzin. Wdrażam narzędzia AI tam, gdzie realnie oszczędzają czas — bez wciskania modnych rozwiązań na siłę."
+    },
+    {
+      "icon": "chart",
+      "title": "Szkolenia z AI",
+      "price": "wycena indywidualna",
+      "description": "Praktyczne szkolenia z narzędzi AI dla zespołów — zarówno dla programistów, jak i dla osób nietechnicznych. Bez teorii i slajdów dla samych slajdów: od razu rzeczy, których użyjesz następnego dnia."
     }
   ]
 }

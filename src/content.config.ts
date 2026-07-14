@@ -16,10 +16,20 @@ const blogSchema = z.object({
   heroImage: z.string().optional(),
   tags: z.array(z.string()).default([]),
   draft: z.boolean().default(false),
-  // Depth levels: layered content, from decision-maker to engineer.
-  surface: z.string(),            // required — the "what & why" layer
-  dive: z.string().optional(),    // "how it works" layer
-  depth: z.string().optional(),   // "configs & code" layer
+  // Depth levels: 1–5 layered readings of the same topic. Each level has its
+  // own per-post name + audience (who it's for) and its markdown body. The
+  // first level is the required "surface"; a single level renders as a plain
+  // article, two or more turn on the interactive depth reader.
+  levels: z
+    .array(
+      z.object({
+        name: z.string(),
+        audience: z.string(),
+        body: z.string(),
+      })
+    )
+    .min(1)
+    .max(5),
 });
 
 const blogPl = defineCollection({
@@ -50,7 +60,8 @@ const services = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
-    items: z.array(z.object({ icon: z.string(), title: z.string(), description: z.string() })).default([]),
+    // `price` is an optional "od ..." / "wycena za rezultat" line shown on the card.
+    items: z.array(z.object({ icon: z.string(), title: z.string(), price: z.string().optional(), description: z.string() })).default([]),
   }),
 });
 
@@ -63,4 +74,23 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { blogPl, blogEn, about, services, faq };
+// Contact block — moved out of i18n so it is CMS-editable. `phone` is optional:
+// when empty it is hidden on the site, and it appears once filled in via /admin.
+const contact = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/contact' }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    description: z.string(),
+    emailLabel: z.string(),
+    email: z.string(),
+    phoneLabel: z.string(),
+    phone: z.string().optional().default(''),
+    consultationLabel: z.string(),
+    consultationCta: z.string(),
+    socialLabel: z.string(),
+    cta: z.string(),
+  }),
+});
+
+export const collections = { blogPl, blogEn, about, services, faq, contact };

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.vue';
 import Footer from '../../components/Footer.vue';
 import ArticleDepth from '../../components/ArticleDepth.vue';
+import ListenButton from '../../components/ListenButton.vue';
 import { getTranslations } from '../../i18n';
 import { getCollection } from 'astro:content';
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
@@ -18,9 +19,25 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const processor = await createMarkdownProcessor();
-const surfaceHtml = (await processor.render(post.data.surface)).code;
-const diveHtml = post.data.dive ? (await processor.render(post.data.dive)).code : null;
-const depthHtml = post.data.depth ? (await processor.render(post.data.depth)).code : null;
+const levels = await Promise.all(
+  post.data.levels.map(async (lvl) => ({
+    name: lvl.name,
+    audience: lvl.audience,
+    html: (await processor.render(lvl.body)).code,
+  }))
+);
+
+// Plain text for text-to-speech: strip code blocks, then tags/entities.
+const stripForSpeech = (html: string) =>
+  html
+    .replace(/<pre[\s\S]*?<\/pre>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z0-9#]+;/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+const speechText = [post.data.title, ...levels.map((l) => stripForSpeech(l.html))]
+  .filter(Boolean)
+  .join('. ');
 
 const t = getTranslations('pl');
 const currentLocale = 'pl';
@@ -95,13 +112,8 @@ const blogPostingSchema = {
       {post.data.heroImage && (
         <img class="post-hero" src={post.data.heroImage} alt={post.data.title} />
       )}
-      <ArticleDepth
-        surfaceHtml={surfaceHtml}
-        diveHtml={diveHtml}
-        depthHtml={depthHtml}
-        labels={t.blog.depth}
-        client:visible
-      />
+      <ListenButton text={speechText} lang="pl-PL" labels={t.blog.listen} client:load />
+      <ArticleDepth levels={levels} labels={t.blog.depth} client:visible />
     </article>
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} basePath="/" client:load />

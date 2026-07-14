@@ -10,9 +10,9 @@
   "hero": {
     "tagline": "Make it simple and innovative",
     "title": "RedPulse Innovations",
-    "subtitle": "IT ma pomagać i być inwestycją, a nie tylko kosztem",
-    "description": "Konsulting IT, automatyzacja procesów i wdrożenia AI dla małych i średnich firm. Specjalizujemy się w rozwiązaniach open source i technologiach Red Hat.",
-    "cta": "Porozmawiajmy"
+    "subtitle": "Twoje IT ma po prostu działać. Ja się tym zajmuję.",
+    "description": "Jestem architektem IT z korporacyjnym doświadczeniem. Opiekuję się serwerem, danymi i sprzętem małych firm — tak, żebyś Ty mógł zajmować się firmą, a nie komputerem pod biurkiem. Naprawiam też rzeczy, z którymi nie poradził sobie nawet serwis producenta oprogramowania.",
+    "cta": "Napisz do mnie"
   },
   "blog": {
     "title": "Blog",
@@ -24,24 +24,15 @@
     "noPosts": "Wkrótce pojawią się pierwsze wpisy.",
     "readingTime": "min czytania",
     "depth": {
-      "surface": { "name": "Powierzchnia", "persona": "Dla decydenta" },
-      "dive":    { "name": "Nurkowanie",   "persona": "Dla team leada" },
-      "depth":   { "name": "Głębia",       "persona": "Dla inżyniera" },
       "goDeeper": "Zanurkuj głębiej",
       "readingTime": "min czytania",
       "levelLabel": "Poziom"
+    },
+    "listen": {
+      "play": "Odsłuchaj",
+      "pause": "Wstrzymaj",
+      "resume": "Wznów"
     }
-  },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Porozmawiajmy o Twoim projekcie",
-    "description": "Masz pytania lub chcesz omówić swój projekt? Napisz do nas - odpowiadamy w ciągu 24 godzin.",
-    "email": "Email",
-    "emailAddress": "kontakt@redpulse.tech",
-    "consultation": "Konsultacja",
-    "consultationCta": "Umów się na konsultację",
-    "social": "Social Media",
-    "cta": "Napisz do nas"
   },
   "footer": {
     "tagline": "Make it simple and innovative",

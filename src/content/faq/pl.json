@@ -1,38 +1,38 @@
 {
   "title": "Najczęściej zadawane pytania",
-  "subtitle": "Odpowiedzi na pytania, które najczęściej słyszymy od klientów",
+  "subtitle": "Uczciwie i po ludzku — tak jak w rozmowie",
   "items": [
     {
-      "question": "Dla jakich firm pracujecie?",
-      "answer": "Współpracujemy głównie z małymi i średnimi firmami z Polski, które chcą wykorzystać IT i automatyzację jako dźwignię rozwoju — nie tylko jako koszt. Naszymi klientami są zarówno firmy produkcyjne, usługowe, jak i zespoły techniczne w większych organizacjach."
+      "question": "Dla kogo pracujesz?",
+      "answer": "Dla właścicieli małych firm — handel, usługi, produkcja — które mają swój system (np. Comarch), magazyn, sprzedaż na Allegro i całe IT na jednym komputerze pod biurkiem. Jeśli chcesz, żeby to po prostu działało, a ktoś brał za to odpowiedzialność — to do mnie."
     },
     {
-      "question": "Ile kosztuje wdrożenie automatyzacji lub AI?",
-      "answer": "Każdy projekt wyceniamy indywidualnie po bezpłatnej konsultacji, bo zakres mocno różni się między klientami. Proste automatyzacje pojedynczych procesów zaczynają się od kilku tysięcy złotych, kompleksowe wdrożenia AI i integracje systemów to projekty liczone w dziesiątkach tysięcy. Po rozmowie dostajesz konkretną wycenę i harmonogram."
+      "question": "Ile to kosztuje?",
+      "answer": "Stała opieka IT zaczyna się od 800 zł miesięcznie. Projekty i wdrożenia wyceniam za rezultat — po krótkiej rozmowie wiesz z góry, co dostajesz i za ile, i płacisz w transzach. Nie zaczynam pracy bez jasnej wyceny, żebyś nigdy nie był zaskoczony fakturą."
     },
     {
-      "question": "Jak wygląda proces współpracy?",
-      "answer": "Zaczynamy od bezpłatnej 30-minutowej konsultacji, podczas której rozumiemy Twój problem i cele biznesowe. Następnie przygotowujemy propozycję rozwiązania i wycenę. Po akceptacji realizujemy projekt w krótkich iteracjach, dostarczając działające fragmenty co 1–2 tygodnie, żebyś miał pełną kontrolę nad kierunkiem."
+      "question": "Nie znam się na IT — czy to problem?",
+      "answer": "Wręcz przeciwnie, od tego jestem ja. Rozmawiam z Tobą po ludzku, bez żargonu — tłumaczę, co się dzieje i dlaczego warto (albo nie warto) coś robić. Ty podejmujesz decyzje biznesowe, ja biorę odpowiedzialność za robotę."
     },
     {
-      "question": "Czemu open source i Red Hat?",
-      "answer": "Open source daje Ci niezależność od dostawcy, pełną kontrolę nad danymi i brak nagłych podwyżek licencji. Red Hat dokłada do tego komercyjne wsparcie klasy enterprise (OpenShift, RHEL, Ansible), którego wymagają banki, ubezpieczyciele i sektor publiczny. To połączenie elastyczności open source z bezpieczeństwem stabilnego dostawcy."
+      "question": "Czyje zostają dane i sprzęt?",
+      "answer": "Twoje. Działam jako konsultant — serwer, baza danych i sprzęt są i pozostają Twoją własnością. Ja się nimi opiekuję, pilnuję kopii zapasowych i wiem, jak wszystko działa, ale w każdej chwili to Ty jesteś właścicielem swojej infrastruktury."
     },
     {
-      "question": "Jakie technologie AI stosujecie?",
-      "answer": "Dobieramy narzędzia do problemu, nie odwrotnie. Pracujemy z modelami komercyjnymi (OpenAI, Anthropic Claude) oraz modelami open source (Llama, Mistral) uruchamianymi lokalnie, gdy wymaga tego RODO lub poufność danych. Wdrażamy asystentów AI, klasyfikację dokumentów, analizę danych i automatyzacje workflow z elementami AI."
+      "question": "Jak szybko reagujesz?",
+      "answer": "W ramach stałej opieki gwarantuję, że zajmę się tematem w ciągu 24 godzin. Na pierwszą wiadomość odpowiadam zwykle jeszcze tego samego dnia."
     },
     {
-      "question": "Czy pracujecie zdalnie czy na miejscu?",
-      "answer": "Pracujemy w modelu hybrydowym — większość prac (analiza, development, wdrożenia) robimy zdalnie, co przyspiesza projekt i obniża koszty. Warsztaty startowe, kluczowe przeglądy i szkolenia zespołu możemy przeprowadzić u Ciebie w biurze na terenie Polski."
+      "question": "Pracujesz zdalnie czy u mnie?",
+      "answer": "Najczęściej zdalnie — to szybciej i taniej. Ale kiedy trzeba fizycznie zajrzeć do serwera pod biurkiem albo poprowadzić szkolenie na miejscu, przyjeżdżam. Działam na terenie Polski."
     },
     {
-      "question": "Czy dane mojej firmy są bezpieczne?",
-      "answer": "Tak. Pracujemy zgodnie z RODO, podpisujemy umowy powierzenia przetwarzania danych (DPA) i NDA. Dla wrażliwych projektów stosujemy lokalne modele AI, które nie wysyłają danych poza Twoją infrastrukturę. Kod, dokumentacja i materiały projektowe trzymamy w Twoich repozytoriach albo w dedykowanych, szyfrowanych przestrzeniach."
+      "question": "Co, jeśli mój problem to nie Twoja działka?",
+      "answer": "Powiem to wprost. Jeśli nie jestem właściwą osobą, uczciwie to przyznam i — jeśli będę mógł — wskażę kogoś, kto pomoże. Wolę stracić zlecenie niż Twój czas i zaufanie."
     },
     {
-      "question": "Jak szybko możemy zacząć?",
-      "answer": "Pierwszą konsultację możesz umówić od razu przez kalendarz online. Od podpisania umowy do startu prac upływa zazwyczaj 1–2 tygodnie — w pilnych przypadkach jesteśmy w stanie zacząć szybciej."
+      "question": "Jak zacząć?",
+      "answer": "Napisz albo zadzwoń i opisz problem po ludzku. Odezwę się w ciągu 24 godzin i uczciwie powiem, czy umiem pomóc, ile to kosztuje, a jeśli akurat nie ja — podpowiem, kto."
     }
   ]
 }
