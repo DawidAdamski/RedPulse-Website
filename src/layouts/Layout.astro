@@ -27,7 +27,11 @@ const {
 } = Astro.props;
 
 const skipText = lang === 'pl' ? 'Przejdź do treści' : 'Skip to content';
-const ogImage = 'https://redpulse.tech/og-image.png';
+// Link preview (docs/REDESIGN.md, D3): the face and the promise, not the logo —
+// referrals see this thumbnail before they see the site. One per language.
+const ogImage = lang === 'en'
+  ? 'https://redpulse.tech/og-image-en.png'
+  : 'https://redpulse.tech/og-image.png';
 
 const site = Astro.site || 'https://redpulse.tech';
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, site);

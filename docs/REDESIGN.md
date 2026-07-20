@@ -2,7 +2,8 @@
 
 > Źródło: analiza porównawcza redpulse.tech vs marcinkowski.ai (rozmowa z Claude, 2026-07-20).
 > Status: w trakcie. Kolejność wg priorytetu w ramach sekcji.
-> Zrobione (2026-07-21): A2–A4, B1–B3, D1, D2, C3. A1 tymczasowo (awatar 400×400).
+> Zrobione (2026-07-21): A2–A4, B1–B3, C3, D1–D3. A1 tymczasowo (awatar 400×400).
+> Otwarte: A1b (sesja), C1, C2 (czekają na materiał od Dawida), E (wiki), przegląd tekstów.
 
 ## Kontekst / diagnoza
 
@@ -28,15 +29,24 @@
 
 ## C. Wiarygodność — priorytet 2
 
-- [ ] **C1. Case studies jako osobne podstrony** w formacie: sytuacja → co zrobiłem → efekt (z liczbą: godziny przestoju, koszt awarii, oszczędność). Najmocniejszy materiał: „awaria, której nie znalazł serwis producenta".
-- [ ] **C2. 2–3 opinie klientów** z imieniem i firmą (min. branża + miasto, np. „właściciel hurtowni, Bydgoszcz"). Same liczby (24h, 4,67/5, 200+) bez twarzy działają o połowę słabiej.
+- [ ] **C1. Case studies jako osobne podstrony** — TODO, blokuje brak materiału.
+  Potrzebne od Dawida, per case: branża i miasto klienta (bez nazwy, jeśli nie ma zgody),
+  co się działo przed, co zrobiłeś, efekt **z liczbą** (godziny przestoju, koszt awarii,
+  oszczędność), ile to trwało. Bez liczby case study jest tylko anegdotą.
+  Kandydaci: „awaria, której nie znalazł serwis producenta", wieloletnia opieka nad firmą
+  handlową, optymalizacja bazy. Technicznie: nowa kolekcja `caseStudies` + `/realizacje/[slug]`,
+  ta sama mechanika co blog. Oryginalna notatka: w formacie: sytuacja → co zrobiłem → efekt (z liczbą: godziny przestoju, koszt awarii, oszczędność). Najmocniejszy materiał: „awaria, której nie znalazł serwis producenta".
+- [ ] **C2. 2–3 opinie klientów** — TODO, blokuje brak zgód.
+  Potrzebne: pisemna zgoda klienta na publikację (wystarczy mail), treść opinii oraz to,
+  jak ma być podpisana — imię + firma, albo minimum „właściciel hurtowni, Bydgoszcz".
+  Bez zgody nie publikujemy nawet zanonimizowanej opinii. Oryginalna notatka: z imieniem i firmą (min. branża + miasto, np. „właściciel hurtowni, Bydgoszcz"). Same liczby (24h, 4,67/5, 200+) bez twarzy działają o połowę słabiej.
 - [x] **C3. Blog na stronie głównej** — sekcja z 2–3 ostatnimi wpisami (wzór: „Wybrane teksty" u Janusza). Buduje wrażenie „ten człowiek żyje tematem".
 
 ## D. Struktura i konwersja — priorytet 3
 
 - [x] **D1. Jedna główna ścieżka CTA.** Obecnie: przycisk KONTAKT w nagłówku + link Kontakt w menu + „Napisz do mnie" + „Umów rozmowę". Rekomendacja: główne CTA = **„Umów rozmowę"** (niższy próg niż mail), reszta drugorzędna.
 - [x] **D2. Sekcja „Jak wygląda współpraca"** — 3 kroki: rozmowa → diagnoza → opieka. Po przeczytaniu usług klient ma wiedzieć, co się stanie po kliknięciu.
-- [ ] **D3. OG image** (podgląd linku w Messengerze/WhatsApp) — z twarzą i obietnicą, nie z logo. Klienci z polecenia zobaczą najpierw tę miniaturę.
+- [x] **D3. OG image** (podgląd linku w Messengerze/WhatsApp) — z twarzą i obietnicą, nie z logo. Klienci z polecenia zobaczą najpierw tę miniaturę.
 
 ---
 
