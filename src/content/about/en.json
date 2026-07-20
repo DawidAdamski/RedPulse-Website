@@ -1,11 +1,16 @@
 {
   "title": "About me",
   "subtitle": "One person who handles all of your IT — and takes responsibility for it",
-  "description": "I'm an IT architect. For years in a corporate environment I designed systems, rolled out automation and trained teams — I learned to see IT from a bird's-eye view and quickly spot where the real problem lies. Today I work solo, directly with small business owners. And that's an advantage: you talk to the person who does the work and takes responsibility for it, not a consultant who passes your case along. I don't sell hours. I sell peace of mind — so your server, data and hardware simply work, and you can focus on your business.",
+  "description": "I'm an IT architect. For years in a corporate environment I designed systems, rolled out automation and trained teams. Today I work solo, directly with small business owners — you talk to the person who does the work, not a consultant who passes your case along. I don't sell hours. I take responsibility for your server, data and hardware working, so you can focus on your business.",
   "stats": [
-    { "value": "24h", "label": "Response to a request" },
-    { "value": "4.67/5", "label": "Rating of my trainings" },
-    { "value": "200+", "label": "Specialists trained" }
+    {
+      "value": "24h",
+      "label": "Response to a request"
+    },
+    {
+      "value": "2000+",
+      "label": "Training participants"
+    }
   ],
   "highlights": [
     {
@@ -16,12 +21,12 @@
     {
       "icon": "shield",
       "title": "Years of care over the whole infrastructure",
-      "description": "A small trading company: for years I've looked after its server, database, backups, network and hardware-replacement plan. I optimized the database so effectively that even the software vendor was surprised."
+      "description": "A small trading company: for years I've looked after its server, database, backups, network and hardware-replacement plan. I know that infrastructure well enough to see what will break before you notice it."
     },
     {
       "icon": "bot",
-      "title": "AI training for nearly 200 developers",
-      "description": "I ran an AI-tools training for around 200 developers at a global IT company — rated 4.67/5. I've also presented to an audience of 1,500 people."
+      "title": "Training for IT teams and non-technical people",
+      "description": "I ran training in AI tools and technology at a global IT company — single sessions drew up to 2,000 people. I also run monthly sessions in the Brave community."
     }
   ]
 }

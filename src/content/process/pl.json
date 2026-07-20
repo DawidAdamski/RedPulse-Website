@@ -11,14 +11,14 @@
     {
       "icon": "search",
       "title": "Diagnoza",
-      "duration": "zwykle 1–2 tygodnie",
+      "duration": "termin ustalamy na rozmowie",
       "description": "Zaglądam do serwera, kopii zapasowych i sieci, i spisuję, co masz, co jest ryzykiem i co zrobić najpierw. Dostajesz konkretny plan z cenami — możesz z nim pójść nawet do kogoś innego."
     },
     {
       "icon": "shield",
       "title": "Opieka",
       "duration": "od 800 zł/mc",
-      "description": "Przejmuję temat na stałe: pilnuję kopii, aktualizacji i planu wymian sprzętu, reaguję w 24h. Serwer, dane i sprzęt zostają Twoją własnością — w każdej chwili możesz je przejąć z dokumentacją."
+      "description": "Przejmuję temat na stałe: pilnuję kopii, aktualizacji i planu wymian sprzętu, na zgłoszenie odpowiadam w 24h. Serwer, dane i sprzęt zostają Twoją własnością — w każdej chwili możesz je przejąć z dokumentacją."
     }
   ],
   "cta": "Umów rozmowę"

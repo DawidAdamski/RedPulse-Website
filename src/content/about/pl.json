@@ -1,11 +1,16 @@
 {
   "title": "O mnie",
   "subtitle": "Jedna osoba, która ogarnia całe Twoje IT — i bierze za nie odpowiedzialność",
-  "description": "Jestem architektem IT. Przez lata w korporacji projektowałem systemy, wdrażałem automatyzację i szkoliłem zespoły — nauczyłem się patrzeć na IT z lotu ptaka i szybko widzieć, gdzie naprawdę leży problem. Dziś pracuję sam, wprost z właścicielami małych firm. I to jest zaleta: rozmawiasz z osobą, która wykonuje robotę i bierze za nią odpowiedzialność, a nie z konsultantem, który przekaże sprawę dalej. Nie sprzedaję godzin. Sprzedaję święty spokój — żeby Twój serwer, dane i sprzęt po prostu działały, a Ty mógł zajmować się firmą.",
+  "description": "Jestem architektem IT. Przez lata w korporacji projektowałem systemy, wdrażałem automatyzację i szkoliłem zespoły. Dziś pracuję sam, wprost z właścicielami małych firm — rozmawiasz z osobą, która wykonuje robotę, a nie z konsultantem, który przekaże sprawę dalej. Nie sprzedaję godzin. Odpowiadam za to, żeby Twój serwer, dane i sprzęt działały, a Ty mógł zajmować się firmą.",
   "stats": [
-    { "value": "24h", "label": "Reakcja na zgłoszenie" },
-    { "value": "4,67/5", "label": "Ocena moich szkoleń" },
-    { "value": "200+", "label": "Przeszkolonych specjalistów" }
+    {
+      "value": "24h",
+      "label": "Reakcja na zgłoszenie"
+    },
+    {
+      "value": "2000+",
+      "label": "Uczestników moich szkoleń"
+    }
   ],
   "highlights": [
     {
@@ -16,12 +21,12 @@
     {
       "icon": "shield",
       "title": "Wieloletnia opieka nad całą infrastrukturą",
-      "description": "Mała firma handlowa: od lat pilnuję jej serwera, bazy danych, kopii zapasowych, sieci i planu wymian sprzętu. Bazę zoptymalizowałem tak skutecznie, że zdziwił się nawet producent oprogramowania."
+      "description": "Mała firma handlowa: od lat pilnuję jej serwera, bazy danych, kopii zapasowych, sieci i planu wymian sprzętu. Znam tę infrastrukturę na tyle dobrze, że wiem, co się w niej zepsuje, zanim to zauważysz."
     },
     {
       "icon": "bot",
-      "title": "Szkolenia z AI dla blisko 200 programistów",
-      "description": "Poprowadziłem szkolenie z narzędzi AI dla około 200 programistów w globalnej firmie IT — ocena 4,67/5. Prezentowałem też przed salą 1500 osób."
+      "title": "Szkolenia dla zespołów IT i osób nietechnicznych",
+      "description": "Prowadziłem szkolenia z narzędzi AI i technologii w globalnej firmie IT — w pojedynczych sesjach brało udział do 2000 osób. Co miesiąc prowadzę też spotkania w społeczności Brave."
     }
   ]
 }

@@ -6,7 +6,7 @@
       "icon": "shield",
       "title": "Stała opieka IT",
       "price": "od 800 zł/mc",
-      "description": "Abonament, w którym Twoje IT jest pod kontrolą. Gwarantuję, że zajmę się tematem w 24h. Doradzam, prowadzę aktualną dokumentację i roczny plan wymian sprzętu, przejmuję dyżur, gdy Twój człowiek od IT jest na urlopie. Działam jako konsultant — serwer, dane i sprzęt zostają Twoją własnością."
+      "description": "Abonament, w którym Twoje IT jest pod kontrolą. Na zgłoszenie odpowiadam w ciągu 24 godzin. Doradzam, prowadzę aktualną dokumentację i roczny plan wymian sprzętu, przejmuję dyżur, gdy Twój człowiek od IT jest na urlopie. Działam jako konsultant — serwer, dane i sprzęt zostają Twoją własnością."
     },
     {
       "icon": "server",
@@ -24,7 +24,7 @@
       "icon": "chart",
       "title": "Szkolenia z AI",
       "price": "wycena indywidualna",
-      "description": "Praktyczne szkolenia z narzędzi AI dla zespołów — zarówno dla programistów, jak i dla osób nietechnicznych. Bez teorii i slajdów dla samych slajdów: od razu rzeczy, których użyjesz następnego dnia."
+      "description": "Praktyczne szkolenia z narzędzi AI dla zespołów — zarówno dla programistów, jak i dla osób nietechnicznych. Od razu rzeczy, których użyjesz następnego dnia, zamiast teorii i slajdów."
     }
   ]
 }

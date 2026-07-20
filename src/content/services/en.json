@@ -6,7 +6,7 @@
       "icon": "shield",
       "title": "Managed IT care",
       "price": "from 800 PLN/mo",
-      "description": "A subscription that keeps your IT under control. I guarantee I'll pick up the matter within 24h. I advise, keep documentation current and maintain a yearly hardware-replacement plan, and I cover for your IT person while they're on holiday. I work as a consultant — the server, data and hardware stay your property."
+      "description": "A subscription that keeps your IT under control. I reply to a request within 24 hours. I advise, keep documentation current and maintain a yearly hardware-replacement plan, and I cover for your IT person while they're on holiday. I work as a consultant — the server, data and hardware stay your property."
     },
     {
       "icon": "server",
@@ -24,7 +24,7 @@
       "icon": "chart",
       "title": "AI training",
       "price": "custom quote",
-      "description": "Hands-on training in AI tools for teams — for developers and non-technical people alike. No theory or slides for the sake of slides: straight to things you'll use the next day."
+      "description": "Hands-on training in AI tools for teams — for developers and non-technical people alike. Straight to things you'll use the next day, instead of theory and slides."
     }
   ]
 }
