@@ -3,7 +3,13 @@
 > Źródło: analiza porównawcza redpulse.tech vs marcinkowski.ai (rozmowa z Claude, 2026-07-20).
 > Status: w trakcie. Kolejność wg priorytetu w ramach sekcji.
 > Zrobione (2026-07-21): A2–A4, B1–B3, C3, D1–D3. A1 tymczasowo (awatar 400×400).
-> Otwarte: A1b (sesja), C1, C2 (czekają na materiał od Dawida), treść wiki (szkielet gotowy).
+> Otwarte: A1b (sesja), C1, C2 (czekają na materiał od Dawida).
+>
+> **Przepozycjonowanie (2026-07-21):** „stała opieka IT" wypadła z oferty, a wraz z nią
+> zawężenie do małych firm. Strona mówi teraz o projektach i diagnostyce IT. Rozmowa jest
+> płatna: konsultacja 200 zł netto / 30 min, diagnoza 300 zł netto / godz., koszt diagnozy
+> odliczany od wyceny projektu. Uwagi w tym dokumencie sprzed tej daty odnoszą się do
+> starego pozycjonowania.
 
 ## Kontekst / diagnoza
 

@@ -4,11 +4,11 @@
   "items": [
     {
       "question": "Dla kogo pracujesz?",
-      "answer": "Dla właścicieli małych firm — handel, usługi, produkcja — które mają swój system (np. Comarch), magazyn, sprzedaż na Allegro i całe IT na jednym komputerze pod biurkiem. Jeśli chcesz, żeby to po prostu działało, a ktoś brał za to odpowiedzialność — to do mnie."
+      "answer": "Dla firm, które mają realny problem z IT i chcą, żeby ktoś rozwiązał go od początku do końca — handel, usługi, produkcja. Pracuję i z firmami bez własnego IT, i z takimi, które mają swojego informatyka, ale potrzebują kogoś z zewnątrz do konkretnego tematu."
     },
     {
       "question": "Ile to kosztuje?",
-      "answer": "Stała opieka IT zaczyna się od 800 zł miesięcznie. Projekty i wdrożenia wyceniam za rezultat — po krótkiej rozmowie wiesz z góry, co dostajesz i za ile, i płacisz w transzach. Nie zaczynam pracy bez jasnej wyceny, żebyś nigdy nie był zaskoczony fakturą."
+      "answer": "Konsultacja to 200 zł netto za 30 minut, diagnoza 300 zł netto za godzinę. Jeśli po diagnozie robimy projekt, jej koszt odliczam od wyceny. Projekty wyceniam za rezultat — po rozmowie wiesz z góry, co dostajesz i za ile, i płacisz w transzach."
     },
     {
       "question": "Nie znam się na IT — czy to problem?",
@@ -16,7 +16,7 @@
     },
     {
       "question": "Czyje zostają dane i sprzęt?",
-      "answer": "Twoje. Działam jako konsultant — serwer, baza danych i sprzęt są i pozostają Twoją własnością. Ja się nimi opiekuję, pilnuję kopii zapasowych i wiem, jak wszystko działa, ale w każdej chwili to Ty jesteś właścicielem swojej infrastruktury."
+      "answer": "Twoje. Działam jako konsultant — serwer, baza danych i sprzęt są i pozostają Twoją własnością. Zostawiam też dokumentację, żeby ktokolwiek inny mógł przy tym pracować po mnie."
     },
     {
       "question": "Jak szybko reagujesz?",
@@ -32,7 +32,7 @@
     },
     {
       "question": "Jak zacząć?",
-      "answer": "Napisz albo zadzwoń i opisz problem po ludzku. Odezwę się w ciągu 24 godzin i uczciwie powiem, czy umiem pomóc, ile to kosztuje, a jeśli akurat nie ja — podpowiem, kto."
+      "answer": "Napisz w dwóch zdaniach, co się dzieje. Odpowiem w ciągu 24 godzin i podpowiem, czy wystarczy konsultacja, czy potrzebna jest diagnoza — a jeśli to nie moja działka, powiem to wprost."
     }
   ]
 }

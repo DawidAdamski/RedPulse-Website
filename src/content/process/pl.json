@@ -1,24 +1,24 @@
 {
   "title": "Jak wygląda współpraca",
-  "subtitle": "Trzy kroki. Po pierwszej rozmowie wiesz, na czym stoisz — i nic Cię ona nie kosztuje.",
+  "subtitle": "Trzy kroki. Pierwszy jest płatny — i właśnie dlatego wychodzisz z niego z odpowiedzią, a nie z ofertą.",
   "steps": [
     {
       "icon": "lightbulb",
-      "title": "Rozmowa",
-      "duration": "30 minut, bez opłat",
-      "description": "Opowiadasz po ludzku, co Cię boli: wolny system, strach o dane, sprzęt, który pamięta poprzednią dekadę. Ja słucham i od razu mówię, czy to moja działka. Jeśli nie — podpowiem, kto pomoże."
+      "title": "Konsultacja lub diagnoza",
+      "duration": "200 zł netto / 30 min · 300 zł netto / godz.",
+      "description": "Wybierasz format: konsultacja, gdy masz pytania i chcesz wiedzieć, w którą stronę iść, albo diagnoza, gdy coś nie działa i trzeba ustalić dlaczego. W obu przypadkach dostajesz konkretną odpowiedź, nawet jeśli na tym skończymy."
     },
     {
-      "icon": "search",
-      "title": "Diagnoza",
-      "duration": "termin ustalamy na rozmowie",
-      "description": "Zaglądam do serwera, kopii zapasowych i sieci, i spisuję, co masz, co jest ryzykiem i co zrobić najpierw. Dostajesz konkretny plan z cenami — możesz z nim pójść nawet do kogoś innego."
+      "icon": "layers",
+      "title": "Plan i wycena",
+      "duration": "koszt diagnozy odliczany od projektu",
+      "description": "Spisuję, co jest przyczyną, co zrobić najpierw i ile to kosztuje. Plan jest Twój — możesz z nim pójść nawet do kogoś innego. Jeśli robimy projekt razem, koszt diagnozy odliczam od wyceny."
     },
     {
-      "icon": "shield",
-      "title": "Opieka",
-      "duration": "od 800 zł/mc",
-      "description": "Przejmuję temat na stałe: pilnuję kopii, aktualizacji i planu wymian sprzętu, na zgłoszenie odpowiadam w 24h. Serwer, dane i sprzęt zostają Twoją własnością — w każdej chwili możesz je przejąć z dokumentacją."
+      "icon": "check",
+      "title": "Realizacja",
+      "duration": "wycena za rezultat",
+      "description": "Robię to, co ustaliliśmy — w transzach i z jasnym efektem końcowym. Zostawiam dokumentację, żeby ktokolwiek inny mógł przy tym pracować po mnie."
     }
   ],
   "cta": "Umów rozmowę"

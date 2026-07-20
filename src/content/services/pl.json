@@ -3,10 +3,10 @@
   "subtitle": "Wiesz z góry, co robię i za ile. Bez niespodzianek na fakturze.",
   "items": [
     {
-      "icon": "shield",
-      "title": "Stała opieka IT",
-      "price": "od 800 zł/mc",
-      "description": "Abonament, w którym Twoje IT jest pod kontrolą. Na zgłoszenie odpowiadam w ciągu 24 godzin. Doradzam, prowadzę aktualną dokumentację i roczny plan wymian sprzętu, przejmuję dyżur, gdy Twój człowiek od IT jest na urlopie. Działam jako konsultant — serwer, dane i sprzęt zostają Twoją własnością."
+      "icon": "search",
+      "title": "Diagnoza i konsultacja",
+      "price": "od 200 zł netto",
+      "description": "Konsultacja (30 minut, 200 zł netto) — pytasz, dostajesz konkretną odpowiedź i wiesz, co robić dalej. Diagnoza (godzina, 300 zł netto) — wchodzę w problem, ustalam przyczynę i mówię, co z nią zrobić. Jeśli dojdzie do projektu, koszt diagnozy odliczam od wyceny."
     },
     {
       "icon": "server",

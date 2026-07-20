@@ -10,15 +10,16 @@
     "bookCall": "Umów rozmowę"
   },
   "hero": {
-    "eyebrow": "Stała opieka IT dla małych firm",
-    "title": "Twoje IT ma po prostu działać.",
-    "titleAccent": "Ja się tym zajmuję.",
-    "description": "Jestem architektem IT z korporacyjnym doświadczeniem. Opiekuję się serwerem, danymi i sprzętem małych firm — tak, żebyś Ty mógł zajmować się firmą, a nie komputerem pod biurkiem.",
+    "eyebrow": "Projekty i diagnostyka IT",
+    "title": "Twoje IT nie działa jak trzeba?",
+    "titleAccent": "Znajdę przyczynę.",
+    "description": "Jestem architektem IT z korporacyjnym doświadczeniem. Ustalam, dlaczego coś nie działa — także wtedy, gdy inni już się poddali — projektuję infrastrukturę, która to wytrzyma, i automatyzuję pracę, która zjada godziny.",
     "cta": "Umów rozmowę",
     "ctaSecondary": "Zobacz, jak pomagam",
     "portraitAlt": "Dawid Adamski, architekt IT i właściciel RedPulse Innovations",
     "portraitName": "Dawid Adamski",
-    "portraitRole": "Architekt IT · RedPulse"
+    "portraitRole": "Architekt IT · RedPulse",
+    "ctaNote": "Konsultacja 200 zł netto / 30 min, diagnoza 300 zł netto / godz. Koszt diagnozy odliczam od wyceny projektu."
   },
   "blog": {
     "title": "Blog",

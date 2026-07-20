@@ -4,11 +4,11 @@
   "items": [
     {
       "question": "Who do you work with?",
-      "answer": "With owners of small companies — trade, services, manufacturing — that run their own system (e.g. an ERP like Comarch), a warehouse, sales on marketplaces, and all their IT on a single computer under the desk. If you want it to simply work and someone to take responsibility for it — that's me."
+      "answer": "Companies with a real IT problem who want someone to solve it end to end — trade, services, manufacturing. I work both with companies that have no IT of their own and with those that have an IT person but need an outsider for a specific job."
     },
     {
       "question": "How much does it cost?",
-      "answer": "Managed IT care starts at 800 PLN per month. Projects and rollouts are priced by outcome — after a short conversation you know up front what you get and for how much, and you pay in instalments. I never start work without a clear quote, so you're never surprised by an invoice."
+      "answer": "A consultation is 200 PLN net for 30 minutes, a diagnosis 300 PLN net per hour. If a project follows the diagnosis, its cost comes off the quote. Projects are priced by outcome — after a conversation you know up front what you get and for how much, and you pay in instalments."
     },
     {
       "question": "I'm not technical — is that a problem?",
@@ -16,7 +16,7 @@
     },
     {
       "question": "Who owns the data and hardware?",
-      "answer": "You do. I work as a consultant — the server, database and hardware are and remain your property. I look after them, keep the backups in check and know how everything works, but at any moment you are the owner of your own infrastructure."
+      "answer": "You do. I work as a consultant — the server, database and hardware are and remain your property. I also leave documentation behind, so anyone else can work on it after me."
     },
     {
       "question": "How fast do you respond?",
@@ -32,7 +32,7 @@
     },
     {
       "question": "How do we start?",
-      "answer": "Write or call and describe the problem in plain words. I'll get back to you within 24 hours and tell you honestly whether I can help, what it costs, and if it's not me — who."
+      "answer": "Write two sentences about what's going on. I'll reply within 24 hours and tell you whether a consultation is enough or a diagnosis is needed — and if it isn't my kind of work, I'll say so."
     }
   ]
 }

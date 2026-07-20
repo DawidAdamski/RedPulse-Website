@@ -3,10 +3,10 @@
   "subtitle": "You know up front what I do and what it costs. No surprises on the invoice.",
   "items": [
     {
-      "icon": "shield",
-      "title": "Managed IT care",
-      "price": "from 800 PLN/mo",
-      "description": "A subscription that keeps your IT under control. I reply to a request within 24 hours. I advise, keep documentation current and maintain a yearly hardware-replacement plan, and I cover for your IT person while they're on holiday. I work as a consultant — the server, data and hardware stay your property."
+      "icon": "search",
+      "title": "Diagnosis and consultation",
+      "price": "from 200 PLN net",
+      "description": "A consultation (30 minutes, 200 PLN net) — you ask, you get a straight answer and know what to do next. A diagnosis (one hour, 300 PLN net) — I go into the problem, establish the cause and tell you what to do about it. If a project follows, the cost of the diagnosis comes off the quote."
     },
     {
       "icon": "server",

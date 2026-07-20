@@ -1,6 +1,6 @@
 # RedPulse Innovations
 
-> Konsulting IT, automatyzacja procesów i wdrożenia AI dla małych i średnich firm. Specjalizacja w rozwiązaniach open source i technologiach Red Hat. Motto: „Make it simple and innovative".
+> Projekty i diagnostyka IT: ustalanie przyczyn trudnych awarii, projekty infrastrukturalne, automatyzacja procesów i szkolenia z AI. Konsultacja 200 zł netto / 30 min, diagnoza 300 zł netto / godz. — koszt diagnozy odliczany od wyceny projektu.
 
 ## O firmie
 
@@ -13,6 +13,7 @@ RedPulse Innovations Dawid Adamski — firma konsultingowa z siedzibą w Polsce,
 
 ## Usługi
 
+- **Diagnoza i konsultacja** — ustalenie przyczyny problemu i tego, co z nią zrobić (płatne: 200 zł netto / 30 min, 300 zł netto / godz.)
 - **Analiza** — dogłębna analiza procesów i infrastruktury IT, identyfikacja obszarów do optymalizacji
 - **Automatyzacja** — automatyzacja procesów biznesowych i IT, redukcja błędów ludzkich
 - **Integracja** — łączenie systemów i aplikacji, API, middleware, przepływy danych

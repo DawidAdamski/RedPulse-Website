@@ -10,6 +10,7 @@ defineProps<{
       description: string;
       cta: string;
       ctaSecondary: string;
+      ctaNote: string;
       portraitAlt: string;
       portraitName: string;
       portraitRole: string;
@@ -53,6 +54,12 @@ defineProps<{
             {{ t.hero.ctaSecondary }}
           </a>
         </div>
+
+        <!-- The call is paid, so the price is stated at the button rather than
+             discovered after clicking. -->
+        <p class="hero-cta-note animate-fade-in-up animate-delay-400">
+          {{ t.hero.ctaNote }}
+        </p>
       </div>
 
       <figure class="hero-portrait animate-fade-in-up animate-delay-200">
@@ -193,6 +200,15 @@ defineProps<{
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  opacity: 0;
+}
+
+.hero-cta-note {
+  margin-top: 1rem;
+  max-width: 520px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--gray-600);
   opacity: 0;
 }
 

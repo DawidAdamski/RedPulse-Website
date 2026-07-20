@@ -139,13 +139,19 @@ defineProps<{
   margin-top: 0.5rem;
 }
 
+/* Flex rather than a fixed 3-column grid: the number of proof cards changes as
+   material is added or retired, and two cards should centre instead of leaving
+   an empty cell. */
 .about-highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
 }
 
 .highlight-card {
+  flex: 1 1 300px;
+  max-width: 400px;
   background: var(--white);
   padding: 2rem;
   border: 1px solid var(--gray-200);
@@ -211,8 +217,8 @@ defineProps<{
     grid-template-columns: 1fr;
   }
 
-  .about-highlights {
-    grid-template-columns: 1fr;
+  .highlight-card {
+    max-width: none;
   }
 }
 

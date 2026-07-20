@@ -10,15 +10,16 @@
     "bookCall": "Book a call"
   },
   "hero": {
-    "eyebrow": "Managed IT care for small businesses",
-    "title": "Your IT should just work.",
-    "titleAccent": "I take care of that.",
-    "description": "I'm an IT architect with a corporate background. I take care of the server, data and hardware of small businesses — so you can run your company instead of the computer under the desk.",
+    "eyebrow": "IT projects and diagnostics",
+    "title": "Your IT isn't behaving?",
+    "titleAccent": "I'll find the cause.",
+    "description": "I'm an IT architect with a corporate background. I work out why something is broken — including when others have given up — design infrastructure that holds, and automate the work that eats hours.",
     "cta": "Book a call",
     "ctaSecondary": "See how I help",
     "portraitAlt": "Dawid Adamski, IT architect and owner of RedPulse Innovations",
     "portraitName": "Dawid Adamski",
-    "portraitRole": "IT architect · RedPulse"
+    "portraitRole": "IT architect · RedPulse",
+    "ctaNote": "Consultation 200 PLN net / 30 min, diagnosis 300 PLN net / hour. The cost of a diagnosis comes off the project quote."
   },
   "blog": {
     "title": "Blog",

@@ -1,7 +1,7 @@
 {
   "title": "About me",
-  "subtitle": "One person who handles all of your IT — and takes responsibility for it",
-  "description": "I'm an IT architect. For years in a corporate environment I designed systems, rolled out automation and trained teams. Today I work solo, directly with small business owners — you talk to the person who does the work, not a consultant who passes your case along. I don't sell hours. I take responsibility for your server, data and hardware working, so you can focus on your business.",
+  "subtitle": "One person who finds the cause and takes responsibility for the result",
+  "description": "I'm an IT architect. For years in a corporate environment I designed systems, rolled out automation and trained teams. Today I work solo and directly with companies — you talk to the person who does the work, not a consultant who passes your case along. I don't sell retainers or hours to fill. I sell the problem solved: the cause established, infrastructure that holds, work nobody has to click through by hand any more.",
   "stats": [
     {
       "value": "24h",
@@ -17,11 +17,6 @@
       "icon": "search",
       "title": "A failure the vendor's support couldn't find",
       "description": "A small firm's accounting and inventory system was about to miss its month-end close. The software vendor's official support couldn't find the cause — I did. On top of that, I gave the client tools to handle it herself, without calling me."
-    },
-    {
-      "icon": "shield",
-      "title": "Years of care over the whole infrastructure",
-      "description": "A small trading company: for years I've looked after its server, database, backups, network and hardware-replacement plan. I know that infrastructure well enough to see what will break before you notice it."
     },
     {
       "icon": "bot",

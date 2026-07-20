@@ -1,24 +1,24 @@
 {
   "title": "How working together looks",
-  "subtitle": "Three steps. After the first call you know where you stand — and it costs you nothing.",
+  "subtitle": "Three steps. The first one is paid — which is exactly why you leave it with an answer rather than a sales pitch.",
   "steps": [
     {
       "icon": "lightbulb",
-      "title": "The call",
-      "duration": "30 minutes, free",
-      "description": "You describe what hurts in plain words: a slow system, worry about your data, hardware that remembers the last decade. I listen and tell you straight away whether it's my kind of work. If it isn't — I'll point you to someone who can help."
+      "title": "Consultation or diagnosis",
+      "duration": "200 PLN net / 30 min · 300 PLN net / hour",
+      "description": "You pick the format: a consultation when you have questions and want to know which way to go, or a diagnosis when something is broken and the cause has to be established. Either way you get a concrete answer, even if that is where we stop."
     },
     {
-      "icon": "search",
-      "title": "Diagnosis",
-      "duration": "timing agreed on the call",
-      "description": "I look into the server, the backups and the network, and write down what you have, what's a risk and what to do first. You get a concrete plan with prices — one you could take to someone else."
+      "icon": "layers",
+      "title": "Plan and quote",
+      "duration": "diagnosis cost comes off the project",
+      "description": "I write down what the cause is, what to do first and what it costs. The plan is yours — you could take it to someone else. If we do the project together, the cost of the diagnosis comes off the quote."
     },
     {
-      "icon": "shield",
-      "title": "Ongoing care",
-      "duration": "from 800 PLN/mo",
-      "description": "I take it over for good: backups, updates and a hardware replacement plan, and I reply to requests within 24h. The server, data and hardware stay your property — you can take them back with the documentation at any time."
+      "icon": "check",
+      "title": "Delivery",
+      "duration": "priced by outcome",
+      "description": "I do what we agreed — in instalments, with a clear end result. I leave documentation behind, so anyone else can work on it after me."
     }
   ],
   "cta": "Book a call"

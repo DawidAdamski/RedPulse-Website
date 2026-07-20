@@ -1,7 +1,7 @@
 {
   "title": "O mnie",
-  "subtitle": "Jedna osoba, która ogarnia całe Twoje IT — i bierze za nie odpowiedzialność",
-  "description": "Jestem architektem IT. Przez lata w korporacji projektowałem systemy, wdrażałem automatyzację i szkoliłem zespoły. Dziś pracuję sam, wprost z właścicielami małych firm — rozmawiasz z osobą, która wykonuje robotę, a nie z konsultantem, który przekaże sprawę dalej. Nie sprzedaję godzin. Odpowiadam za to, żeby Twój serwer, dane i sprzęt działały, a Ty mógł zajmować się firmą.",
+  "subtitle": "Jedna osoba, która ustala przyczynę i bierze odpowiedzialność za rezultat",
+  "description": "Jestem architektem IT. Przez lata w korporacji projektowałem systemy, wdrażałem automatyzację i szkoliłem zespoły. Dziś pracuję sam i wprost z firmami — rozmawiasz z osobą, która wykonuje robotę, a nie z konsultantem, który przekaże sprawę dalej. Nie sprzedaję abonamentu ani godzin do wyrobienia. Sprzedaję rozwiązany problem: ustaloną przyczynę, infrastrukturę, która wytrzyma, robotę, której nie trzeba już klikać ręcznie.",
   "stats": [
     {
       "value": "24h",
@@ -17,11 +17,6 @@
       "icon": "search",
       "title": "Awaria, której nie znalazł serwis producenta",
       "description": "Systemowi księgowo-magazynowemu w małej firmie groziło niezamknięcie miesiąca. Oficjalny serwis producenta nie znalazł przyczyny — ja tak. Dodatkowo dałem klientce narzędzia, dzięki którym radzi sobie z tym sama, bez dzwonienia do mnie."
-    },
-    {
-      "icon": "shield",
-      "title": "Wieloletnia opieka nad całą infrastrukturą",
-      "description": "Mała firma handlowa: od lat pilnuję jej serwera, bazy danych, kopii zapasowych, sieci i planu wymian sprzętu. Znam tę infrastrukturę na tyle dobrze, że wiem, co się w niej zepsuje, zanim to zauważysz."
     },
     {
       "icon": "bot",
