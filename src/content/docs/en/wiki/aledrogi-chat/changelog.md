@@ -1,17 +1,24 @@
 ---
 title: Changelog
-description: What changed in AleDrogi Chat.
+description: History of changes in AleDrogi Chat.
 sidebar:
-  order: 5
+  order: 6
 ---
 
+What changed in the app — newest first. Written from the point of view of someone
+using it, not of the code.
+
+Image updates, including changes forced by the Allegro API, are part of the
+subscription.
+
 :::caution[To be written]
-This section is a skeleton — the content comes from Obsidian.
+The first entry goes in with the first release at a client. Format:
+
+```markdown
+## 2026-08-01 · version 1.1
+
+- **New:** a short description of what the user will see
+- **Fixed:** what stopped being a problem
+- **Note:** whether anything needs action on your side
+```
 :::
-
-History of changes, newest first — date, version and what actually changed for
-the user, not for the code.
-
-## Unreleased
-
-- <!-- what is queued -->

@@ -9,8 +9,5 @@ what changed recently.
 
 ## Apps
 
-- [AleDrogi Chat](/en/wiki/aledrogi-chat/start/)
-
-:::caution[To be written]
-This section is a skeleton — the content comes from Obsidian.
-:::
+- **[AleDrogi Chat](/en/wiki/aledrogi-chat/start/)** — a buyer-support panel for Allegro sellers:
+  messages, complaints and an automatic post-sale sequence, on your own hardware.

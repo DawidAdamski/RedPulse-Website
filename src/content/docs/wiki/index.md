@@ -9,8 +9,5 @@ się w niej ostatnio zmieniło.
 
 ## Aplikacje
 
-- [AleDrogi Chat](/wiki/aledrogi-chat/start/)
-
-:::caution[Do uzupełnienia]
-Ta sekcja to szkielet — treść wrzucasz z Obsidiana.
-:::
+- **[AleDrogi Chat](/wiki/aledrogi-chat/start/)** — panel obsługi kupujących dla sprzedawcy Allegro:
+  wiadomości, reklamacje i automatyczna sekwencja posprzedażowa, na Twoim sprzęcie.
