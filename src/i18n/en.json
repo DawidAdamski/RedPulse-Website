@@ -3,20 +3,29 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
+    "process": "How it works",
     "faq": "FAQ",
     "contact": "Contact",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bookCall": "Book a call"
   },
   "hero": {
-    "tagline": "Make it simple and innovative",
-    "title": "RedPulse Innovations",
-    "subtitle": "Your IT should just work. I take care of that.",
+    "eyebrow": "Managed IT care for small businesses",
+    "title": "Your IT should just work.",
+    "titleAccent": "I take care of that.",
     "description": "I'm an IT architect with a corporate background. I take care of the server, data and hardware of small businesses — so you can run your company instead of the computer under the desk. I also fix the things even the software vendor's own support couldn't crack.",
-    "cta": "Write to me"
+    "cta": "Book a call",
+    "ctaSecondary": "See how I help",
+    "portraitAlt": "Dawid Adamski, IT architect and owner of RedPulse Innovations",
+    "portraitName": "Dawid Adamski",
+    "portraitRole": "IT architect · RedPulse"
   },
   "blog": {
     "title": "Blog",
     "subtitle": "A practical take on automation, AI and open source for business.",
+    "latestTitle": "Recently written",
+    "latestSubtitle": "Concrete stories from client work and things worth knowing about your own IT.",
+    "viewAll": "See all posts",
     "readMore": "Read more",
     "backToBlog": "Back to blog",
     "published": "Published",
@@ -34,13 +43,20 @@
       "resume": "Resume"
     }
   },
+  "social": {
+    "linkedinPersonal": "LinkedIn — personal profile",
+    "linkedinCompany": "LinkedIn — company page",
+    "github": "GitHub"
+  },
   "footer": {
     "tagline": "Make it simple and innovative",
     "copyright": "RedPulse Innovations. All rights reserved.",
     "privacyPolicy": "Privacy policy",
     "privacyPolicyUrl": "/en/privacy-policy",
     "cookieSettings": "Cookie settings",
-    "lastUpdated": "Last updated"
+    "lastUpdated": "Last updated",
+    "madeWith": "Made with",
+    "madeWhere": "in Poland"
   },
   "privacy": {
     "title": "Privacy policy",

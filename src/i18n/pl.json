@@ -3,20 +3,29 @@
     "home": "Strona główna",
     "about": "O nas",
     "services": "Usługi",
+    "process": "Współpraca",
     "faq": "FAQ",
     "contact": "Kontakt",
-    "blog": "Blog"
+    "blog": "Blog",
+    "bookCall": "Umów rozmowę"
   },
   "hero": {
-    "tagline": "Make it simple and innovative",
-    "title": "RedPulse Innovations",
-    "subtitle": "Twoje IT ma po prostu działać. Ja się tym zajmuję.",
+    "eyebrow": "Stała opieka IT dla małych firm",
+    "title": "Twoje IT ma po prostu działać.",
+    "titleAccent": "Ja się tym zajmuję.",
     "description": "Jestem architektem IT z korporacyjnym doświadczeniem. Opiekuję się serwerem, danymi i sprzętem małych firm — tak, żebyś Ty mógł zajmować się firmą, a nie komputerem pod biurkiem. Naprawiam też rzeczy, z którymi nie poradził sobie nawet serwis producenta oprogramowania.",
-    "cta": "Napisz do mnie"
+    "cta": "Umów rozmowę",
+    "ctaSecondary": "Zobacz, jak pomagam",
+    "portraitAlt": "Dawid Adamski, architekt IT i właściciel RedPulse Innovations",
+    "portraitName": "Dawid Adamski",
+    "portraitRole": "Architekt IT · RedPulse"
   },
   "blog": {
     "title": "Blog",
     "subtitle": "Praktyczne spojrzenie na automatyzację, AI i open source dla firm.",
+    "latestTitle": "Ostatnio pisałem",
+    "latestSubtitle": "Konkretne historie z pracy u klientów i rzeczy, które warto wiedzieć o własnym IT.",
+    "viewAll": "Zobacz wszystkie wpisy",
     "readMore": "Czytaj więcej",
     "backToBlog": "Wróć do bloga",
     "published": "Opublikowano",
@@ -34,13 +43,20 @@
       "resume": "Wznów"
     }
   },
+  "social": {
+    "linkedinPersonal": "LinkedIn — profil osobisty",
+    "linkedinCompany": "LinkedIn — profil firmowy",
+    "github": "GitHub"
+  },
   "footer": {
     "tagline": "Make it simple and innovative",
     "copyright": "RedPulse Innovations. Wszelkie prawa zastrzeżone.",
     "privacyPolicy": "Polityka prywatności",
     "privacyPolicyUrl": "/polityka-prywatnosci",
     "cookieSettings": "Ustawienia cookies",
-    "lastUpdated": "Ostatnia aktualizacja"
+    "lastUpdated": "Ostatnia aktualizacja",
+    "madeWith": "Tworzone z",
+    "madeWhere": "w Polsce"
   },
   "privacy": {
     "title": "Polityka prywatności",

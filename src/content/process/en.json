@@ -1,0 +1,25 @@
+{
+  "title": "How working together looks",
+  "subtitle": "Three steps. After the first call you know where you stand — and it costs you nothing.",
+  "steps": [
+    {
+      "icon": "lightbulb",
+      "title": "The call",
+      "duration": "30 minutes, free",
+      "description": "You describe what hurts in plain words: a slow system, worry about your data, hardware that remembers the last decade. I listen and tell you straight away whether it's my kind of work. If it isn't — I'll point you to someone who can help."
+    },
+    {
+      "icon": "search",
+      "title": "Diagnosis",
+      "duration": "usually 1–2 weeks",
+      "description": "I look into the server, the backups and the network, and write down what you have, what's a risk and what to do first. You get a concrete plan with prices — one you could take to someone else."
+    },
+    {
+      "icon": "shield",
+      "title": "Ongoing care",
+      "duration": "from 800 PLN/mo",
+      "description": "I take it over for good: backups, updates and a hardware replacement plan, with a 24h response. The server, data and hardware stay your property — you can take them back with the documentation at any time."
+    }
+  ],
+  "cta": "Book a call"
+}

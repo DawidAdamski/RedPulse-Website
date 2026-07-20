@@ -9,8 +9,8 @@
 # "Sign In with GitHub" button would need a sveltia-cms-auth relay (not set up).
 #
 # Collections are grouped by language (PL first, then EN) via labels, so the
-# sidebar reads: PL - Blog / PL - O nas / PL - Uslugi / PL - FAQ / PL - Kontakt,
-# then the EN set.
+# sidebar reads: PL - Blog / PL - O nas / PL - Uslugi / PL - Wspolpraca /
+# PL - FAQ / PL - Kontakt, then the EN set.
 
 backend:
   name: github
@@ -116,6 +116,26 @@ collections:
               - { name: price, label: "Cena (np. „od 800 zł/mc”)", widget: string, required: false }
               - { name: description, label: Opis, widget: text, required: true }
 
+  - name: process_pl
+    label: "PL · Współpraca"
+    files:
+      - name: content
+        label: Współpraca
+        file: /src/content/process/pl.json
+        fields:
+          - { name: title, label: Tytuł, widget: string, required: true }
+          - { name: subtitle, label: Podtytuł, widget: string, required: true }
+          - name: steps
+            label: Kroki
+            widget: list
+            required: false
+            fields:
+              - { name: icon, label: Ikona, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+              - { name: title, label: Tytuł, widget: string, required: true }
+              - { name: duration, label: "Czas / cena (np. „30 minut, bez opłat”)", widget: string, required: false }
+              - { name: description, label: Opis, widget: text, required: true }
+          - { name: cta, label: "Tekst przycisku", widget: string, required: true }
+
   - name: faq_pl
     label: "PL · FAQ"
     files:
@@ -148,9 +168,9 @@ collections:
           - { name: phoneLabel, label: "Etykieta telefon", widget: string, required: true }
           - { name: phone, label: "Numer telefonu (puste = ukryty)", widget: string, required: false, hint: "Zostaw puste, żeby ukryć telefon. Wpisz numer, aby pokazać go na stronie." }
           - { name: consultationLabel, label: "Etykieta konsultacja", widget: string, required: true }
-          - { name: consultationCta, label: "Tekst przycisku konsultacji", widget: string, required: true }
-          - { name: socialLabel, label: "Etykieta social media", widget: string, required: true }
-          - { name: cta, label: "Główny przycisk", widget: string, required: true }
+          - { name: consultationCta, label: "Główny przycisk (Umów rozmowę)", widget: string, required: true, hint: "Główne CTA na stronie — prowadzi do kalendarza." }
+          - { name: socialLabel, label: "Etykieta mediów społecznościowych", widget: string, required: true }
+          - { name: cta, label: "Przycisk zapasowy (e-mail)", widget: string, required: true, hint: "Drugorzędny przycisk pod głównym — otwiera nową wiadomość e-mail." }
 
   # --------------------------------------------------------------- English (EN)
   - name: blog_en
@@ -241,6 +261,26 @@ collections:
               - { name: price, label: "Price (e.g. „from 800 PLN/mo”)", widget: string, required: false }
               - { name: description, label: Description, widget: text, required: true }
 
+  - name: process_en
+    label: "EN · How it works"
+    files:
+      - name: content
+        label: How it works
+        file: /src/content/process/en.json
+        fields:
+          - { name: title, label: Title, widget: string, required: true }
+          - { name: subtitle, label: Subtitle, widget: string, required: true }
+          - name: steps
+            label: Steps
+            widget: list
+            required: false
+            fields:
+              - { name: icon, label: Icon, widget: select, options: [search, zap, link, lightbulb, server, layers, cpu, check, shield, cloud, code, rocket, cog, database, chart, puzzle, lock, bot] }
+              - { name: title, label: Title, widget: string, required: true }
+              - { name: duration, label: "Time / price (e.g. „30 minutes, free”)", widget: string, required: false }
+              - { name: description, label: Description, widget: text, required: true }
+          - { name: cta, label: "Button text", widget: string, required: true }
+
   - name: faq_en
     label: "EN · FAQ"
     files:
@@ -273,6 +313,6 @@ collections:
           - { name: phoneLabel, label: "Phone label", widget: string, required: true }
           - { name: phone, label: "Phone number (empty = hidden)", widget: string, required: false, hint: "Leave empty to hide the phone. Enter a number to show it on the site." }
           - { name: consultationLabel, label: "Consultation label", widget: string, required: true }
-          - { name: consultationCta, label: "Consultation button text", widget: string, required: true }
+          - { name: consultationCta, label: "Primary button (Book a call)", widget: string, required: true, hint: "The main CTA on the site — links to the booking calendar." }
           - { name: socialLabel, label: "Social media label", widget: string, required: true }
-          - { name: cta, label: "Primary button", widget: string, required: true }
+          - { name: cta, label: "Fallback button (email)", widget: string, required: true, hint: "Secondary button under the primary one — opens a new e-mail." }

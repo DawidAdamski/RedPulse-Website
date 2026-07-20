@@ -1,5 +1,13 @@
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue';
+import { CALENDLY_URL } from '../config';
+
+const props = defineProps<{
+  social: {
+    linkedinPersonal: string;
+    linkedinCompany: string;
+    github: string;
+  };
   contact: {
     title: string;
     subtitle: string;
@@ -15,23 +23,23 @@ defineProps<{
   };
 }>();
 
-const socialLinks = [
+const socialLinks = computed(() => [
   {
-    name: 'LinkedIn Personal',
+    name: props.social.linkedinPersonal,
     url: 'https://www.linkedin.com/in/dawid-adamski/',
     icon: 'linkedin'
   },
   {
-    name: 'LinkedIn Company',
+    name: props.social.linkedinCompany,
     url: 'https://www.linkedin.com/company/red-pulse-innovations/',
     icon: 'linkedin'
   },
   {
-    name: 'GitHub',
+    name: props.social.github,
     url: 'https://github.com/DawidAdamski',
     icon: 'github'
   }
-];
+]);
 </script>
 
 <template>
@@ -84,7 +92,7 @@ const socialLinks = [
               </div>
               <div class="method-content">
                 <span class="method-label">{{ contact.consultationLabel }}</span>
-                <a href="https://calendly.com/dawid-adamski-redpulse/30min" target="_blank" rel="noopener noreferrer" class="method-value">{{ contact.consultationCta }}</a>
+                <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="method-value">{{ contact.consultationCta }}</a>
               </div>
             </div>
           </div>
@@ -124,12 +132,19 @@ const socialLinks = [
             </a>
           </div>
           
-          <a :href="'mailto:' + contact.email" class="btn btn-primary btn-full">
-            {{ contact.cta }}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+          <!-- Booking a call is the main path (docs/REDESIGN.md, D1); e-mail is
+               the fallback for people who would rather write. -->
+          <div class="card-actions">
+            <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
+              {{ contact.consultationCta }}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a :href="'mailto:' + contact.email" class="btn btn-outline btn-full">
+              {{ contact.cta }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -328,6 +343,25 @@ const socialLinks = [
 .btn-full {
   width: 100%;
   justify-content: center;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* The global .btn-outline is black-on-light; inside the dark contact card it
+   has to invert or it disappears against the background. */
+.card-actions .btn-outline {
+  color: var(--white);
+  border-color: var(--gray-600);
+}
+
+.card-actions .btn-outline:hover {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--black);
 }
 
 @media (max-width: 1024px) {

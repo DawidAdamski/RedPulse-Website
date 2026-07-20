@@ -1,0 +1,25 @@
+{
+  "title": "Jak wygląda współpraca",
+  "subtitle": "Trzy kroki. Po pierwszej rozmowie wiesz, na czym stoisz — i nic Cię ona nie kosztuje.",
+  "steps": [
+    {
+      "icon": "lightbulb",
+      "title": "Rozmowa",
+      "duration": "30 minut, bez opłat",
+      "description": "Opowiadasz po ludzku, co Cię boli: wolny system, strach o dane, sprzęt, który pamięta poprzednią dekadę. Ja słucham i od razu mówię, czy to moja działka. Jeśli nie — podpowiem, kto pomoże."
+    },
+    {
+      "icon": "search",
+      "title": "Diagnoza",
+      "duration": "zwykle 1–2 tygodnie",
+      "description": "Zaglądam do serwera, kopii zapasowych i sieci, i spisuję, co masz, co jest ryzykiem i co zrobić najpierw. Dostajesz konkretny plan z cenami — możesz z nim pójść nawet do kogoś innego."
+    },
+    {
+      "icon": "shield",
+      "title": "Opieka",
+      "duration": "od 800 zł/mc",
+      "description": "Przejmuję temat na stałe: pilnuję kopii, aktualizacji i planu wymian sprzętu, reaguję w 24h. Serwer, dane i sprzęt zostają Twoją własnością — w każdej chwili możesz je przejąć z dokumentacją."
+    }
+  ],
+  "cta": "Umów rozmowę"
+}

@@ -4,11 +4,13 @@ import Header from '../components/Header.vue';
 import Hero from '../components/Hero.vue';
 import About from '../components/About.vue';
 import Services from '../components/Services.vue';
+import Process from '../components/Process.vue';
 import FAQ from '../components/FAQ.vue';
+import BlogTeaser from '../components/BlogTeaser.astro';
 import Contact from '../components/Contact.vue';
 import Footer from '../components/Footer.vue';
 import { getTranslations } from '../i18n';
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 const t = getTranslations('pl');
 const currentLocale = 'pl';
@@ -16,8 +18,27 @@ const buildDate = new Date().toISOString();
 
 const about = (await getEntry('about', currentLocale)).data;
 const services = (await getEntry('services', currentLocale)).data;
+const processContent = (await getEntry('process', currentLocale)).data;
 const faq = (await getEntry('faq', currentLocale)).data;
 const contact = (await getEntry('contact', currentLocale)).data;
+
+// Three latest published posts for the home-page teaser.
+const latestPosts = (
+  await getCollection('blogPl', ({ data }) => (import.meta.env.PROD ? !data.draft : true))
+)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((post) => ({
+    href: `/blog/${post.id}`,
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    formattedDate: post.data.pubDate.toLocaleDateString('pl-PL', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  }));
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -43,8 +64,17 @@ const faqSchema = {
     <Hero t={t} client:visible />
     <About about={about} />
     <Services services={services} />
+    <Process process={processContent} />
     <FAQ faq={faq} client:visible />
-    <Contact contact={contact} />
+    <BlogTeaser
+      title={t.blog.latestTitle}
+      subtitle={t.blog.latestSubtitle}
+      viewAll={t.blog.viewAll}
+      readMore={t.blog.readMore}
+      blogPath="/blog"
+      posts={latestPosts}
+    />
+    <Contact contact={contact} social={t.social} />
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} client:load />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

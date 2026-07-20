@@ -1,0 +1,144 @@
+---
+// Latest posts on the home page (docs/REDESIGN.md, C3): shows the site is alive
+// and that the person behind it works with these topics daily.
+// Static on purpose — plain links, no hydration.
+interface Props {
+  title: string;
+  subtitle: string;
+  viewAll: string;
+  readMore: string;
+  blogPath: string;
+  posts: { href: string; title: string; description: string; pubDate: Date; formattedDate: string }[];
+}
+
+const { title, subtitle, viewAll, readMore, blogPath, posts } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <section id="latest-posts" class="teaser section">
+    <div class="container">
+      <div class="teaser-header">
+        <div>
+          <h2>{title}</h2>
+          <p class="teaser-subtitle">{subtitle}</p>
+        </div>
+        <a href={blogPath} class="teaser-all">{viewAll} &rarr;</a>
+      </div>
+
+      <div class="teaser-list">
+        {posts.map((post) => (
+          <a class="teaser-card" href={post.href}>
+            <time datetime={post.pubDate.toISOString()}>{post.formattedDate}</time>
+            <h3>{post.title}</h3>
+            <p>{post.description}</p>
+            <span class="teaser-more">{readMore} &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .teaser {
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .teaser-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .teaser-subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 560px;
+    margin-top: 1rem;
+  }
+
+  .teaser-all {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-600);
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+  }
+
+  .teaser-all:hover {
+    color: var(--red-500);
+  }
+
+  /* Flex rather than a fixed 3-column grid: with one or two posts published the
+     cards stay their natural width and centre, instead of leaving empty cells. */
+  .teaser-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .teaser-card {
+    flex: 1 1 300px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 2rem;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition-base);
+  }
+
+  .teaser-card:hover {
+    border-color: var(--gray-300);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    color: inherit;
+  }
+
+  .teaser-card time {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+  }
+
+  .teaser-card h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    color: var(--black);
+  }
+
+  .teaser-card p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+  }
+
+  .teaser-more {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--red-500);
+  }
+
+  @media (max-width: 900px) {
+    .teaser-card {
+      max-width: none;
+    }
+
+    .teaser-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>

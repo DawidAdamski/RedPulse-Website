@@ -1,90 +1,74 @@
 <script setup lang="ts">
+import { CALENDLY_URL } from '../config';
+
 defineProps<{
   t: {
-    nav: {
-      services: string;
-    };
     hero: {
-      tagline: string;
+      eyebrow: string;
       title: string;
-      subtitle: string;
+      titleAccent: string;
       description: string;
       cta: string;
+      ctaSecondary: string;
+      portraitAlt: string;
+      portraitName: string;
+      portraitRole: string;
     };
   };
 }>();
 </script>
 
 <template>
+  <!-- The promise carries the hero, with a face next to it (docs/REDESIGN.md,
+       A1) — we sell "one person who takes responsibility", so that person is
+       visible. The portrait is deliberately small: the current file is a
+       400x400 avatar, so anything larger goes soft on high-DPI screens. -->
   <section class="hero">
     <div class="hero-bg">
-      <div class="hero-grid"></div>
       <div class="hero-gradient"></div>
     </div>
-    
+
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="hero-badge animate-fade-in-up">
-          <span class="pulse-dot"></span>
-          {{ t.hero.tagline }}
-        </div>
-        
+        <p class="hero-eyebrow animate-fade-in-up">{{ t.hero.eyebrow }}</p>
+
+        <!-- H1 is the promise. The company name lives in the logo only. -->
         <h1 class="hero-title animate-fade-in-up animate-delay-100">
-          <span class="title-line">{{ t.hero.title.split(' ')[0] }}</span>
-          <span class="title-line title-accent">{{ t.hero.title.split(' ').slice(1).join(' ') }}</span>
+          <span class="title-line">{{ t.hero.title }}</span>
+          <span class="title-line title-accent">{{ t.hero.titleAccent }}</span>
         </h1>
-        
-        <p class="hero-subtitle animate-fade-in-up animate-delay-200">
-          {{ t.hero.subtitle }}
-        </p>
-        
-        <p class="hero-description animate-fade-in-up animate-delay-300">
+
+        <p class="hero-description animate-fade-in-up animate-delay-200">
           {{ t.hero.description }}
         </p>
-        
-        <div class="hero-actions animate-fade-in-up animate-delay-400">
-          <a href="#contact" class="btn btn-primary">
+
+        <div class="hero-actions animate-fade-in-up animate-delay-300">
+          <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             {{ t.hero.cta }}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
           <a href="#services" class="btn btn-outline">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <polygon points="10 8 16 12 10 16 10 8"/>
-            </svg>
-            {{ t.nav.services }}
+            {{ t.hero.ctaSecondary }}
           </a>
         </div>
       </div>
-      
-      <div class="hero-visual">
-        <div class="visual-box">
-          <div class="code-block">
-            <div class="code-header">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-            <pre class="code-content"><code><span class="comment"># make it simple and innovative</span>
-- <span class="property">name</span>: <span class="string">Automate everything</span>
-  <span class="property">hosts</span>: <span class="string">all</span>
-  <span class="property">become</span>: <span class="boolean">true</span>
 
-  <span class="property">tasks</span>:
-    - <span class="property">name</span>: <span class="string">Deploy RedPulse</span>
-      <span class="function">ansible.builtin.service</span>:
-        <span class="property">name</span>: <span class="string">redpulse</span>
-        <span class="property">state</span>: <span class="string">started</span></code></pre>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="scroll-indicator">
-      <span class="scroll-text">Scroll</span>
-      <div class="scroll-line"></div>
+      <figure class="hero-portrait animate-fade-in-up animate-delay-200">
+        <img
+          src="/dawid-adamski.jpg"
+          :alt="t.hero.portraitAlt"
+          width="400"
+          height="400"
+          loading="eager"
+          decoding="async"
+        />
+        <figcaption>
+          <span class="portrait-name">{{ t.hero.portraitName }}</span>
+          <span class="portrait-role">{{ t.hero.portraitRole }}</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 </template>
@@ -92,7 +76,7 @@ defineProps<{
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 78vh;
   display: flex;
   align-items: center;
   padding-top: 80px;
@@ -105,45 +89,73 @@ defineProps<{
   z-index: 0;
 }
 
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(to right, var(--gray-200) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--gray-200) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.5;
-}
-
 .hero-gradient {
   position: absolute;
   top: -50%;
   right: -20%;
   width: 80%;
   height: 150%;
-  background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.06) 0%, transparent 70%);
 }
 
 .hero-container {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 4rem;
+  /* Text column takes the room; the portrait column is only as wide as the
+     photo can be shown sharply. */
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 6vw, 4.5rem);
   align-items: center;
+  padding-top: clamp(3rem, 8vw, 5rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  max-width: 720px;
   min-width: 0;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
+.hero-portrait {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 240px;
+  opacity: 0;
+}
+
+.hero-portrait img {
+  display: block;
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  /* Thin red edge instead of a decorative frame — the accent colour earns its
+     place by outlining the person, not by drawing a gadget. */
+  border-bottom: 3px solid var(--red-500);
+}
+
+.hero-portrait figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.portrait-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--black);
+}
+
+.portrait-role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+}
+
+.hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -153,41 +165,19 @@ defineProps<{
   opacity: 0;
 }
 
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--red-500);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
 .hero-title {
-  /* Own clamp (smaller max than global h1) so the longest word
-     "Innovations" in Syne 800 stays within the ~560px content column
-     and never slides under the tilted code window on the right. */
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
   letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   opacity: 0;
 }
 
 .title-line {
   display: block;
-  /* Keep each word ("RedPulse", "Innovations") on a single line on
-     desktop/tablet so the tail letter never wraps. Relaxed on phones below. */
-  white-space: nowrap;
 }
 
 .title-accent {
   color: var(--red-500);
-}
-
-.hero-subtitle {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
-  font-weight: 600;
-  color: var(--black);
-  margin-bottom: 1rem;
-  opacity: 0;
 }
 
 .hero-description {
@@ -195,149 +185,41 @@ defineProps<{
   color: var(--gray-600);
   margin-bottom: 2.5rem;
   line-height: 1.8;
+  max-width: 660px;
   opacity: 0;
 }
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   opacity: 0;
 }
 
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.visual-box {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-}
-
-.code-block {
-  background: var(--gray-900);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-  transition: transform var(--transition-slow);
-}
-
-.code-block:hover {
-  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-}
-
-.code-header {
-  display: flex;
-  gap: 8px;
-  padding: 1rem 1.5rem;
-  background: var(--gray-800);
-  border-bottom: 1px solid var(--gray-700);
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.dot.red { background: #ef4444; }
-.dot.yellow { background: #eab308; }
-.dot.green { background: #22c55e; }
-
-.code-content {
-  padding: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.8;
-  color: var(--gray-300);
-  overflow-x: auto;
-}
-
-.code-content code {
-  font-family: inherit;
-}
-
-.keyword { color: #c084fc; }
-.variable { color: #60a5fa; }
-.property { color: #34d399; }
-.string { color: #fbbf24; }
-.boolean { color: #f87171; }
-.comment { color: var(--gray-500); }
-.function { color: #60a5fa; }
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.scroll-text {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gray-400);
-}
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--gray-400), transparent);
-  animation: scroll 2s infinite;
-}
-
-@keyframes scroll {
-  0%, 100% {
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  50% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 860px) {
   .hero-container {
     grid-template-columns: minmax(0, 1fr);
-    text-align: center;
   }
-  
-  .hero-content {
-    max-width: 100%;
+
+  /* On narrow screens the face comes first — it is the introduction. */
+  .hero-portrait {
+    order: -1;
+    width: 160px;
   }
-  
-  .hero-actions {
-    justify-content: center;
-  }
-  
-  .hero-visual {
-    display: none;
+
+  .hero-portrait img {
+    width: 160px;
+    height: 160px;
   }
 }
 
 @media (max-width: 640px) {
-  .hero-title {
-    /* Smaller on phones so the longest word ("Innovations") fits the
-       viewport without horizontal overflow. */
-    font-size: clamp(2rem, 9vw, 2.75rem);
+  .hero {
+    min-height: auto;
   }
 
-  .title-line {
-    /* On very narrow phones allow the word to break as a last resort
-       rather than overflow the screen. */
-    white-space: normal;
+  .hero-title {
+    font-size: clamp(1.875rem, 8vw, 2.5rem);
     overflow-wrap: break-word;
   }
 

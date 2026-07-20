@@ -74,6 +74,28 @@ const faq = defineCollection({
   }),
 });
 
+// "How working together looks" — the three steps (call → diagnosis → care) that
+// answer "what happens after I click the button" right under the services.
+const process = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/process' }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    // `duration` is the small line under the step title ("30 minutes, free").
+    steps: z
+      .array(
+        z.object({
+          icon: z.string(),
+          title: z.string(),
+          duration: z.string().optional().default(''),
+          description: z.string(),
+        })
+      )
+      .default([]),
+    cta: z.string(),
+  }),
+});
+
 // Contact block — moved out of i18n so it is CMS-editable. `phone` is optional:
 // when empty it is hidden on the site, and it appears once filled in via /admin.
 const contact = defineCollection({
@@ -93,4 +115,4 @@ const contact = defineCollection({
   }),
 });
 
-export const collections = { blogPl, blogEn, about, services, faq, contact };
+export const collections = { blogPl, blogEn, about, services, process, faq, contact };

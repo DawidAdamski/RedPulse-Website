@@ -10,10 +10,13 @@ const props = defineProps<{
       privacyPolicyUrl: string;
       cookieSettings: string;
       lastUpdated: string;
+      madeWith: string;
+      madeWhere: string;
     };
     nav: {
       about: string;
       services: string;
+      process: string;
       faq: string;
       contact: string;
       blog: string;
@@ -63,6 +66,7 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
         <nav class="footer-nav" :aria-label="footerNavLabel">
           <a :href="anchor('#about')">{{ t.nav.about }}</a>
           <a :href="anchor('#services')">{{ t.nav.services }}</a>
+          <a :href="anchor('#process')">{{ t.nav.process }}</a>
           <a :href="anchor('#faq')">{{ t.nav.faq }}</a>
           <a :href="anchor('#contact')">{{ t.nav.contact }}</a>
           <a :href="blogPath">{{ t.nav.blog }}</a>
@@ -102,9 +106,9 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
           {{ t.footer.lastUpdated }}: <time :datetime="props.lastUpdated">{{ formattedLastUpdated }}</time>
         </p>
         <p class="made-with">
-          Made with
+          {{ t.footer.madeWith }}
           <span class="heart" aria-hidden="true">♥</span>
-          in Poland
+          {{ t.footer.madeWhere }}
         </p>
       </div>
     </div>

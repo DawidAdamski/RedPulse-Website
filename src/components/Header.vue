@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { CALENDLY_URL } from '../config';
 
 const props = defineProps<{
   t: {
@@ -7,9 +8,11 @@ const props = defineProps<{
       home: string;
       about: string;
       services: string;
+      process: string;
       faq: string;
       contact: string;
       blog: string;
+      bookCall: string;
     };
   };
   currentLocale: string;
@@ -48,6 +51,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
       <nav class="nav" :aria-label="navLabel">
         <a :href="anchor('#about')" class="nav-link">{{ t.nav.about }}</a>
         <a :href="anchor('#services')" class="nav-link">{{ t.nav.services }}</a>
+        <a :href="anchor('#process')" class="nav-link">{{ t.nav.process }}</a>
         <a :href="anchor('#faq')" class="nav-link">{{ t.nav.faq }}</a>
         <a :href="anchor('#contact')" class="nav-link">{{ t.nav.contact }}</a>
         <a :href="blogPath" class="nav-link">{{ t.nav.blog }}</a>
@@ -61,7 +65,9 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
         >
           {{ otherLocale(currentLocale).toUpperCase() }}
         </a>
-        <a :href="anchor('#contact')" class="btn btn-primary btn-sm">{{ t.nav.contact }}</a>
+        <!-- Single main CTA (docs/REDESIGN.md, D1): booking a call, not e-mail.
+             "Kontakt" stays available as a plain nav link. -->
+        <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">{{ t.nav.bookCall }}</a>
       </div>
       
       <button
@@ -91,6 +97,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
       <nav class="mobile-nav" :aria-label="navLabel">
         <a :href="anchor('#about')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.about }}</a>
         <a :href="anchor('#services')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.services }}</a>
+        <a :href="anchor('#process')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.process }}</a>
         <a :href="anchor('#faq')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.faq }}</a>
         <a :href="anchor('#contact')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
         <a :href="blogPath" class="mobile-nav-link" @click="closeMenu">{{ t.nav.blog }}</a>
@@ -103,7 +110,13 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
         >
           {{ otherLocale(currentLocale).toUpperCase() }}
         </a>
-        <a :href="anchor('#contact')" class="btn btn-primary" @click="closeMenu">{{ t.nav.contact }}</a>
+        <a
+          :href="CALENDLY_URL"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+          @click="closeMenu"
+        >{{ t.nav.bookCall }}</a>
       </div>
     </div>
   </Teleport>
