@@ -1,0 +1,59 @@
+/* Starlight tokens mapped onto the site's design system (docs/REDESIGN.md, B1/B2
+   and E), so the wiki reads as part of the portal instead of stock docs.
+   This file is loaded only on wiki routes — the marketing site keeps
+   global.css. */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..800&family=Inter:wght@400..700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --sl-font-mono: 'Space Mono', monospace;
+}
+
+/* Light theme — warm paper and graphite, same values as global.css. */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #f3dcdd;
+  --sl-color-accent: #c1272d;
+  --sl-color-accent-high: #7f181c;
+  --sl-color-white: #1a1c20;
+  --sl-color-gray-1: #24262b;
+  --sl-color-gray-2: #413d39;
+  --sl-color-gray-3: #57534e;
+  --sl-color-gray-4: #78736c;
+  --sl-color-gray-5: #d1ccc3;
+  --sl-color-gray-6: #e4e0d9;
+  --sl-color-gray-7: #f0ede8;
+  --sl-color-black: #faf8f5;
+}
+
+/* Dark theme — the accent is lifted so it stays legible on graphite. */
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #4a1114;
+  --sl-color-accent: #d9484e;
+  --sl-color-accent-high: #f0b5b7;
+  --sl-color-white: #faf8f5;
+  --sl-color-gray-1: #f0ede8;
+  --sl-color-gray-2: #d1ccc3;
+  --sl-color-gray-3: #a8a29a;
+  --sl-color-gray-4: #78736c;
+  --sl-color-gray-5: #413d39;
+  --sl-color-gray-6: #2b2926;
+  --sl-color-gray-7: #24262b;
+  --sl-color-black: #1a1c20;
+}
+
+/* Serif headings, sans body — the same split as the marketing site. */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4,
+.content-panel h1,
+.site-title {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-variation-settings: 'SOFT' 0, 'WONK' 0;
+  letter-spacing: -0.015em;
+}
+
+.site-title {
+  font-weight: 600;
+}

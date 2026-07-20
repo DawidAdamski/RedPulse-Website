@@ -3,7 +3,7 @@
 > Źródło: analiza porównawcza redpulse.tech vs marcinkowski.ai (rozmowa z Claude, 2026-07-20).
 > Status: w trakcie. Kolejność wg priorytetu w ramach sekcji.
 > Zrobione (2026-07-21): A2–A4, B1–B3, C3, D1–D3. A1 tymczasowo (awatar 400×400).
-> Otwarte: A1b (sesja), C1, C2 (czekają na materiał od Dawida), E (wiki), przegląd tekstów.
+> Otwarte: A1b (sesja), C1, C2 (czekają na materiał od Dawida), treść wiki (szkielet gotowy).
 
 ## Kontekst / diagnoza
 
@@ -50,7 +50,20 @@
 
 ---
 
-## E. Wiki dla aplikacji
+## E. Wiki dla aplikacji — szkielet postawiony (2026-07-21)
+
+Starlight działa pod `/wiki` (PL) i `/en/wiki` (EN), z Pagefind i tokenami pod paletę strony.
+Struktura pierwszej appki (AleDrogi Chat) jest pusta — czeka na treść z Obsidiana.
+
+**Do uzupełnienia przez Dawida:** co robi AleDrogi Chat i dla kogo (dwa–trzy zdania prostym
+językiem), wymagania i kroki instalacji, tabela ustawień, realne problemy do FAQ, pierwszy wpis
+w changelogu.
+
+**Uwagi techniczne:**
+- Slugi stron muszą być identyczne w PL i EN (`installation`, `configuration`), inaczej Starlight
+  dogeneruje zduplikowane strony EN z polską treścią. Tytuły w menu zostają po polsku.
+- Starlight nie uruchomi się obok własnej konfiguracji `i18n` w Astro — locale bierze z niej.
+- Nowa appka = katalog w `src/content/docs/wiki/` + wpis w `sidebar` w `astro.config.mjs`.
 
 Stack strony to **Astro** → wiki na **Starlight** (oficjalny motyw dokumentacyjny Astro).
 

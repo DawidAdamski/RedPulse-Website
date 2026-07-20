@@ -7,6 +7,8 @@
 // between an entry in blogPl and an entry in blogEn.
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
 
 const blogSchema = z.object({
   title: z.string(),
@@ -115,4 +117,8 @@ const contact = defineCollection({
   }),
 });
 
-export const collections = { blogPl, blogEn, about, services, process, faq, contact };
+// The wiki. Starlight owns this collection; pages live under src/content/docs
+// (PL) and src/content/docs/en (EN), and their folder path becomes the URL.
+const docs = defineCollection({ loader: docsLoader(), schema: docsSchema() });
+
+export const collections = { blogPl, blogEn, about, services, process, faq, contact, docs };
