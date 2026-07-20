@@ -95,7 +95,7 @@ defineProps<{
   right: -20%;
   width: 80%;
   height: 150%;
-  background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(193, 39, 45, 0.05) 0%, transparent 70%);
 }
 
 .hero-container {
@@ -152,15 +152,15 @@ defineProps<{
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  color: var(--gray-500);
+  color: var(--gray-600);
 }
 
 .hero-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--red-500);
+  color: var(--gray-600);
   margin-bottom: 1.5rem;
   opacity: 0;
 }

@@ -129,7 +129,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(250, 248, 245, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--gray-200);
 }
@@ -142,9 +142,9 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -162,10 +162,8 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
 }
 
 .nav-link {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
   color: var(--gray-600);
   transition: color var(--transition-fast);
 }
@@ -196,8 +194,8 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
 }
 
 .btn-sm {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.75rem;
+  padding: 0.6875rem 1.25rem;
+  font-size: 0.875rem;
 }
 
 .mobile-menu-btn {
@@ -259,7 +257,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
     left: 0;
     right: 0;
     bottom: 0;
-    background: #ffffff;
+    background: var(--paper);
     padding: 2rem;
     transform: translateX(100%);
     transition: transform 0.3s ease;
@@ -277,10 +275,8 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
   }
 
   .mobile-nav-link {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
     color: var(--gray-600);
     padding: 1rem 0;
     border-bottom: 1px solid var(--gray-200);

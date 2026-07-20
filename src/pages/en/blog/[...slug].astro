@@ -92,12 +92,12 @@ const blogPostingSchema = {
       <h1>{post.data.title}</h1>
       <div class="post-meta">
         <span>
-          {t.blog.published}:
+          {t.blog.published}:{' '}
           <time datetime={publishedISO}>{formatDate(post.data.pubDate)}</time>
         </span>
         {post.data.updatedDate && (
           <span>
-            {t.blog.updated}:
+            {t.blog.updated}:{' '}
             <time datetime={modifiedISO}>{formatDate(post.data.updatedDate)}</time>
           </span>
         )}

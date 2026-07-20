@@ -138,9 +138,9 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
 }
 
 .footer-logo {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-family: var(--font-sans);
+  font-size: 1.1875rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -186,11 +186,9 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
 }
 
 .footer-nav a {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
   color: var(--gray-400);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   transition: color var(--transition-fast);
 }
 

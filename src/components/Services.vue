@@ -62,7 +62,7 @@ defineProps<{
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--red-500);
+  color: var(--gray-600);
   margin-bottom: 1rem;
   display: block;
 }
@@ -152,7 +152,7 @@ defineProps<{
   align-items: center;
   justify-content: center;
   background: var(--gray-100);
-  color: var(--red-500);
+  color: var(--gray-600);
   margin-bottom: 1.5rem;
   transition: all var(--transition-base);
 }

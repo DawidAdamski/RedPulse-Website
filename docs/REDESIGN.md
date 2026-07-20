@@ -2,7 +2,7 @@
 
 > Źródło: analiza porównawcza redpulse.tech vs marcinkowski.ai (rozmowa z Claude, 2026-07-20).
 > Status: w trakcie. Kolejność wg priorytetu w ramach sekcji.
-> Zrobione (2026-07-21): A2–A4, B3, D1, D2, C3.
+> Zrobione (2026-07-21): A2–A4, B1–B3, D1, D2, C3. A1 tymczasowo (awatar 400×400).
 
 ## Kontekst / diagnoza
 
@@ -14,15 +14,16 @@
 
 ## A. Pierwsze wrażenie (hero) — priorytet 1
 
-- [ ] **A1. Zdjęcie Dawida w hero.** Profesjonalna sesja, naturalna poza, wycięte tło. Bez tego pozostałe zmiany nie mają sensu — sprzedajemy „jedną osobę, która bierze odpowiedzialność", a strona nie pokazuje twarzy ani razu.
+- [~] **A1. Zdjęcie Dawida w hero.** (tymczasowo: awatar 400×400 przy nagłówku — wystarcza, ale nie zastępuje sesji)
+- [ ] **A1b. Docelowa sesja zdjęciowa.** Profesjonalna sesja, naturalna poza, wycięte tło. Bez tego pozostałe zmiany nie mają sensu — sprzedajemy „jedną osobę, która bierze odpowiedzialność", a strona nie pokazuje twarzy ani razu.
 - [x] **A2. Zamiana hierarchii nagłówków.** H1 = „Twoje IT ma po prostu działać. Ja się tym zajmuję." Nazwa „RedPulse Innovations" zostaje tylko w logo. Obecnie najlepsze zdanie na stronie jest podtytułem.
 - [x] **A3. Usunąć animowany terminal (Ansible/YAML) z hero.** Komunikuje „strona dla informatyków", a klient ma nie musieć być informatykiem. Miejsce zajmie zdjęcie z A1.
 - [x] **A4. Wyciąć dekoracje szablonu:** czerwona siatka w tle, napis „SCROLL", pulsujące kropki. To one najbardziej robią wrażenie „template z ThemeForest".
 
 ## B. Design system — priorytet 2
 
-- [ ] **B1. Czerwień tylko jako akcent** (CTA, liczby, hover). Rozważyć ciemną, spokojną bazę (grafit/granat + złamana biel zamiast czystej bieli) — czerwień na takim tle wygląda „drogo" zamiast „głośno".
-- [ ] **B2. Typografia nagłówków z charakterem** — szeryf w nagłówkach (kierunek: edytorski, „magazynowy"), body zostaje sans. Mono tylko do drobnych etykiet, mniej UPPERCASE.
+- [x] **B1. Czerwień tylko jako akcent** (CTA, liczby, hover). Rozważyć ciemną, spokojną bazę (grafit/granat + złamana biel zamiast czystej bieli) — czerwień na takim tle wygląda „drogo" zamiast „głośno".
+- [x] **B2. Typografia nagłówków z charakterem** — szeryf w nagłówkach (kierunek: edytorski, „magazynowy"), body zostaje sans. Mono tylko do drobnych etykiet, mniej UPPERCASE.
 - [x] **B3. Pełna spójność językowa PL:** „Social media" → „Media społecznościowe"; motto „Make it simple and innovative" usunąć albo zepchnąć do stopki; przejrzeć wszystkie angielskie wtręty.
 
 ## C. Wiarygodność — priorytet 2

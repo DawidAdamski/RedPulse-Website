@@ -74,7 +74,7 @@ defineProps<{
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--red-500);
+  color: var(--gray-600);
   margin-bottom: 1rem;
   display: block;
 }
@@ -124,8 +124,8 @@ defineProps<{
 
 .stat-value {
   font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2.75rem;
+  font-weight: 600;
   color: var(--red-500);
   line-height: 1;
 }
@@ -135,7 +135,7 @@ defineProps<{
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--gray-500);
+  color: var(--gray-600);
   margin-top: 0.5rem;
 }
 
@@ -183,7 +183,7 @@ defineProps<{
   align-items: center;
   justify-content: center;
   background: var(--gray-100);
-  color: var(--red-500);
+  color: var(--gray-600);
   margin-bottom: 1.5rem;
   transition: all var(--transition-base);
 }
@@ -195,7 +195,7 @@ defineProps<{
 
 .highlight-title {
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0.75rem;
   color: var(--black);
 }

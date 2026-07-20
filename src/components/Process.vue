@@ -85,7 +85,7 @@ defineProps<{
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--red-500);
+  color: var(--gray-600);
   margin-bottom: 1.25rem;
 }
 
@@ -104,7 +104,7 @@ defineProps<{
 
 .step-title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--black);
   margin-bottom: 0.25rem;
 }
