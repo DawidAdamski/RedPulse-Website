@@ -36,6 +36,41 @@ sudo systemctl enable --now redpulse-update.timer
 Confirm the unit name matches: `systemctl list-unit-files | grep -i redpulse`. If your
 container unit is named differently, update `UNIT=` at the top of `redpulse-update.sh`.
 
+> ⚠️ **The `chmod +x` is not optional.** Without it systemd cannot execute the script
+> and the one-shot fails with exit code **203 (`EXIT_EXEC`)** on every single tick —
+> silently, because the script never runs far enough to log anything. That exact
+> failure kept production a week stale in July 2026; see
+> [`docs/POSTMORTEM-mikrus-timer.md`](../../docs/POSTMORTEM-mikrus-timer.md).
+
+## Health check
+
+This chain fails silently by design — a broken timer looks identical to a quiet one.
+Run this occasionally (or after touching anything in this folder):
+
+```bash
+# Did the last run succeed? Result=success / ExecMainStatus=0 is what you want.
+systemctl show redpulse-update.service -p Result -p ExecMainStatus -p ExecMainStartTimestamp
+
+# Is the timer scheduled at all?
+systemctl list-timers --all | grep -i redpulse
+```
+
+From anywhere, without SSH — is production actually current?
+
+```bash
+curl -sI https://redpulse.tech/ | grep -i last-modified
+```
+
+Compare it with the image timestamp in the registry:
+
+```bash
+curl -s https://hub.docker.com/v2/repositories/anihilat/redpulse.tech/tags/latest \
+  | python3 -c "import json,sys; print(json.load(sys.stdin)['last_updated'])"
+```
+
+Note that HTTP status codes prove nothing here: nginx falls back to `index.html`, so
+any path returns 200 even when the page doesn't exist in the image. Check the title.
+
 ## How a deploy flows
 
 1. You publish in the CMS (or push to `main`) → GitHub Actions builds and pushes a new
