@@ -32,15 +32,17 @@ Pierwsze zrobiłbym od razu. Drugie tylko tam, gdzie faktycznie będziesz publik
 - `og:title`, `og:description`, `og:url`, `og:locale`, wymiary obrazu
 - `twitter:card = summary_large_image`
 - Kanały RSS: `/blog/rss.xml` i `/en/blog/rss.xml` — gotowy wyzwalacz dla automatyzacji
+- **Przyciski udostępniania pod wpisami** (LinkedIn + Kopiuj link + udostępnianie
+  natywne) — `src/components/ShareButtons.astro`, bez skryptów zewnętrznych i cookies
+- **`article:author`** na wpisach (`ogType=article`); `article:published_time` już był
 
 **Brakuje:**
-- przycisków udostępniania pod wpisami
-- `twitter:site` / `twitter:creator` (potrzebny Twój handle)
-- `article:author` i `article:published_time` na wpisach (czas publikacji jest, autora nie ma)
+- `twitter:site` / `twitter:creator` (potrzebny Twój handle X — brak konta, więc świadomie
+  pominięte; TODO w `src/layouts/Layout.astro`)
 - ponownego zaciągnięcia podglądu linku przez Facebooka i LinkedIn — **po zmianie
-  pozycjonowania mają w cache stary opis i stary obraz**
+  pozycjonowania mają w cache stary opis i stary obraz** (Etap 2)
 
-## Etap 1 — przyciski udostępniania (rekomendowany start)
+## Etap 1 — przyciski udostępniania (✅ zrobione 2026-07-21)
 
 Nowy komponent pod treścią wpisu, bez żadnych skryptów zewnętrznych — same linki.
 Żadnych ciasteczek, żadnego śledzenia, zero wpływu na wydajność i zgodę cookie.
@@ -56,7 +58,11 @@ Nowy komponent pod treścią wpisu, bez żadnych skryptów zewnętrznych — sam
 Uwaga: **YouTube nie jest celem udostępniania linku** — to platforma wideo, nie
 czytnik. Nie dokładamy przycisku, który prowadzi donikąd.
 
-Do zrobienia przy okazji: `twitter:site` i `article:author` w `Layout.astro`.
+Zrobione: komponent `ShareButtons.astro` z LinkedIn + Kopiuj link + udostępnianie
+natywne (`navigator.share`, ukryte tam gdzie niewspierane), wstawiony na obu stronach
+wpisu (PL/EN); `article:author` w `Layout.astro`. Zostaje `twitter:site`/`twitter:creator`
+— dopiero gdy pojawi się handle X. Przyciski X/Facebook pominięte (prowadzisz tylko
+LinkedIn) — dodanie później to jedna linijka każdy.
 
 ## Etap 2 — planowanie publikacji
 
@@ -105,8 +111,8 @@ Figmy przy powtarzalnych grafikach z tekstem.
 
 ## Kolejność, którą rekomenduję
 
-1. **Przyciski udostępniania + brakujące metadane** — kilka godzin, działa od razu,
-   nie wymaga żadnych zgód ani kont deweloperskich.
+1. ~~**Przyciski udostępniania + brakujące metadane**~~ — ✅ zrobione (LinkedIn + Kopiuj
+   link + udostępnianie natywne, `article:author`).
 2. **Odświeżenie podglądów** w narzędziach Facebooka i LinkedIna — po repozycjonowaniu
    to konieczne, inaczej każdy udostępniony link pokazuje nieaktualną obietnicę.
 3. **Baserow + n8n bez publikacji** — kalendarz i przygotowywanie treści, kopiujesz

@@ -43,6 +43,13 @@
       "play": "Odsłuchaj",
       "pause": "Wstrzymaj",
       "resume": "Wznów"
+    },
+    "share": {
+      "heading": "Udostępnij",
+      "linkedin": "Udostępnij na LinkedIn",
+      "copy": "Kopiuj link",
+      "copied": "Skopiowano",
+      "native": "Udostępnij"
     }
   },
   "social": {

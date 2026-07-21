@@ -12,6 +12,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   feed?: string;
+  author?: string;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   publishedTime,
   modifiedTime,
   feed,
+  author = 'Dawid Adamski',
 } = Astro.props;
 
 const skipText = lang === 'pl' ? 'Przejdź do treści' : 'Skip to content';
@@ -152,10 +154,12 @@ const websiteSchema = {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={lang === 'pl' ? 'pl_PL' : 'en_US'} />
+    {ogType === 'article' && <meta property="article:author" content={author} />}
     {publishedTime && <meta property="article:published_time" content={publishedTime} />}
     {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
     <!-- Twitter -->
+    <!-- TODO: add twitter:site / twitter:creator once an X/Twitter handle exists. -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

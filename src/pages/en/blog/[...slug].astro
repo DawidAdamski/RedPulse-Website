@@ -4,6 +4,7 @@ import Header from '../../../components/Header.vue';
 import Footer from '../../../components/Footer.vue';
 import ArticleDepth from '../../../components/ArticleDepth.vue';
 import ListenButton from '../../../components/ListenButton.vue';
+import ShareButtons from '../../../components/ShareButtons.astro';
 import { getTranslations } from '../../../i18n';
 import { getCollection } from 'astro:content';
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
@@ -114,6 +115,7 @@ const blogPostingSchema = {
       )}
       <ListenButton text={speechText} lang="en-US" labels={t.blog.listen} client:load />
       <ArticleDepth levels={levels} labels={t.blog.depth} client:visible />
+      <ShareButtons url={canonicalURL} title={post.data.title} labels={t.blog.share} />
     </article>
   </main>
   <Footer t={t} lastUpdated={buildDate} locale={currentLocale} basePath="/en/" client:load />
