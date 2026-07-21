@@ -20,6 +20,7 @@ const props = defineProps<{
       faq: string;
       contact: string;
       blog: string;
+      wiki: string;
     };
   };
   lastUpdated?: string;
@@ -41,6 +42,7 @@ const anchor = (hash: string) => `${base}${hash}`;
 const logoHref = base || '#';
 
 const blogPath = computed(() => props.locale === 'en' ? '/en/blog' : '/blog');
+const wikiPath = computed(() => props.locale === 'en' ? '/en/wiki' : '/wiki');
 
 const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka');
 </script>
@@ -70,6 +72,7 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
           <a :href="anchor('#faq')">{{ t.nav.faq }}</a>
           <a :href="anchor('#contact')">{{ t.nav.contact }}</a>
           <a :href="blogPath">{{ t.nav.blog }}</a>
+          <a :href="wikiPath">{{ t.nav.wiki }}</a>
           <a :href="t.footer.privacyPolicyUrl">{{ t.footer.privacyPolicy }}</a>
           <a href="#" data-cc-open-preferences>{{ t.footer.cookieSettings }}</a>
         </nav>

@@ -12,6 +12,7 @@ const props = defineProps<{
       faq: string;
       contact: string;
       blog: string;
+      wiki: string;
       bookCall: string;
     };
   };
@@ -24,6 +25,7 @@ const anchor = (hash: string) => `${base}${hash}`;
 const logoHref = base || '#';
 
 const blogPath = computed(() => props.currentLocale === 'en' ? '/en/blog' : '/blog');
+const wikiPath = computed(() => props.currentLocale === 'en' ? '/en/wiki' : '/wiki');
 
 const menuOpen = ref(false);
 
@@ -55,6 +57,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
         <a :href="anchor('#faq')" class="nav-link">{{ t.nav.faq }}</a>
         <a :href="anchor('#contact')" class="nav-link">{{ t.nav.contact }}</a>
         <a :href="blogPath" class="nav-link">{{ t.nav.blog }}</a>
+        <a :href="wikiPath" class="nav-link">{{ t.nav.wiki }}</a>
       </nav>
 
       <div class="header-actions">
@@ -101,6 +104,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
         <a :href="anchor('#faq')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.faq }}</a>
         <a :href="anchor('#contact')" class="mobile-nav-link" @click="closeMenu">{{ t.nav.contact }}</a>
         <a :href="blogPath" class="mobile-nav-link" @click="closeMenu">{{ t.nav.blog }}</a>
+        <a :href="wikiPath" class="mobile-nav-link" @click="closeMenu">{{ t.nav.wiki }}</a>
       </nav>
       <div class="mobile-menu-actions">
         <a
@@ -158,7 +162,15 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
 
 .nav {
   display: flex;
-  gap: 2.5rem;
+  gap: 2.25rem;
+}
+
+/* Between the mobile breakpoint and ~1050px the seven nav items and the CTA
+   start crowding each other, so the gap tightens instead of overflowing. */
+@media (max-width: 1050px) {
+  .nav {
+    gap: 1.25rem;
+  }
 }
 
 .nav-link {
