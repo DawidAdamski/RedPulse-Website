@@ -1,0 +1,31 @@
+{
+  // Cloudflare Workers deploy config for the static build.
+  //
+  // This file exists mainly to STOP something: without a wrangler config in
+  // the repo, `wrangler deploy` decides the project is unconfigured and runs
+  // its auto-setup, which for an Astro project means `astro add cloudflare`.
+  // That installs the SSR adapter, rewrites the build to server output and
+  // then fails — @astrojs/cloudflare does not support Astro 7 yet
+  // ("renderForPrerender" is not exported by astro/app). The site is fully
+  // static and needs no adapter at all, so declaring the config here keeps
+  // wrangler on the simple path: build with Astro, upload dist/.
+  //
+  // There is no "main" entry on purpose. With only "assets" this deploys an
+  // assets-only Worker — no server code runs, Cloudflare just serves the
+  // files, the same shape nginx serves today.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "redpulse-website",
+  "compatibility_date": "2026-09-11",
+  "assets": {
+    "directory": "./dist",
+    // Astro builds directory-style routes (/blog/index.html), and
+    // auto-trailing-slash is what maps /blog onto that file. This is the
+    // default, spelled out so a later change is a deliberate one.
+    "html_handling": "auto-trailing-slash",
+    // Serve dist/404.html for unknown paths. The build does not emit one yet
+    // (there is no src/pages/404.astro), so until it does this behaves as a
+    // plain 404 — which differs from nginx, where `try_files ... /index.html`
+    // hands the homepage back with a 200 for every typo'd URL.
+    "not_found_handling": "404-page"
+  }
+}
