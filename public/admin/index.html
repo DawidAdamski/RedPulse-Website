@@ -3,6 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex" />
+    <!--
+      Same relaxed policy the /admin rules in public/_headers send as a real
+      header, repeated here as a fallback. If the header ever fails to detach
+      the strict site-wide CSP, this one is identical, so the intersection of
+      the two is still this policy and the CMS keeps working. Sveltia pulls its
+      bundle from unpkg, its icons are Material Symbols ligatures from Google
+      Fonts, and its backend is the GitHub API.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://github.com; frame-src 'self'; base-uri 'self'; object-src 'none'"
+    />
     <title>RedPulse CMS</title>
   </head>
   <body>
