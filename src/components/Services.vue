@@ -36,7 +36,7 @@ defineProps<{
           <p class="service-description">{{ item.description }}</p>
 
           <div class="service-arrow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
               <path d="M7 17L17 7M17 7H7M17 7V17"/>
             </svg>
           </div>
@@ -59,10 +59,11 @@ defineProps<{
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gray-600);
+  letter-spacing: 0.14em;
+  color: var(--graphite);
   margin-bottom: 1rem;
   display: block;
 }
@@ -100,19 +101,23 @@ defineProps<{
 .service-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--red-500), var(--red-700));
-  opacity: 0;
-  transition: opacity var(--transition-base);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--puls-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
 }
 
 .service-card:hover {
-  border-color: transparent;
-  box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.3);
+  border-color: var(--puls-red);
+  box-shadow: 0 10px 40px -10px rgba(23, 18, 15, 0.1);
 }
 
 .service-card:hover::before {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
 .service-card .service-number,
@@ -125,13 +130,8 @@ defineProps<{
   z-index: 1;
 }
 
-.service-card:hover .service-number,
-.service-card:hover .service-icon,
-.service-card:hover .service-title,
-.service-card:hover .service-price,
-.service-card:hover .service-description,
 .service-card:hover .service-arrow {
-  color: var(--white);
+  color: var(--puls-red);
 }
 
 .service-number {
@@ -139,9 +139,10 @@ defineProps<{
   top: 1.5rem;
   right: 1.5rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--gray-300);
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--stone);
   transition: color var(--transition-base);
 }
 
@@ -158,8 +159,8 @@ defineProps<{
 }
 
 .service-card:hover .service-icon {
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--white);
+  background: var(--rule);
+  color: var(--ink);
 }
 
 .service-title {
@@ -173,8 +174,8 @@ defineProps<{
 .service-price {
   font-family: var(--font-mono);
   font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--red-500);
+  font-weight: 500;
+  color: var(--puls-red);
   margin-bottom: 1rem;
   transition: color var(--transition-base);
 }
@@ -193,7 +194,7 @@ defineProps<{
   opacity: 0;
   transform: translate(-10px, 10px);
   transition: all var(--transition-base);
-  color: var(--white);
+  color: var(--puls-red);
 }
 
 .service-card:hover .service-arrow {

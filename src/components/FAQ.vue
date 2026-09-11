@@ -46,7 +46,9 @@ function toggle(index: number) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.5"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
               aria-hidden="true"
             >
               <polyline points="6,9 12,15 18,9" />
@@ -124,12 +126,12 @@ function toggle(index: number) {
 }
 
 .faq-question:hover {
-  background: var(--gray-50, #fafafa);
+  background: var(--sand);
 }
 
 .faq-icon {
   flex-shrink: 0;
-  color: var(--gray-500);
+  color: var(--graphite);
   transition: transform var(--transition-base);
 }
 

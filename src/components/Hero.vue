@@ -25,10 +25,6 @@ defineProps<{
        visible. The portrait is deliberately small: the current file is a
        400x400 avatar, so anything larger goes soft on high-DPI screens. -->
   <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-gradient"></div>
-    </div>
-
     <div class="container hero-container">
       <div class="hero-content">
         <p class="hero-eyebrow animate-fade-in-up">{{ t.hero.eyebrow }}</p>
@@ -46,7 +42,7 @@ defineProps<{
         <div class="hero-actions animate-fade-in-up animate-delay-300">
           <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             {{ t.hero.cta }}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
@@ -90,21 +86,6 @@ defineProps<{
   overflow: hidden;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-gradient {
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 80%;
-  height: 150%;
-  background: radial-gradient(ellipse at center, rgba(193, 39, 45, 0.05) 0%, transparent 70%);
-}
-
 .hero-container {
   position: relative;
   z-index: 1;
@@ -140,7 +121,7 @@ defineProps<{
   object-fit: cover;
   /* Thin red edge instead of a decorative frame — the accent colour earns its
      place by outlining the person, not by drawing a gadget. */
-  border-bottom: 3px solid var(--red-500);
+  border-bottom: 2px solid var(--puls-red);
 }
 
 .hero-portrait figcaption {
@@ -157,24 +138,27 @@ defineProps<{
 
 .portrait-role {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--gray-600);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--graphite);
 }
 
 .hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--gray-600);
+  letter-spacing: 0.14em;
+  color: var(--graphite);
   margin-bottom: 1.5rem;
   opacity: 0;
 }
 
 .hero-title {
-  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
-  letter-spacing: -0.03em;
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  letter-spacing: -0.035em;
   margin-bottom: 1.75rem;
   opacity: 0;
 }

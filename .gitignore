@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Working copy of the brand book. The source of truth lives in docs/brand/;
+# the bundled .html export is 640 KB of base64 fonts and duplicates the .md.
+/brand/

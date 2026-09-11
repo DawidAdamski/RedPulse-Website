@@ -120,22 +120,34 @@ const { lang = 'pl' } = Astro.props;
 </script>
 
 <style is:global>
+  /* vanilla-cookieconsent ships its own token names, so the brand palette is
+     mapped onto them here rather than restyling the plugin's markup. This is a
+     dark surface (Ink), which is why the accent hover is Deep Red and the
+     secondary text is Stone — Graphite would drop to 2.3:1 on this ground. */
   :root {
-    --cc-bg: #111111;
-    --cc-primary-color: #ffffff;
-    --cc-secondary-color: #d4d4d4;
-    --cc-btn-primary-bg: #c1272d;
-    --cc-btn-primary-color: #ffffff;
-    --cc-btn-primary-hover-bg: #b91c1c;
-    --cc-btn-secondary-bg: #262626;
-    --cc-btn-secondary-color: #ffffff;
-    --cc-btn-secondary-hover-bg: #404040;
-    --cc-separator-border-color: #262626;
-    --cc-toggle-bg-on: #c1272d;
-    --cc-toggle-bg-off: #525252;
-    --cc-toggle-knob-bg: #ffffff;
-    --cc-cookie-category-block-bg: #1a1a1a;
-    --cc-cookie-category-block-border: #262626;
-    --cc-overlay-bg: rgba(0, 0, 0, 0.7);
+    --cc-bg: var(--ink);
+    --cc-primary-color: var(--paper);
+    --cc-secondary-color: var(--stone);
+    --cc-btn-primary-bg: var(--puls-red);
+    --cc-btn-primary-color: var(--paper);
+    --cc-btn-primary-hover-bg: var(--deep-red);
+    --cc-btn-secondary-bg: var(--gray-800);
+    --cc-btn-secondary-color: var(--paper);
+    --cc-btn-secondary-hover-bg: var(--gray-700);
+    --cc-separator-border-color: var(--gray-800);
+    --cc-toggle-bg-on: var(--puls-red);
+    --cc-toggle-bg-off: var(--gray-700);
+    --cc-toggle-knob-bg: var(--paper);
+    --cc-cookie-category-block-bg: #1f1815;
+    --cc-cookie-category-block-border: var(--gray-800);
+    --cc-overlay-bg: rgba(23, 18, 15, 0.7);
+  }
+
+  /* The plugin defaults to its own stack; §12 allows only IBM Plex. */
+  #cc-main {
+    --cc-font-family: var(--font-sans);
+    --cc-btn-border-radius: 0;
+    --cc-modal-border-radius: 0;
+    --cc-modal-margin: 1rem;
   }
 </style>

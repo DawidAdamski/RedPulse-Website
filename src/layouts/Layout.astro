@@ -1,4 +1,11 @@
 ---
+// Self-hosted IBM Plex (brand book §6). Serving the woff2 from our own origin
+// drops the render-blocking @import → googleapis → gstatic waterfall and keeps
+// visitors' IPs away from Google, which is also why font-src in nginx.conf can
+// stay 'self'. The wiki gets the same two packages via Starlight's customCss.
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
 
@@ -60,7 +67,7 @@ const organizationSchema = {
   alternateName: 'RedPulse Innovations',
   legalName: 'RedPulse Innovations Dawid Adamski',
   url: 'https://redpulse.tech',
-  logo: 'https://redpulse.tech/favicon.svg',
+  logo: 'https://redpulse.tech/logo-512.png',
   description: lang === 'pl'
     ? 'Diagnostyka trudnych problemów IT, projekty infrastrukturalne, automatyzacje i szkolenia z AI. Jedna osoba, która ustala przyczynę i bierze odpowiedzialność za rezultat.'
     : 'Diagnosing hard IT problems, infrastructure projects, automation and AI training. One person who finds the cause and takes responsibility for the result.',
@@ -129,9 +136,11 @@ const websiteSchema = {
     <meta name="description" content={description} />
     <meta name="author" content="Dawid Adamski" />
 
-    <!-- Favicon -->
+    <!-- Favicon — the sygnet from the brand book §4. iOS ignores SVG for
+         apple-touch-icon, so that one is a PNG; both come from the same source
+         file via `bun run icons`. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
@@ -166,7 +175,7 @@ const websiteSchema = {
     <meta name="twitter:image" content={ogImage} />
     
     <!-- Theme -->
-    <meta name="theme-color" content="#c1272d" />
+    <meta name="theme-color" content="#faf8f6" />
 
     <title>{title}</title>
 

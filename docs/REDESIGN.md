@@ -1,5 +1,10 @@
 # Redesign redpulse.tech — uwagi i backlog
 
+> **Nadrzędny dokument marki to `docs/brand/BRAND-BOOK.md` (v1.0).** Gdzie ten
+> plik się z nim rozjeżdża, obowiązuje księga. Konkretnie **B2 jest nieaktualne
+> (2026-09-11)**: szeryf w nagłówkach wypadł, bo §6 księgi dopuszcza wyłącznie
+> IBM Plex Sans i IBM Plex Mono. B1 i B3 zostają w mocy — księga mówi to samo.
+>
 > Źródło: analiza porównawcza redpulse.tech vs marcinkowski.ai (rozmowa z Claude, 2026-07-20).
 > Status: w trakcie. Kolejność wg priorytetu w ramach sekcji.
 > Zrobione (2026-07-21): A2–A4, B1–B3, C3, D1–D3. A1 tymczasowo (awatar 400×400).
@@ -30,7 +35,10 @@
 ## B. Design system — priorytet 2
 
 - [x] **B1. Czerwień tylko jako akcent** (CTA, liczby, hover). Rozważyć ciemną, spokojną bazę (grafit/granat + złamana biel zamiast czystej bieli) — czerwień na takim tle wygląda „drogo" zamiast „głośno".
-- [x] **B2. Typografia nagłówków z charakterem** — szeryf w nagłówkach (kierunek: edytorski, „magazynowy"), body zostaje sans. Mono tylko do drobnych etykiet, mniej UPPERCASE.
+- [~] **B2. ~~Typografia nagłówków z charakterem — szeryf w nagłówkach~~** — **nieaktualne (2026-09-11).**
+  Brand book §6 i §12 dopuszczają tylko IBM Plex Sans i IBM Plex Mono; Fraunces, Inter
+  i Space Mono wypadły. Nagłówki to ten sam sans w wadze 700 z ujemnym trackingiem.
+  Część o Mono „tylko do drobnych etykiet" zostaje i jest teraz jednym stylem: 13 / 500 / +14%.
 - [x] **B3. Pełna spójność językowa PL:** „Social media" → „Media społecznościowe"; motto „Make it simple and innovative" usunąć albo zepchnąć do stopki; przejrzeć wszystkie angielskie wtręty.
 
 ## C. Wiarygodność — priorytet 2

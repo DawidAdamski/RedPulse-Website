@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import Logo from './Logo.vue';
 
 const props = defineProps<{
   t: {
@@ -53,7 +54,7 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
       <div class="footer-content">
         <div class="footer-brand">
           <a :href="logoHref" class="footer-logo">
-            <span class="logo-red">Red</span><span class="logo-pulse">Pulse</span>
+            <Logo variant="dark" :size="19" />
           </a>
           <p class="footer-tagline">{{ t.footer.tagline }}</p>
           <address class="footer-company">
@@ -141,26 +142,17 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
 }
 
 .footer-logo {
-  font-family: var(--font-sans);
-  font-size: 1.1875rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.logo-red {
-  color: var(--red-500);
-}
-
-.logo-pulse {
-  color: var(--white);
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-tagline {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--gray-500);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--stone);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
 }
 
 .footer-company {
@@ -170,7 +162,7 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
   margin-top: 0.75rem;
   font-style: normal;
   font-size: 0.75rem;
-  color: var(--gray-500);
+  color: var(--stone);
   line-height: 1.4;
 }
 
@@ -185,12 +177,17 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
 
 .footer-nav {
   display: flex;
-  gap: 2rem;
+  /* Nine links plus the brand column and the social icons overflow the row at
+     1200px; without these the flex items shrink and each label breaks mid-way
+     ("O" / "nas"). */
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
 }
 
 .footer-nav a {
   font-family: var(--font-sans);
   font-size: 0.9375rem;
+  white-space: nowrap;
   color: var(--gray-400);
   transition: color var(--transition-fast);
 }
@@ -229,20 +226,22 @@ const footerNavLabel = computed(() => props.locale === 'en' ? 'Footer' : 'Stopka
 
 .copyright {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--gray-500);
+  font-size: 0.8125rem;
+  color: var(--stone);
 }
 
+/* Graphite is the body colour on Paper, but on Ink it falls to 2.3:1. Stone
+   is the readable neutral on a dark ground (5.1:1). */
 .last-updated {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--gray-600);
+  font-size: 0.8125rem;
+  color: var(--stone);
 }
 
 .made-with {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--gray-500);
+  font-size: 0.8125rem;
+  color: var(--stone);
   display: flex;
   align-items: center;
   gap: 0.25rem;

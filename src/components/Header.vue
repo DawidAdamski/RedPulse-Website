@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import Logo from './Logo.vue';
 import { CALENDLY_URL } from '../config';
 
 const props = defineProps<{
@@ -47,7 +48,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
   <header class="header">
     <div class="container header-container">
       <a :href="logoHref" class="logo">
-        <span class="logo-red">Red</span><span class="logo-pulse">Pulse</span>
+        <Logo variant="light" :size="22" />
       </a>
 
       <nav class="nav" :aria-label="navLabel">
@@ -133,7 +134,7 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(250, 248, 245, 0.92);
+  background: rgba(250, 248, 246, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--gray-200);
 }
@@ -146,18 +147,8 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
 }
 
 .logo {
-  font-family: var(--font-sans);
-  font-size: 1.375rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.logo-red {
-  color: var(--red-500);
-}
-
-.logo-pulse {
-  color: var(--black);
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav {
@@ -192,8 +183,9 @@ const navLabel = computed(() => props.currentLocale === 'en' ? 'Main navigation'
 
 .lang-switch {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   padding: 0.5rem 1rem;
   border: 2px solid var(--gray-300);
   transition: all var(--transition-fast);

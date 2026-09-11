@@ -35,7 +35,7 @@ defineProps<{
       <div class="process-cta">
         <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
           {{ process.cta }}
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
@@ -91,8 +91,9 @@ defineProps<{
 
 .step-number {
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   width: 32px;
   height: 32px;
   display: flex;
@@ -111,9 +112,11 @@ defineProps<{
 
 .step-duration {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--red-500);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--puls-red);
   margin-bottom: 1rem;
 }
 

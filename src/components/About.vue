@@ -71,10 +71,11 @@ defineProps<{
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gray-600);
+  letter-spacing: 0.14em;
+  color: var(--graphite);
   margin-bottom: 1rem;
   display: block;
 }
@@ -123,19 +124,21 @@ defineProps<{
 }
 
 .stat-value {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: 2.75rem;
-  font-weight: 600;
-  color: var(--red-500);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--puls-red);
   line-height: 1;
 }
 
 .stat-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gray-600);
+  letter-spacing: 0.14em;
+  color: var(--graphite);
   margin-top: 0.5rem;
 }
 

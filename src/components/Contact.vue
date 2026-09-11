@@ -44,10 +44,6 @@ const socialLinks = computed(() => [
 
 <template>
   <section id="contact" class="contact section">
-    <div class="contact-bg">
-      <div class="contact-pattern"></div>
-    </div>
-    
     <div class="container">
       <div class="contact-content">
         <div class="contact-info">
@@ -125,7 +121,7 @@ const socialLinks = computed(() => [
                 <span class="social-url">{{ link.url.replace('https://', '').replace('www.', '') }}</span>
               </div>
               <div class="social-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
                   <path d="M7 17L17 7M17 7H7M17 7V17"/>
                 </svg>
               </div>
@@ -137,7 +133,7 @@ const socialLinks = computed(() => [
           <div class="card-actions">
             <a :href="CALENDLY_URL" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
               {{ contact.consultationCta }}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
@@ -159,20 +155,6 @@ const socialLinks = computed(() => [
   overflow: hidden;
 }
 
-.contact-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.contact-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
-}
-
 .contact-content {
   position: relative;
   z-index: 1;
@@ -184,10 +166,11 @@ const socialLinks = computed(() => [
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--red-400);
+  letter-spacing: 0.14em;
+  color: var(--signal-red);
   margin-bottom: 1rem;
   display: block;
 }
@@ -243,7 +226,7 @@ const socialLinks = computed(() => [
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--gray-500);
+  color: var(--stone);
 }
 
 .method-value {
@@ -327,11 +310,11 @@ const socialLinks = computed(() => [
 .social-url {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--gray-500);
+  color: var(--stone);
 }
 
 .social-arrow {
-  color: var(--gray-500);
+  color: var(--stone);
   transition: all var(--transition-base);
 }
 

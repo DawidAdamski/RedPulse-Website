@@ -23,7 +23,14 @@ export default defineConfig({
       // of truth. It already gives us Polish at the root and English under /en/.
       // Styled with the site's own tokens so the wiki reads as part of the
       // portal rather than as stock documentation.
-      customCss: ['./src/styles/wiki.css'],
+      // Self-hosted IBM Plex (brand book §6) ahead of the theme file, so the
+      // @font-face rules are registered before wiki.css references the family.
+      customCss: [
+        '@fontsource-variable/ibm-plex-sans',
+        '@fontsource/ibm-plex-mono/400.css',
+        '@fontsource/ibm-plex-mono/500.css',
+        './src/styles/wiki.css',
+      ],
       social: [
         { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/red-pulse-innovations/' },
         { icon: 'github', label: 'GitHub', href: 'https://github.com/DawidAdamski' },

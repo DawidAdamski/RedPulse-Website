@@ -19,7 +19,15 @@ This site aims to meet **WCAG 2.1 AA** in spirit. This note records what is in p
 
 **Perceivable content**
 - Decorative inline SVGs (icons, arrows, hamburger, social glyphs) are `aria-hidden="true" focusable="false"`; icon links keep a text `aria-label`.
-- Brand palette (red `#dc2626`, black, white) meets AA contrast for body text; keep it that way (see below).
+- Brand palette (`docs/brand/BRAND-BOOK.md` §5) measured against Paper `#faf8f6`:
+  Ink `#17120f` 17.8:1 · Graphite `#554d48` 7.8:1 · Puls Red `#c1272d` 5.5:1 ·
+  white on Puls Red 5.8:1 · Signal Red `#e8494f` on Ink 4.9:1. All pass AA.
+- **Stone `#8d837c` is the exception — 3.5:1 on Paper, below AA.** The brand book
+  assigns it to labels and metadata, but on a light ground it is used only for
+  decoration (the large card numerals in `Services.vue`). Every readable label,
+  price and metadata line on Paper uses Graphite instead. On Ink, Stone is fine
+  (5.1:1) and is the neutral the dark sections use — Graphite would fall to 2.3:1
+  there, so the two never swap.
 - Tap targets on mobile are ≥44px.
 
 **Language**

@@ -39,13 +39,14 @@ const readingMinutes = (html: string): number => {
   return Math.max(1, Math.round(words / 200));
 };
 
-// Identification color per level: interpolate teal → amber → red across however
-// many levels a post has, so the first is always calm and the deepest is always
-// brand red — for 2 levels, 3, 4 or 5.
+// Identification color per level, interpolated across however many levels a
+// post has (2, 3, 4 or 5). The stops are the brand book's status ramp (§5):
+// calm green on the surface, amber in the middle, Puls Red at the bottom —
+// the same escalation the rest of the site uses for "fine / watch / critical".
 const STOPS: [number, number, number][] = [
-  [13, 148, 136], // teal-600 — surface
-  [217, 119, 6], // amber-600 — middle
-  [220, 38, 38], // brand red — deepest
+  [44, 122, 69], // #2c7a45 — surface
+  [184, 134, 11], // #b8860b — middle
+  [193, 39, 45], // #c1272d Puls Red — deepest
 ];
 
 const lerp = (a: number, b: number, t: number) => Math.round(a + (b - a) * t);
@@ -188,9 +189,9 @@ onMounted(() => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke-width="1.5"
+            stroke-linecap="square"
+            stroke-linejoin="miter"
             aria-hidden="true"
             focusable="false"
           >

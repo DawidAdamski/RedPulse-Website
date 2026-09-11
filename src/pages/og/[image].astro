@@ -1,0 +1,166 @@
+---
+/**
+ * Source pages for the link-preview images. They are rendered to PNG by
+ * scripts/generate-og.mjs and are NOT part of the published site —
+ * `getStaticPaths` returns nothing in a production build, so these routes
+ * exist only while `astro dev` runs.
+ *
+ * The slug is the output file name, not a locale code: with
+ * `prefixDefaultLocale: false`, Astro's i18n strips `/pl` out of any path and
+ * redirects, so /og/pl could never be fetched.
+ *
+ * Regenerate after any change to the mark, the fonts or the promise:
+ *   bun run dev   (in one shell)
+ *   bun run og
+ */
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../../styles/global.css';
+import Logo from '../../components/Logo.vue';
+
+const VARIANTS = {
+  'og-image': {
+    lang: 'pl',
+    title: 'Twoje IT nie działa jak trzeba?',
+    accent: 'Znajdę przyczynę.',
+    note: 'Projekty i diagnostyka IT · konsultacja od 200 zł netto',
+    role: 'Architekt IT · RedPulse',
+  },
+  'og-image-en': {
+    lang: 'en',
+    title: "Your IT isn't behaving?",
+    accent: "I'll find the cause.",
+    note: 'IT projects and diagnostics · consultation from 200 PLN net',
+    role: 'IT architect · RedPulse',
+  },
+};
+
+export function getStaticPaths() {
+  // Dev-only: nothing is emitted into dist/.
+  return import.meta.env.PROD
+    ? []
+    : [{ params: { image: 'og-image' } }, { params: { image: 'og-image-en' } }];
+}
+
+const copy = VARIANTS[Astro.params.image] ?? VARIANTS['og-image'];
+---
+
+<html lang={copy.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <title>{Astro.params.image}</title>
+  </head>
+  <body>
+    <div class="card">
+      <div class="col">
+        <Logo variant="light" size={30} />
+        <h1>
+          <span>{copy.title}</span>
+          <span class="accent">{copy.accent}</span>
+        </h1>
+        <p class="note">{copy.note}</p>
+      </div>
+      <figure>
+        <img src="/dawid-adamski.jpg" alt="Dawid Adamski" width="400" height="400" />
+        <figcaption>
+          <span class="name">Dawid Adamski</span>
+          <span class="role">{copy.role}</span>
+        </figcaption>
+      </figure>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: var(--paper);
+  }
+
+  /* These pages only ever exist under `astro dev`, so the dev toolbar is
+     always present — and it lands inside the capture. */
+  :global(astro-dev-toolbar) {
+    display: none !important;
+  }
+
+  /* Exactly the OG canvas, pinned to the top-left so a headless capture at
+     --window-size=1200,630 needs no cropping. */
+  .card {
+    width: 1200px;
+    height: 630px;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 0 80px;
+    background: var(--paper);
+    box-sizing: border-box;
+  }
+
+  .col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  h1 {
+    margin: 40px 0 24px;
+    font-size: 56px;
+    line-height: 1.07;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  .accent {
+    color: var(--puls-red);
+  }
+
+  .note {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--graphite);
+  }
+
+  figure {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  figure img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--puls-red);
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 16px;
+  }
+
+  .name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .role {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--graphite);
+  }
+</style>
