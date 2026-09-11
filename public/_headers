@@ -29,24 +29,30 @@
 /pagefind/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Sveltia CMS. It loads its bundle from unpkg, renders its icons as Material
-# Symbols ligatures pulled from Google Fonts, and talks to the GitHub API as
-# its backend — all of which the site-wide policy forbids. Detach the strict
-# policy first, then declare the relaxed one. public/admin/index.html carries
-# the same policy in a <meta> tag as a fallback in case the detach ever stops
-# working: without it the blocked font shows the ligature names ("arrow_back",
-# "close") as plain text and the CMS looks broken.
+# Sveltia CMS. It loads its bundle from unpkg, self-hosts its typefaces and its
+# Material Symbols icon font through fontsource on jsdelivr, and talks to the
+# GitHub API as its backend — all of which the site-wide policy forbids. Detach
+# the strict policy first, then declare the relaxed one. public/admin/index.html
+# carries the same policy in a <meta> tag as a fallback in case the detach ever
+# stops working.
+#
+# font-src is the one to watch. A blocked font raises no CSP violation in the
+# console — it just fails, and the icons render as their ligature names
+# ("bookmark_manager", "edit"), which reads as a broken CMS rather than as our
+# own policy. fonts.gstatic.com is where Sveltia used to fetch them from and is
+# kept only so a switch back does not break this again; jsdelivr is the one
+# actually in use.
 #
 # Two patterns because a splat does not match the bare path: /admin/* covers
 # /admin/ and everything under it, /admin covers the unslashed request.
 /admin
   ! Content-Security-Policy
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://github.com; frame-src 'self'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://github.com; frame-src 'self'; base-uri 'self'; object-src 'none'
   X-Robots-Tag: noindex
   Cache-Control: no-store
 
 /admin/*
   ! Content-Security-Policy
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://github.com; frame-src 'self'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self' https://unpkg.com https://api.github.com https://raw.githubusercontent.com https://*.githubusercontent.com https://github.com; frame-src 'self'; base-uri 'self'; object-src 'none'
   X-Robots-Tag: noindex
   Cache-Control: no-store
