@@ -20,6 +20,9 @@ interface Props {
   modifiedTime?: string;
   feed?: string;
   author?: string;
+  /** Keep the page out of the index. Used by /404, which has no business
+      appearing in search results for any query. */
+  noindex?: boolean;
 }
 
 const {
@@ -33,6 +36,7 @@ const {
   modifiedTime,
   feed,
   author = 'Dawid Adamski',
+  noindex = false,
 } = Astro.props;
 
 const skipText = lang === 'pl' ? 'Przejdź do treści' : 'Skip to content';
@@ -135,6 +139,7 @@ const websiteSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="author" content="Dawid Adamski" />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <!-- Favicon — the sygnet from the brand book §4. iOS ignores SVG for
          apple-touch-icon, so that one is a PNG; both come from the same source
